@@ -1,2 +1,3 @@
-# doit
-Doit - learning  project with Avada-Media
+# Doit
+
+_Learning project with [Avada Media](https://avada-media.ua/)_
