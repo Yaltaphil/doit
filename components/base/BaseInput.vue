@@ -1,17 +1,41 @@
 <template>
-    <div class="inputBody">
-        <slot>Enter:</slot>
-        <input type="text" placeholder="google@gmail.com" />
+    <div
+        class="input"
+        :class="{ input__invalid: invalid, input__success: success }"
+    >
+        <label for="input"> <slot></slot> </label>
+        <input
+            id="input"
+            v-bind="$attrs"
+            v-on="$listeners"
+            @input="$emit('input', $event.target.value)"
+        />
+        <div class="input__times">&times;</div>
+        <div class="input__checkmark">&checkmark;</div>
+        <div class="input__message">invalid type of data</div>
+        {{ state }}
     </div>
 </template>
 
+<script>
+export default {
+    name: 'BaseInput',
+
+    props: {
+        value: { type: String, default: null },
+        invalid: { type: Boolean, default: null },
+        success: { type: Boolean, default: null },
+    },
+}
+</script>
+
 <style lang="scss" scoped>
-.inputBody {
+.input {
     position: relative;
     width: 240px;
     height: 60px;
 
-    & input[type=text] {
+    & input {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -66,6 +90,97 @@
             background: #121f33;
             border-radius: 2px;
         }
+    }
+
+    & .input__message {
+        display: none;
+    }
+
+    & .input__times {
+        display: none;
+    }
+
+    & .input__checkmark {
+        display: none;
+    }
+}
+
+.input__invalid {
+    & input {
+        border: 1px solid #b83333;
+        box-sizing: border-box;
+        border-radius: 2px;
+        &:active {
+            border: 1px solid #b83333;
+            box-sizing: border-box;
+            border-radius: 2px;
+        }
+        &:focus {
+            border: 1px solid #b83333;
+            box-sizing: border-box;
+            border-radius: 2px;
+        }
+    }
+    & .input__times {
+        display: block;
+        color: #b83333;
+        position: absolute;
+        font-size: 24px;
+        left: 212px;
+        top: 32px;
+    }
+    & .input__message {
+        display: block;
+        position: absolute;
+        left: 0%;
+        top: 95%;
+        bottom: 0%;
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 100%;
+        color: #b83333;
+        flex: none;
+        order: 1;
+        align-self: flex-start;
+        flex-grow: 0;
+        margin: 4px 0px;
+    }
+    & .input__checkmark {
+        display: none;
+    }
+}
+
+.input__success {
+    & input {
+        border: 1px solid #4cb725;
+        box-sizing: border-box;
+        border-radius: 2px;
+        &:active {
+            border: 1px solid #4cb725;
+            box-sizing: border-box;
+            border-radius: 2px;
+        }
+        &:focus {
+            border: 1px solid #4cb725;
+            box-sizing: border-box;
+            border-radius: 2px;
+        }
+    }
+    & .input__checkmark {
+        display: block;
+        color: #4cb725;
+        position: absolute;
+        font-size: 24px;
+        left: 212px;
+        top: 32px;
+    }
+    & .input__times {
+        display: none;
+    }
+    & .input__message {
+        display: none;
     }
 }
 </style>
