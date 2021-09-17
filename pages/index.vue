@@ -11,6 +11,7 @@
         <p>111</p>
         <button @click="c1 = !c1">1</button>
         <button @click="c2 = !c2">2</button>
+        {{ foo }}
     </div>
 </template>
 

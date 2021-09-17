@@ -7,7 +7,6 @@
         <input
             id="input"
             v-bind="$attrs"
-            v-on="$listeners"
             @input="$emit('input', $event.target.value)"
         />
         <div class="input__times">&times;</div>
