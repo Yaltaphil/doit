@@ -118,6 +118,7 @@ export default {
         font-size: 32px;
         right: 10px;
         top: 20px;
+        animation: tick 200ms ease-in;
     }
     & .input__message {
         display: block;
@@ -162,12 +163,25 @@ export default {
         font-size: 24px;
         right: 10px;
         top: 28px;
+        animation: tick 200ms ease-in;
     }
     & .input__times {
         display: none;
     }
     & .input__message {
         display: none;
+    }
+}
+
+@keyframes tick {
+    0% {
+        transform: scale(0);
+    }
+    90% {
+        transform: scale(1.33);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 </style>
