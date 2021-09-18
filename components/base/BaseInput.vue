@@ -6,13 +6,14 @@
         <label for="input"> <slot></slot> </label>
         <input
             id="input"
+            autocomplete="off"
             v-bind="$attrs"
+            :value="value"
             @input="$emit('input', $event.target.value)"
         />
         <div class="input__times">&times;</div>
         <div class="input__checkmark">&checkmark;</div>
         <div class="input__message">invalid type of data</div>
-        {{ state }}
     </div>
 </template>
 
@@ -22,8 +23,8 @@ export default {
 
     props: {
         value: { type: String, default: null },
-        invalid: { type: Boolean, default: null },
-        success: { type: Boolean, default: null },
+        invalid: { type: Boolean, default: false },
+        success: { type: Boolean, default: false },
     },
 }
 </script>
@@ -41,9 +42,9 @@ export default {
         padding: 12px 16px;
         color: #627ca3;
         background-color: rgba(0, 0, 0, 0);
-        position: absolute;
         width: 240px;
         height: 40px;
+        position: absolute;
         left: 0px;
         top: 20px;
         border: 1px solid #16263d;
@@ -67,38 +68,30 @@ export default {
             flex-grow: 0;
             margin: 10px 0px;
         }
-
         &:focus {
             color: #627ca3;
             background: #121f33;
             border: 1px solid #627ca3;
-            box-sizing: border-box;
             border-radius: 2px;
         }
-
         &:active {
             color: #e6e6e6;
             background: #16263d;
             border: 1px solid #185ec7;
-            box-sizing: border-box;
             border-radius: 2px;
         }
-
         &:disabled {
             color: #98a4b5;
             background: #121f33;
             border-radius: 2px;
         }
     }
-
     & .input__message {
         display: none;
     }
-
     & .input__times {
         display: none;
     }
-
     & .input__checkmark {
         display: none;
     }
@@ -107,16 +100,13 @@ export default {
 .input__invalid {
     & input {
         border: 1px solid #b83333;
-        box-sizing: border-box;
         border-radius: 2px;
         &:active {
             border: 1px solid #b83333;
-            box-sizing: border-box;
             border-radius: 2px;
         }
         &:focus {
             border: 1px solid #b83333;
-            box-sizing: border-box;
             border-radius: 2px;
         }
     }
@@ -124,9 +114,9 @@ export default {
         display: block;
         color: #b83333;
         position: absolute;
-        font-size: 24px;
+        font-size: 32px;
         left: 212px;
-        top: 32px;
+        top: 20px;
     }
     & .input__message {
         display: block;
@@ -154,16 +144,13 @@ export default {
 .input__success {
     & input {
         border: 1px solid #4cb725;
-        box-sizing: border-box;
         border-radius: 2px;
         &:active {
             border: 1px solid #4cb725;
-            box-sizing: border-box;
             border-radius: 2px;
         }
         &:focus {
             border: 1px solid #4cb725;
-            box-sizing: border-box;
             border-radius: 2px;
         }
     }
@@ -173,7 +160,7 @@ export default {
         position: absolute;
         font-size: 24px;
         left: 212px;
-        top: 32px;
+        top: 28px;
     }
     & .input__times {
         display: none;
