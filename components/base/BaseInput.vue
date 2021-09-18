@@ -42,7 +42,7 @@ export default {
         padding: 12px 16px;
         color: #627ca3;
         background-color: rgba(0, 0, 0, 0);
-        width: 240px;
+        width: 100%;
         height: 40px;
         position: absolute;
         left: 0px;
@@ -50,6 +50,7 @@ export default {
         border: 1px solid #16263d;
         box-sizing: border-box;
         border-radius: 2px;
+        outline: none;
 
         &::placeholder {
             position: static;
@@ -115,7 +116,7 @@ export default {
         color: #b83333;
         position: absolute;
         font-size: 32px;
-        left: 212px;
+        right: 10px;
         top: 20px;
     }
     & .input__message {
@@ -159,7 +160,7 @@ export default {
         color: #4cb725;
         position: absolute;
         font-size: 24px;
-        left: 212px;
+        right: 10px;
         top: 28px;
     }
     & .input__times {
