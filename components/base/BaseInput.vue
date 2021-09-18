@@ -137,6 +137,7 @@ export default {
         align-self: flex-start;
         flex-grow: 0;
         margin: 4px 0px;
+        animation: tick 200ms ease-in;
     }
     & .input__checkmark {
         display: none;
