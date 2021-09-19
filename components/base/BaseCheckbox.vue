@@ -21,6 +21,7 @@ export default {
         prop: 'checked',
         event: 'change',
     },
+
     props: {
         checked: Boolean,
     },

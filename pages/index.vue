@@ -20,10 +20,15 @@
             >
         </div>
         <div style="display: flex; gap: 100px; margin-top: 5em">
-            <BaseCheckbox v-model="c1"/>
-            <BaseCheckbox v-model="c2" checked/>
-            <BaseCheckbox v-model="c3" disabled/>
-
+            <BaseCheckbox v-model="c1" />
+            <BaseCheckbox v-model="c2" checked />
+            <BaseCheckbox v-model="c3" disabled />
+        </div>
+        <div style="display: flex; gap: 100px; margin-top: 5em">
+            <BaseDropdown v-model="l1" :items="items">Dropdown</BaseDropdown>
+            {{ l1 }}
+            <BaseDropdown v-model="l2" :items="items">Dropdown</BaseDropdown>
+            {{ l2 }}
         </div>
     </div>
 </template>
@@ -38,6 +43,9 @@ export default {
             c1: true,
             c2: false,
             c3: true,
+            l1: 'first',
+            l2: 'second',
+            items: ['first', 'second', 'third'],
         }
     },
 
