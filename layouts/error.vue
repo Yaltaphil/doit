@@ -109,17 +109,17 @@ export default {
     }
 
     .error__text {
-        font-weight: normal; // nah 500 in mobile version?
+        font-weight: normal; // 500 in mobile version?
         font-size: 30px;
         line-height: 130%;
         text-align: left;
         color: white;
-        padding: 128px 1rem 0 1rem;
+        padding: 128px 3rem 0 5rem;
         height: 334px;
         border: 1px solid rgba(9, 9, 121, 1);
         border-image: linear-gradient(
             to right,
-            rgba(9, 9, 121, 1) 10%,
+            #0A68F5 10%,
             transparent 90%
         );
         border-image-slice: 1;
