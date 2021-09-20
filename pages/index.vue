@@ -30,6 +30,29 @@
             <BaseDropdown v-model="l2" :items="items">Dropdown</BaseDropdown>
             {{ l2 }}
         </div>
+
+        <div>
+            <v-select>sdfgasf</v-select>
+
+            <v-select
+                class="style-chooser"
+                placeholder="Choose a Styling Option"
+                :options="[
+                    'Components',
+                    'CSS / Variables',
+                    'Slots',
+                    'Components',
+                    'CSS / Variables',
+                    'Slots',
+                    'Components',
+                    'CSS / Variables',
+                    'Slots',
+                    'Components',
+                    'CSS / Variables',
+                    'Slots',
+                ]"
+            />
+        </div>
     </div>
 </template>
 
@@ -56,3 +79,20 @@ export default {
     },
 }
 </script>
+
+<style >
+.style-chooser .vs__search::placeholder,
+.style-chooser .vs__dropdown-toggle,
+.style-chooser .vs__dropdown-menu {
+    background: #aebae6;
+    border: none;
+    color: #a74e64;
+    text-transform: lowercase;
+    font-variant: small-caps;
+}
+
+.style-chooser .vs__clear,
+.style-chooser .vs__open-indicator {
+    fill: #74ca53;
+}
+</style>

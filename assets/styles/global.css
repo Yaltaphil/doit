@@ -3,12 +3,24 @@
   src: local("Rubik"), url(~assets/fonts/Rubik-Regular.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: 'Roboto';
+  font-weight: normal;
+  src: local("Roboto"), url(~assets/fonts/Roboto-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: bold;
+  src: local("Roboto"), url(~assets/fonts/Roboto-Bold.ttf) format("truetype");
+}
+
 html {
   font-family: 'Rubik';
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   color: #ffffff;
-  background-color: #0f1215;
+  background-color: #0f121533;
 }
 /*# sourceMappingURL=global.css.map */
