@@ -1,7 +1,7 @@
 <template>
     <div>
         <SiteNavbar />
-        <SiteSideBar />
+        <!-- <SiteSidebar /> -->
         <Nuxt />
     </div>
 </template>
