@@ -24,34 +24,26 @@
             <BaseCheckbox v-model="c2" checked />
             <BaseCheckbox v-model="c3" disabled />
         </div>
+
         <div style="display: flex; gap: 100px; margin-top: 5em">
-            <BaseDropdown v-model="l1" :items="items">Dropdown</BaseDropdown>
-            {{ l1 }}
-            <BaseDropdown v-model="l2" :items="items">Dropdown</BaseDropdown>
-            {{ l2 }}
-        </div>
-
-        <div>
-            <v-select>sdfgasf</v-select>
-
-            <v-select
-                class="style-chooser"
-                placeholder="Choose a Styling Option"
-                :options="[
-                    'Components',
-                    'CSS / Variables',
-                    'Slots',
-                    'Components',
-                    'CSS / Variables',
-                    'Slots',
-                    'Components',
-                    'CSS / Variables',
-                    'Slots',
-                    'Components',
-                    'CSS / Variables',
-                    'Slots',
-                ]"
-            />
+            <div>
+                <BaseSelect
+                    v-model="selected"
+                    :options="options1"
+                    placeholder="Choose the value"
+                    >Country</BaseSelect
+                >
+                <p>selected: {{ selected }}</p>
+            </div>
+            <div>
+                <BaseSelect
+                    v-model="sel"
+                    :options="items"
+                    placeholder="Choose the value"
+                    >Country</BaseSelect
+                >
+                <p>sel: {{ sel }}</p>
+            </div>
         </div>
     </div>
 </template>
@@ -62,13 +54,51 @@ export default {
 
     data() {
         return {
-            foo: '',
+            foo: 'kjhlsadfk;ljh',
             c1: true,
             c2: false,
             c3: true,
             l1: 'first',
             l2: 'second',
-            items: ['first', 'second', 'third'],
+            items: ['first', 'second', 'third', 'second', 'third'],
+            options1: [
+                'foo',
+                'bar',
+                'hi',
+                'byebye',
+                'foo',
+                'bar',
+                'hi',
+                'byebye',
+                'foo',
+                'bar',
+                'hi',
+                'foo',
+                'bar',
+                'hi',
+                'byebye',
+                'foo',
+                'bar',
+                'hi',
+                'byebye',
+                'foo',
+                'bar',
+                'hi',
+                'foo',
+                'bar',
+                'hi',
+                'byebye',
+                'foo',
+                'bar',
+                'hi',
+                'byebye',
+                'foo',
+                'bar',
+                'hi',
+                'byebye',
+            ],
+            selected: 'foo',
+            sel: '',
         }
     },
 
@@ -80,19 +110,39 @@ export default {
 }
 </script>
 
-<style >
-.style-chooser .vs__search::placeholder,
-.style-chooser .vs__dropdown-toggle,
-.style-chooser .vs__dropdown-menu {
-    background: #aebae6;
-    border: none;
-    color: #a74e64;
-    text-transform: lowercase;
-    font-variant: small-caps;
-}
+<style lang="scss">
+// .style-chooser {
+//     width: 100%;
+//     height: 36px;
+//     font-family: 'Rubik';
+//     font-style: normal;
+//     font-weight: normal;
+//     font-size: 16px;
+//     line-height: 100%;
+//     color: #d4deee;
+//     background: #16263d;
+//     border: 1px solid #1c2f4d;
+//     border-radius: 2px;
 
-.style-chooser .vs__clear,
-.style-chooser .vs__open-indicator {
-    fill: #74ca53;
-}
+//     & .vs__search::placeholder {
+//         color: #16263d;
+//         border: none;
+//         border-radius: 2px;
+//     }
+
+//     & .vs__dropdown-toggle {
+//         background: #233b5f;
+//         color: white;
+//     }
+
+//     & .vs__dropdown-menu {
+//         // color: #e6e6e6;
+//         background: #16263d;
+//     }
+
+//     & .vs__clear,
+//     .vs__open-indicator {
+//         fill: rgb(80, 136, 177);
+//     }
+// }
 </style>
