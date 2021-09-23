@@ -34,7 +34,6 @@
                     placeholder="Choose the value"
                     >Country</BaseSelect
                 >
-                <p>selected: {{ selected }}</p>
             </div>
             <div>
                 <BaseSelect
@@ -43,13 +42,13 @@
                     placeholder="Choose the value"
                     >Country</BaseSelect
                 >
-                <p>sel: {{ sel }}</p>
             </div>
         </div>
 
-        <div style="display: flex; gap: 100px; margin-top: 5em">
+        <div style="display: flex; gap: 100px; margin-top: 15em">
             <div>
-                <input type="date" />
+                <input v-model="date1" type="date" />
+                {{ date1 }}
             </div>
 
             <client-only>
@@ -83,7 +82,7 @@ export default {
 
     data() {
         return {
-            foo: 'kjhla',
+            foo: 'test',
             c1: true,
             c2: false,
             c3: true,
@@ -108,18 +107,6 @@ export default {
                 'byebye',
                 'foo',
                 'bar',
-                'hi',
-                'byebye',
-                'foo',
-                'bar',
-                'hi',
-                'foo',
-                'bar',
-                'hi',
-                'byebye',
-                'foo',
-                'bar',
-                'hi',
                 'byebye',
                 'foo',
                 'bar',
@@ -129,6 +116,7 @@ export default {
             selected: 'foo',
             sel: '',
             date: Date.now(),
+            date1: Date.now(),
         }
     },
 

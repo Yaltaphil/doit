@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <header>
         <menu class="navbar">
             <BaseLogo />
             <ul class="menu">
@@ -14,7 +14,7 @@
             </ul>
             <slot name="menu-extras"></slot>
         </menu>
-    </div>
+    </header>
 </template>
 
 <script>
@@ -49,6 +49,10 @@ export default {
         font-size: 20px;
         line-height: 24px;
         color: #e6e6e6;
+        text-decoration: none;
+        &:hover {
+            transform: scale(1.05);
+        }
     }
 }
 </style>
