@@ -28,89 +28,97 @@ export default {
     min-width: 240px;
     max-width: 100%;
     width: 100%;
-}
-
-.vs__dropdown-toggle,
-.vs__dropdown-menu {
-    font: 'Rubik';
-    font-size: 16px;
-    color: #627ca3;
-    opacity: 1;
-}
-
-.vs__dropdown-toggle {
-    background: transparent;
-    border-radius: 2px;
-    border: 1px solid #1c2f4d;
-    height: 40px;
-    color: #627ca3;
-}
-
-.vs__dropdown-menu {
-    background: transparent;
-    color: #627ca3;
-    height: 224px;
-    &::-webkit-scrollbar {
-        width: 4px;
-        background: #27313f;
-        border-radius: 2px;
+    & label {
+        color: white;
+        font-size: 14px;
     }
-    &::-webkit-scrollbar-track {
-        background: #121f33;
-        border-radius: 2px;
+    & li {
+        color: #627ca3;
+        background: #0f1215;
+        height: 33px;
+        padding-left: 16px;
+        &:hover {
+            color: #fff;
+            background: #1472ff;
+        }
     }
-    &::-webkit-scrollbar-thumb {
-        background: #627ca3;
-        border-radius: 2px;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-        background: rgb(82, 116, 209);
-    }
-}
-
-.vs__dropdown-menu li {
-    color: #627ca3;
-    height: 32px;
-    padding-left: 16px;
-}
-
-.vs__dropdown-menu li:hover {
-    color: #fff;
-    background: #1472ff;
-}
-
-.vs__selected {
-    color: #627ca3;
-    opacity: 1;
-}
-
-.vs__search {
-    color: #627ca3;
-    opacity: 1;
-}
-
-.vs__clear {
-    display: none;
-}
-
-.vs__open-indicator {
-    fill: #627ca3;
-}
-
-.vs--open {
-    & .vs__selected {
-        opacity: 1 !important;
-        color: #e6e6e6;
-    }
-
     & .vs__dropdown-toggle {
-        background: #16263d;
-        border: 1px solid #1472ff;
+        font: 'Rubik';
+        font-size: 16px;
+        color: #627ca3;
+        background: #0f1215;
+        border-radius: 2px;
+        border: 1px solid #1c2f4d;
+        height: 40px;
     }
 
     & .vs__dropdown-menu {
-        border: 1px solid #1472ff;
-        border-radius: 2px;
+        font: 'Rubik';
+        font-size: 16px;
+        background: #0f1215;
+        height: 224px;
+
+        &::-webkit-scrollbar {
+            width: 4px;
+            background: #27313f;
+            border-radius: 2px;
+        }
+        &::-webkit-scrollbar-track {
+            background: #121f33;
+            border-radius: 2px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #627ca3;
+            border-radius: 2px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background: rgb(82, 116, 209);
+        }
+    }
+
+    & li {
+        color: #627ca3;
+        background: #0f1215;
+        height: 33px;
+        padding-left: 16px;
+        &:hover {
+            color: #fff;
+            background: #1472ff;
+        }
+    }
+
+    & .vs__selected {
+        color: #627ca3;
+        background: #1472ff;
+    }
+
+    & .vs__search {
+        color: #627ca3;
+    }
+
+    & .vs__clear {
+        display: none;
+    }
+
+    & .vs__open-indicator {
+        fill: #627ca3;
+    }
+
+    & .vs--open {
+        & .vs__selected {
+            color: #e6e6e6;
+            background: #1472ff;
+        }
+
+        & .vs__dropdown-toggle {
+            background: #16263d;
+            border: 1px solid #1472ff;
+        }
+
+        & .vs__dropdown-menu {
+            border: 1px solid #1472ff;
+            border-radius: 2px;
+        }
     }
 }
 </style>

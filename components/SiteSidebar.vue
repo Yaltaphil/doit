@@ -65,18 +65,19 @@ menu {
     padding: 184px 40px;
     width: 112px;
     height: 960px;
-    margin: 0px 0px;
+    margin: 0;
     gap: 80px;
 }
 
-.link:hover {
-    transform: scale(1.2);
-    filter: drop-shadow(2px 2px 16px rgb(247, 243, 3));
-}
-
-.link__icon {
-    width: 32px;
-    height: 32px;
-    flex-grow: 0;
+.link {
+    & :hover {
+        transform: scale(1.2);
+        filter: drop-shadow(2px 2px 16px rgb(247, 243, 3));
+    }
+    & .link__icon {
+        width: 32px;
+        height: 32px;
+        flex-grow: 0;
+    }
 }
 </style>
