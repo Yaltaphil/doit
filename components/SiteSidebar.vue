@@ -1,5 +1,5 @@
 <template>
-    <menu>
+    <nav>
         <nuxt-link
             v-for="(item, i) in items"
             :key="i"
@@ -8,7 +8,7 @@
         >
             <img class="link__icon" :src="item.src" :alt="item.title" />
         </nuxt-link>
-    </menu>
+    </nav>
 </template>
 
 <script>
@@ -55,29 +55,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-menu {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 0;
+nav {
+    position: fixed;
+    bottom: 0;
     left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
-    padding: 184px 40px;
-    width: 112px;
-    height: 960px;
-    margin: 0;
-    gap: 80px;
+    background: #0f1215;
+    height: 55px;
+    width: 100%;
+    border-top: 1px solid #20252b;
+    & .link {
+        & :hover {
+            transform: scale(1.2);
+            filter: drop-shadow(2px 2px 12px rgb(247, 243, 3));
+        }
+        & .link__icon {
+            width: 22px;
+            height: 22px;
+            flex-grow: 0;
+        }
+    }
 }
 
-.link {
-    & :hover {
-        transform: scale(1.2);
-        filter: drop-shadow(2px 2px 12px rgb(247, 243, 3));
-    }
-    & .link__icon {
-        width: 32px;
-        height: 32px;
-        flex-grow: 0;
+@media only screen and (min-width: 769px) {
+    nav {
+        top: 0;
+        flex-direction: column;
+        align-items: center;
+        padding: 184px 40px;
+        width: 112px;
+        height: 960px;
+        gap: 80px;
+        border-right: 1px solid #20252b;
+        & .link {
+            & .link__icon {
+                width: 32px;
+                height: 32px;
+                flex-grow: 0;
+            }
+        }
     }
 }
 </style>

@@ -6,8 +6,8 @@
 
 <style scoped>
 div > img {
-    width: 88px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
     background: transparent;
 }
 </style>

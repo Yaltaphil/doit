@@ -1,32 +1,42 @@
 <template>
     <div class="wrapper">
-        <div class="header">
-            <SiteNavbar />
-        </div>
-        <div class="sidebar">
-            <SiteSidebar />
-        </div>
-        <div class="main">
-            <Nuxt />
-        </div>
-        <div class="footer"></div>
+        <SiteNavbar>
+            <div v-if="!loggedIn">
+                <BaseButton class="secondary">Login</BaseButton>
+                <BaseButton class="primary">Sign up</BaseButton>
+            </div>
+        </SiteNavbar>
+
+        <SiteSidebar />
+
+        <Nuxt class="content" />
     </div>
 </template>
 
+<script>
+export default {
+    data() {
+        return {
+            loggedIn: true,
+        }
+    },
+}
+</script>
+
 <style lang="scss">
 .wrapper {
-    position: relative;
     width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
 }
-.main {
-    min-height: 100%;
-    flex: 1 1 auto;
-    margin-left: 112px;
-}
-.footer {
-    margin-top: auto;
+
+@media only screen and (min-width: 769px) {
+    .wrapper {
+        padding: 0;
+    }
+    .content {
+        margin-left: 112px;
+    }
 }
 </style>

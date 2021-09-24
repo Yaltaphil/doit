@@ -23,7 +23,7 @@
         <div style="display: flex; gap: 100px; margin-top: 5em">
             <BaseCheckbox v-model="c1" />
             <BaseCheckbox v-model="c2" checked />
-            <BaseCheckbox v-model="c3" disabled />
+            <BaseCheckbox disabled />
             {{ c1 }} {{ c2 }}
         </div>
 
@@ -47,40 +47,18 @@
         </div>
 
         <div style="display: flex; gap: 100px; margin-top: 5em">
-            <div>
-                <input v-model="date1" type="date" />
-                {{ date1 }}
-            </div>
-
-            <client-only>
-                <v-date-picker v-model="date" is-dark color="blue">
-                    <template #default="{ inputValue, togglePopover }">
-                        <div class="flex items-center">
-                            <input :value="inputValue" readonly />
-                            <button @click="togglePopover()">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                >
-                                    <path
-                                        d="M1 4c0-1.1.9-2 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4zm2 2v12h14V6H3zm2-6h2v2H5V0zm8 0h2v2h-2V0zM5 9h2v2H5V9zm0 4h2v2H5v-2zm4-4h2v2H9V9zm0 4h2v2H9v-2zm4-4h2v2h-2V9zm0 4h2v2h-2v-2z"
-                                    ></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </template>
-                </v-date-picker>
-            </client-only>
-
-            {{ date }}
-        </div>
-        <div style="display: flex; gap: 100px; margin-top: 5em">
-            <BaseButton @click="foo = 'foo'" class="primary"
+            <BaseButton class="primary" @click="foo = ''"
                 >Input reset</BaseButton
             >
-            <BaseButton @click="foo = foo + 1" class="secondary"
+            <BaseButton class="secondary" @click="foo = foo + 1"
                 >Input char</BaseButton
             >
+        </div>
+
+        <div style="display: flex; gap: 100px; margin-top: 5em">
+            <BaseDatepicker v-model="date" />
+
+            {{ date }}
         </div>
     </div>
 </template>
