@@ -1,16 +1,18 @@
 <template>
-    <label :for="_uid" class="check">
-        <input
-            :id="_uid"
-            class="check__input"
-            type="checkbox"
-            v-bind="$attrs"
-            :checked="checked"
-            @change="$emit('change', $event.target.checked)"
-        />
-        <span class="check__box"> </span>
-        <slot class="check__label"></slot>
-    </label>
+    <client-only>
+        <label :for="_uid" class="check">
+            <input
+                :id="_uid"
+                class="check__input"
+                type="checkbox"
+                v-bind="$attrs"
+                :checked="checked"
+                @change="$emit('change', $event.target.checked)"
+            />
+            <span class="check__box"> </span>
+            <slot class="check__label"></slot>
+        </label>
+    </client-only>
 </template>
 
 <script>

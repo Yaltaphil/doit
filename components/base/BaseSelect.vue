@@ -43,6 +43,8 @@ export default {
         }
     }
     & .vs__dropdown-toggle {
+        margin-top: 6px;
+        padding-left: 8px;
         font: 'Rubik';
         font-size: 16px;
         color: #627ca3;
@@ -97,6 +99,7 @@ export default {
     }
 
     & .vs__clear {
+        fill: #627ca3;
         display: none;
     }
 

@@ -24,6 +24,7 @@
             <BaseCheckbox v-model="c1" />
             <BaseCheckbox v-model="c2" checked />
             <BaseCheckbox v-model="c3" disabled />
+            {{ c1 }} {{ c2 }}
         </div>
 
         <div style="display: flex; gap: 100px; margin-top: 5em">
