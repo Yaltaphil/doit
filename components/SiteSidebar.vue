@@ -71,14 +71,12 @@ menu {
 
 .link:hover {
     transform: scale(1.2);
-    filter: brightness(1004%);
-    filter: drop-shadow(2px 2px 16px rgba(249, 253, 5, 0.884));
+    filter: drop-shadow(2px 2px 16px rgb(247, 243, 3));
 }
 
 .link__icon {
     width: 32px;
     height: 32px;
     flex-grow: 0;
-
 }
 </style>
