@@ -72,7 +72,7 @@ menu {
 .link {
     & :hover {
         transform: scale(1.2);
-        filter: drop-shadow(2px 2px 16px rgb(247, 243, 3));
+        filter: drop-shadow(2px 2px 12px rgb(247, 243, 3));
     }
     & .link__icon {
         width: 32px;

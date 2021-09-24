@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div style="display: flex; gap: 100px; margin-top: 15em">
+        <div style="display: flex; gap: 100px; margin-top: 5em">
             <div>
                 <input v-model="date1" type="date" />
                 {{ date1 }}
@@ -74,6 +74,14 @@
 
             {{ date }}
         </div>
+        <div style="display: flex; gap: 100px; margin-top: 5em">
+            <BaseButton @click="foo = 'foo'" class="primary"
+                >Input reset</BaseButton
+            >
+            <BaseButton @click="foo = foo + 1" class="secondary"
+                >Input char</BaseButton
+            >
+        </div>
     </div>
 </template>
 
@@ -86,33 +94,16 @@ export default {
             foo: 'test',
             c1: true,
             c2: false,
-            c3: true,
             l1: 'first',
             l2: 'second',
-            items: ['first', 'second', 'third', 'second', 'third'],
+            items: ['first', 'second', 'third'],
             options1: [
                 'foo',
                 'bar',
-                'hi',
-                'byebye',
-                'foo',
-                'bar',
-                'hi',
-                'byebye',
-                'foo',
-                'bar',
-                'hi',
-                'foo',
-                'bar',
-                'hi',
-                'byebye',
-                'foo',
-                'bar',
-                'byebye',
-                'foo',
-                'bar',
-                'hi',
-                'byebye',
+                'hifdgsfd',
+                'byebysdfgsde',
+                'hisdfgsfd',
+                'byesdfgbye',
             ],
             selected: 'foo',
             sel: '',

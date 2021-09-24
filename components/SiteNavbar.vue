@@ -52,6 +52,7 @@ export default {
         text-decoration: none;
         &:hover {
             transform: scale(1.05);
+            filter: drop-shadow(2px 5px 10px rgb(247, 243, 3));
         }
     }
 }
