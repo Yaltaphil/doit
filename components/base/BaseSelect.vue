@@ -25,7 +25,7 @@ export default {
 
 <style lang='scss'>
 .base-select-wrapper {
-    min-width: 240px;
+    min-width: 160px;
     max-width: 100%;
     width: 100%;
     & label {

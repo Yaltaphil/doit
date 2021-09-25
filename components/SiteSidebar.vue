@@ -59,6 +59,7 @@ nav {
     position: fixed;
     bottom: 0;
     left: 0;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

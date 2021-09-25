@@ -50,7 +50,7 @@
             <BaseButton class="primary" @click="foo = ''"
                 >Input reset</BaseButton
             >
-            <BaseButton class="secondary" @click="foo = foo + 1"
+            <BaseButton class="secondary block " @click="foo = foo + 1"
                 >Input char</BaseButton
             >
         </div>

@@ -13,7 +13,7 @@
             >
                 {{ item }}
             </nuxt-link>
-            <slot class="menu__extras"></slot>
+            <slot v-if="!showBurgerMenu && false" class="menu__extras"></slot>
         </ul>
 
         <ul v-if="showBurgerMenu" class="burger-menu">
@@ -22,6 +22,7 @@
                 :key="item"
                 class="burger-menu__item"
                 :to="item.toLowerCase()"
+                @click.native="showBurgerMenu = false"
             >
                 {{ item }}
             </nuxt-link>
@@ -32,6 +33,7 @@
 </template>
 
 <script>
+// TODO if no user logged in
 export default {
     name: 'SiteNavbar',
 
@@ -41,6 +43,8 @@ export default {
             showBurgerMenu: false,
         }
     },
+
+    methods: {},
 }
 </script>
 
@@ -51,7 +55,7 @@ export default {
     margin: 0;
     top: 80px;
     height: 80%;
-    width: 100%;
+    width: 98%;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -59,7 +63,7 @@ export default {
     align-items: center;
     z-index: 2;
     background: #0f1215;
-    overflow: hidden;
+
     & .burger-menu__item {
         font-family: 'Rubik';
         font-style: normal;
@@ -70,7 +74,7 @@ export default {
         color: #f5f5f5;
         text-decoration: none;
         &:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
             filter: drop-shadow(2px 2px 5px rgb(247, 243, 3));
         }
     }
@@ -82,6 +86,7 @@ export default {
 .navbar {
     height: 106px;
     margin-left: 0;
+    overflow: hidden;
     & .burger {
         width: 24px;
         height: 24px;

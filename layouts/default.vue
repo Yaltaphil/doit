@@ -2,7 +2,7 @@
     <div class="wrapper">
         <SiteNavbar>
             <div v-if="!loggedIn">
-                <BaseButton class="secondary">Login</BaseButton>
+                <BaseButton class="secondary" @click="$router.push('/login')">Login</BaseButton>
                 <BaseButton class="primary">Sign up</BaseButton>
             </div>
         </SiteNavbar>
@@ -17,7 +17,7 @@
 export default {
     data() {
         return {
-            loggedIn: true,
+            loggedIn: false,
         }
     },
 }

@@ -11,11 +11,14 @@ export default {
 </script>
 
 
-<style lang="scss" >
+<style lang="scss">
+// classes: primary secondary block white
 .button {
-    padding: 1rem 3rem;
+    width: 160px;
+    padding: 1rem 1.5rem;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     background: linear-gradient(180deg, #2788f6 0%, #0960e0 100%);
     border-radius: 2px;
@@ -50,5 +53,11 @@ export default {
     &:active {
         background: linear-gradient(0deg, #3f3f44, #1c1c1d 100%);
     }
+}
+.block {
+    width: 100%;
+}
+.white {
+    color: white;
 }
 </style>
