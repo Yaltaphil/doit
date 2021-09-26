@@ -13,7 +13,7 @@
             >
                 {{ item }}
             </nuxt-link>
-            <slot v-if="!showBurgerMenu && false" class="menu__extras"></slot>
+            <slot v-if="!showBurgerMenu && true" class="menu__extras"></slot>
         </ul>
 
         <ul v-if="showBurgerMenu" class="burger-menu">

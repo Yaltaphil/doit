@@ -30,13 +30,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// TODO overflow xy
 .container {
     width: 100%;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .error {
-    margin: 0 auto;
+    width: 100%;
     height: 100vh;
     font-family: 'Roboto';
     font-style: normal;
