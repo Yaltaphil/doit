@@ -14,8 +14,8 @@ export default {
 <style lang="scss">
 // classes: primary secondary block white
 .button {
-    width: 160px;
-    padding: 1rem 1.5rem;
+    // width: 160px;
+    padding: 0.75rem 1rem;
     display: flex;
     flex-direction: row;
     justify-content: center;

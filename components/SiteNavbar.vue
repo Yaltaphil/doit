@@ -1,8 +1,13 @@
 <template>
     <header class="navbar">
-        <ul class="menu">
+        <ul class="menu" :class="{ 'burger-menu': showBurgerMenu }">
             <div class="burger" @click="showBurgerMenu = !showBurgerMenu">
-                <img src="~/assets/img/burger.svg" alt="burger_menu" />
+                <img
+                    v-if="!showBurgerMenu"
+                    src="~/assets/img/burger.svg"
+                    alt="burger_menu"
+                />
+                <img v-else src="~/assets/img/mdi_menu.svg" alt="burger_menu" />
             </div>
             <BaseLogo class="logo" />
             <nuxt-link
@@ -10,30 +15,35 @@
                 :key="item"
                 class="menu__item"
                 :to="item.toLowerCase()"
+                @click="showBurgerMenu = false"
             >
                 {{ item }}
             </nuxt-link>
-            <slot v-if="!showBurgerMenu && true" class="menu__extras"></slot>
-        </ul>
-
-        <ul v-if="showBurgerMenu" class="burger-menu">
-            <nuxt-link
-                v-for="item in items"
-                :key="item"
-                class="burger-menu__item"
-                :to="item.toLowerCase()"
-                @click.native="showBurgerMenu = false"
-            >
-                {{ item }}
-            </nuxt-link>
-
-            <slot class="burger-menu__extras"> </slot>
+            <div class="menu__extras">
+                <BaseButton
+                    class="secondary"
+                    :class="{ block: showBurgerMenu }"
+                    @click="
+                        $router.push('/login')
+                        showBurgerMenu = false
+                    "
+                    >Login</BaseButton
+                >
+                <BaseButton
+                    class="primary"
+                    :class="{ block: showBurgerMenu }"
+                    @click="
+                        $router.push('/signup')
+                        showBurgerMenu = false
+                    "
+                    >Sign up</BaseButton
+                >
+            </div>
         </ul>
     </header>
 </template>
 
 <script>
-// TODO if no user logged in
 export default {
     name: 'SiteNavbar',
 
@@ -41,6 +51,7 @@ export default {
         return {
             items: ['Play', 'News', 'Games', 'Shop', 'Sponsorship'],
             showBurgerMenu: false,
+            auth: false
         }
     },
 
@@ -49,40 +60,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.burger-menu {
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    top: 80px;
-    height: 80%;
-    width: 98%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    justify-content: flex-start;
-    align-items: center;
-    z-index: 2;
-    background: #0f1215;
-
-    & .burger-menu__item {
-        font-family: 'Rubik';
-        font-style: normal;
-        font-weight: bold;
-        font-size: 20px;
-        line-height: 100%;
-        text-align: center;
-        color: #f5f5f5;
-        text-decoration: none;
-        &:hover {
-            transform: scale(1.02);
-            filter: drop-shadow(2px 2px 5px rgb(247, 243, 3));
-        }
-    }
-    & .burger-menu__extras {
-        padding-top: 84px;
-    }
-}
-
 .navbar {
     height: 106px;
     margin-left: 0;
@@ -90,7 +67,7 @@ export default {
     & .burger {
         width: 24px;
         height: 24px;
-        z-index: 1;
+        z-index: 100;
         cursor: pointer;
         &:hover {
             transform: scale(1.05);
@@ -119,12 +96,55 @@ export default {
             display: none;
         }
     }
+    & .menu.burger-menu {
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        justify-content: flex-start;
+        z-index: 200;
+        background: #0f1215;
+        padding-top: 80px;
+        & .menu__item {
+            display: block;
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 100%;
+            text-align: center;
+            color: #f5f5f5;
+            text-decoration: none;
+            &:hover {
+                transform: scale(1.02);
+                filter: drop-shadow(2px 2px 5px rgb(247, 243, 3));
+            }
+        }
+        & .menu__extras {
+            width: 100%;
+            padding: 80px 3rem 0 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        & .logo {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        & .burger {
+            position: absolute;
+            top: 2rem;
+            left: 3rem;
+        }
+    }
 }
 
 @media only screen and (min-width: 769px) {
-    .burger-menu {
-        display: none;
-    }
     .navbar {
         margin-left: 112px;
         & .logo {
@@ -154,7 +174,9 @@ export default {
                 }
             }
             & .menu__extras {
-                display: block;
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
             }
         }
     }
