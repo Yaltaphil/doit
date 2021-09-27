@@ -103,6 +103,8 @@ export default {
         position: absolute;
         padding: 0.56rem 1rem;
         right: 0;
+        width: auto;
+        height: auto;
     }
 }
 </style>
