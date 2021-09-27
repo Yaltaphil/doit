@@ -36,28 +36,19 @@
                     >Country</BaseSelect
                 >
             </div>
-            <div>
-                <BaseSelect
-                    v-model="sel"
-                    :options="items"
-                    placeholder="Choose the value"
-                    >Country</BaseSelect
-                >
-            </div>
         </div>
 
         <div style="display: flex; gap: 100px; margin-top: 5em">
             <BaseButton class="primary" @click="foo = ''"
                 >Input reset</BaseButton
             >
-            <BaseButton class="secondary block " @click="foo = foo + 1"
+            <BaseButton class="secondary block" @click="foo = foo + 1"
                 >Input char</BaseButton
             >
         </div>
 
         <div style="display: flex; gap: 100px; margin-top: 5em">
             <BaseDatepicker v-model="date" />
-
             {{ date }}
         </div>
     </div>
@@ -84,9 +75,7 @@ export default {
                 'byesdfgbye',
             ],
             selected: 'foo',
-            sel: '',
             date: Date.now(),
-            date1: Date.now(),
         }
     },
 
