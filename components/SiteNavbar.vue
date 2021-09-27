@@ -51,7 +51,7 @@ export default {
         return {
             items: ['Play', 'News', 'Games', 'Shop', 'Sponsorship'],
             showBurgerMenu: false,
-            auth: false
+            auth: false,
         }
     },
 
@@ -63,7 +63,6 @@ export default {
 .navbar {
     height: 106px;
     margin-left: 0;
-    overflow: hidden;
     & .burger {
         width: 24px;
         height: 24px;
@@ -81,14 +80,17 @@ export default {
         cursor: pointer;
         &:hover {
             transform: scale(1.05);
-            filter: drop-shadow(2px 5px 10px rgb(247, 243, 3));
+            filter: drop-shadow(2px 4px 8px rgb(247, 243, 3));
         }
     }
     & .menu {
+        z-index: 100;
+        overflow: hidden;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        padding-right: 0.5rem;
         & .menu__item {
             display: none;
         }
@@ -98,17 +100,16 @@ export default {
     }
     & .menu.burger-menu {
         position: absolute;
-        padding: 0;
+        overflow: hidden;
+        padding-top: 80px;
         margin: 0;
-        width: 100%;
-        height: 100vh;
+        width: 99%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         gap: 30px;
         justify-content: flex-start;
-        z-index: 200;
         background: #0f1215;
-        padding-top: 80px;
         & .menu__item {
             display: block;
             font-family: 'Rubik';
@@ -125,11 +126,13 @@ export default {
             }
         }
         & .menu__extras {
-            width: 100%;
-            padding: 80px 3rem 0 3rem;
+            width: 80%;
+            padding-top: 80px;
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            transform: translateX(0);
+            animation: all 1s;
         }
         & .logo {
             position: absolute;

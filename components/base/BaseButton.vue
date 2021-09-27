@@ -55,7 +55,7 @@ export default {
     }
 }
 .block {
-    width: 100%;
+    width: 95%;
 }
 .white {
     color: white;

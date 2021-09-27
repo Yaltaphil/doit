@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// TODO overflow xy
+
 .container {
     width: 100%;
     height: 100vh;

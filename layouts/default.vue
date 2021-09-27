@@ -20,14 +20,11 @@ export default {
 .wrapper {
     width: 100%;
     max-width: 1170px;
+    height: 100vh;
     margin: 0 auto;
-    padding: 0 0.5rem;
 }
 
 @media only screen and (min-width: 769px) {
-    .wrapper {
-        padding: 0;
-    }
     .content {
         margin-left: 112px;
     }
