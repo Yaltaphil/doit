@@ -17,13 +17,6 @@ export default {
 </script>
 
 <style lang="scss">
-.wrapper {
-    width: 100%;
-    max-width: 1170px;
-    height: 100vh;
-    margin: 0 auto;
-}
-
 @media only screen and (min-width: 769px) {
     .content {
         margin-left: 112px;

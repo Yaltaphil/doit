@@ -32,13 +32,18 @@ export default {
     color: #f5f5f5;
     &:hover {
         cursor: pointer;
-        transform: scale(1.01);
-        filter: drop-shadow(0px 0px 1px rgb(247, 243, 3, 0.5));
+        transform: scale(1.03);
+        filter: drop-shadow(0px 0px 1px rgba(247, 243, 3, 0.815));
     }
     &:active {
         background: linear-gradient(0deg, #2788f6 0%, #0960e0 100%);
     }
+    &:disabled {
+        background: linear-gradient(0deg, #19191a 0%, #27292b 100%);
+        cursor: not-allowed;
+    }
 }
+
 .primary {
     background: linear-gradient(180deg, #2788f6 0%, #0960e0 100%);
     color: #f5f5f5;

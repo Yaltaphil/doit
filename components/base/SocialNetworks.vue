@@ -29,7 +29,7 @@
 
 <script>
 export default {
-    mathods: {
+    methods: {
         signInWith() {},
     },
 }
@@ -44,6 +44,10 @@ export default {
         height: 24px;
         margin: 12px;
         cursor: pointer;
+        &:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(2px 5px 10px rgb(250, 3, 3));
+        }
     }
 }
 </style>

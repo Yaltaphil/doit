@@ -9,7 +9,7 @@
                 :checked="checked"
                 @change="$emit('change', $event.target.checked)"
             />
-            <span class="check__box"> </span>
+            <span class="check__box"></span>
             <slot class="check__label"></slot>
         </label>
     </client-only>

@@ -54,7 +54,6 @@
 
         <div style="display: flex; gap: 100px; margin-top: 5em">
             <nuxt-link to="/contactus">contactUs</nuxt-link>
-            <nuxt-link to="/termsofuse">terms</nuxt-link>
         </div>
     </div>
 </template>

@@ -1,14 +1,14 @@
 ,<template>
     <section>
         <BaseLogo class="logo" />
-        <h1>Login</h1>
+        <h1>Sign up 1/2</h1>
         <BaseInput
-            v-model.trim="$v.login.$model"
-            type="text"
-            :invalid="$v.login.$dirty && $v.login.$error"
-            :success="$v.login.$dirty && !$v.login.$error"
-            @input="$delayTouch($v.login)"
-            >Username or Email</BaseInput
+            v-model.trim="$v.email.$model"
+            type="email"
+            :invalid="$v.email.$dirty && $v.email.$error"
+            :success="$v.email.$dirty && !$v.email.$error"
+            @input="$delayTouch($v.email)"
+            >Email</BaseInput
         >
         <BaseInput
             v-model="$v.password.$model"
@@ -18,39 +18,40 @@
             @input="$delayTouch($v.password)"
             >Password</BaseInput
         >
-        <BaseButton class="white block" :disabled="$v.$invalid" @click="submit"
-            >Login</BaseButton
+        <BaseButton
+            class="white block"
+            :disabled="$v.$invalid"
+            @click="nextStep"
+            >Next step</BaseButton
         >
-        <p class="base-text">or login with</p>
+        <p class="base-text">or signup with</p>
         <div class="social-links">
             <BaseSocialNetworks />
         </div>
-        <nuxt-link to="/forgot">Forgot password?</nuxt-link>
-        <p class="base-text">
-            Don't have an account? <nuxt-link to="signup">Sign up!</nuxt-link>
+
+        <p>
+            <nuxt-link to="/login">Already have an account?</nuxt-link>
         </p>
     </section>
 </template>
 
 <script>
-import { required, minLength } from 'vuelidate/lib/validators'
-
-
+import { required, email, minLength } from 'vuelidate/lib/validators'
 
 export default {
     layout: 'empty',
 
     data() {
         return {
-            login: '',
+            email: '',
             password: '',
         }
     },
 
     validations: {
-        login: {
+        email: {
             required,
-            minLength: minLength(3),
+            email,
         },
         password: {
             required,
@@ -59,7 +60,9 @@ export default {
     },
 
     methods: {
-        submit() {},
+        nextStep() {
+            this.$router.push('/signupNextStep')
+        },
     },
 }
 </script>
@@ -68,7 +71,7 @@ export default {
 section {
     margin: 80px auto;
     display: flex;
-    flex-flow: column nowrap;
+    flex-direction: column;
     align-items: center;
     gap: 2rem;
     width: 241px;

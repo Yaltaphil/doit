@@ -3,9 +3,9 @@
         class="input"
         :class="{ input__invalid: invalid, input__success: success }"
     >
-        <label for="input"> <slot></slot> </label>
+        <label :for="_uid"> <slot></slot> </label>
         <input
-            id="input"
+            :id="_uid"
             autocomplete="off"
             v-bind="$attrs"
             :value="value"
