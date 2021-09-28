@@ -62,7 +62,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .datepicker {
     display: flex;
     justify-content: space-between;
@@ -73,6 +73,7 @@ export default {
     height: auto;
     & .datepicker__input {
         width: 100%;
+        height: 40px;
         padding: 0.56rem 1rem;
         border: 1px solid #16263d;
         border-radius: 2px;
@@ -101,7 +102,7 @@ export default {
     }
     & .datepicker__icon {
         position: absolute;
-        padding: 0.3rem 0.5rem;
+        padding: 0.5rem;
         right: 0;
         width: auto;
         height: auto;

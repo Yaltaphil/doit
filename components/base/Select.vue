@@ -110,7 +110,7 @@ export default {
     & .vs--open {
         & .vs__selected {
             color: #e6e6e6;
-            background: #1472ff;
+            background: transparent;
         }
 
         & .vs__dropdown-toggle {
