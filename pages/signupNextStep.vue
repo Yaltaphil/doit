@@ -30,6 +30,10 @@
             @click="verifyEmail"
             >Create an account</BaseButton
         >
+
+        <p>
+            <nuxt-link to="/signup">Back to first step</nuxt-link>
+        </p>
     </section>
 </template>
 

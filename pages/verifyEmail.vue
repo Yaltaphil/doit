@@ -7,14 +7,12 @@
 
             to continue verify your email
         </p>
-
         <BaseButton class="white block" @click="verify"
             >Verify email</BaseButton
         >
-
         <p class="base-text">
-            This is an automated email. If you recieved it in error, no action
-            is required
+            This is an automated email. <br />
+            If you recieved it in error, no action is required
         </p>
     </section>
 </template>
