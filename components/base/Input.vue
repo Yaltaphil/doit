@@ -137,7 +137,7 @@ export default {
         align-self: flex-start;
         flex-grow: 0;
         margin: 4px 0px;
-        animation: tick 200ms ease-in;
+        animation: tick 150ms ease-in;
     }
     & .input__checkmark {
         display: none;
@@ -179,7 +179,7 @@ export default {
         transform: scale(0);
     }
     90% {
-        transform: scale(1.33);
+        transform: scale(1.2);
     }
     100% {
         transform: scale(1);

@@ -24,7 +24,10 @@
             </span>
         </BaseCheckbox>
 
-        <BaseButton class="white block" :disabled="$v.$invalid"
+        <BaseButton
+            class="white block"
+            :disabled="$v.$invalid"
+            @click="verifyEmail"
             >Create an account</BaseButton
         >
     </section>
@@ -69,6 +72,12 @@ export default {
         isAged: {
             required,
             ageVerified,
+        },
+    },
+
+    methods: {
+        verifyEmail() {
+            this.$router.push('/verifyEmail')
         },
     },
 }
