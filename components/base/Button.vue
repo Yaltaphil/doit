@@ -36,10 +36,10 @@ export default {
         filter: drop-shadow(0px 0px 1px rgba(247, 243, 3, 0.815));
     }
     &:active {
-        background: linear-gradient(0deg, #2788f6 0%, #0960e0 100%);
+        background: linear-gradient(0deg, #03112b 0%, #0960e0 100%);
     }
     &:disabled {
-        background: linear-gradient(0deg, #19191a 0%, #27292b 100%);
+        background: linear-gradient(0deg, #2e2e2e 0%, #434650 100%);
         cursor: not-allowed;
     }
 }

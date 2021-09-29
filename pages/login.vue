@@ -35,8 +35,6 @@
 <script>
 import { required, minLength } from 'vuelidate/lib/validators'
 
-
-
 export default {
     layout: 'empty',
 
@@ -59,7 +57,9 @@ export default {
     },
 
     methods: {
-        submit() {},
+        submit() {
+            this.$router.push('/userProfile')
+        },
     },
 }
 </script>
