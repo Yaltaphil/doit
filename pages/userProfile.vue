@@ -72,9 +72,13 @@
 
         <div class="user-awards">
             <p class="section-header">Level and awards</p>
-            <ProfileProgressBar />
-            <ProfileProgressBar />
-            <ProfileProgressBar />
+            <ProfileGameProgress
+                v-for="item in user.games"
+                :key="item.title"
+                :value="item.value"
+                :color="item.color"
+                >{{ item.title }}</ProfileGameProgress
+            >
         </div>
     </div>
 </template>
@@ -129,7 +133,9 @@ export default {
         }
     }
     & .user-awards {
-        // background: tomato;
+        margin: 0 auto;
+        width: 90%;
+        min-width: 270px;
     }
 }
 

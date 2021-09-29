@@ -11,8 +11,10 @@ export default {
     country: 'United States',
     webSite: 'https://doit.gg',
     games: [
-        { title: 'World of tanks', color: 'red', value: 3 },
-        { title: 'Starcraft', color: 'purple', value: 13 },
-        { title: 'League of Legends', color: 'green', value: 5 },
+        { title: 'World of tanks', color: '#FF5555', value: 14 },
+        { title: 'Starcraft II', color: '#55FF8F', value: 3 },
+        { title: 'Heartstone', color: '#B455FF', value: 18 },
+        { title: 'League of Legends', color: '#55AAFF', value: 11 },
+        { title: 'S.K.I.L.L. SpecialForce II', color: '#FF9255', value: 5 },
     ],
 }
