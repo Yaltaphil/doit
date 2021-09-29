@@ -47,7 +47,6 @@ export default {
 
 <style lang="scss" scoped>
 .progress-bar {
-    width: 100%;
     position: relative;
     height: 30px;
     margin-top: 2rem;

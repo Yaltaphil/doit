@@ -2,7 +2,7 @@ export default {
     id: 12121212,
     avatarUrl: '~/assets/img/photo-player.png',
     name: 'Messi Ronaldo',
-    nickName: 'pele',
+    nickName: 'Pele',
     team: 'Blazer team',
     withUsFrom: Date.now(),
     sex: 'male',

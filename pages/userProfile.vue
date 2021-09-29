@@ -23,50 +23,58 @@
                     </p>
                 </div>
             </div>
-            <div class="profile-menu">123</div>
+            <div class="profile-menu">
+                <ul>
+                    <li>one</li>
+                    <li>two</li>
+                    <li>three</li>
+                </ul>
+            </div>
         </div>
 
         <div class="profile-table">
             <p class="section-header">Profile</p>
             <table>
-                <tr>
-                    <td class="gray-text">ID</td>
-                    <td class="white-text">{{ user.id }}</td>
-                </tr>
-                <tr>
-                    <td class="gray-text">Name</td>
-                    <td class="white-text">{{ user.name }}</td>
-                </tr>
-                <tr>
-                    <td class="gray-text">Nickname</td>
-                    <td class="white-text">{{ user.nickName }}</td>
-                </tr>
-                <tr>
-                    <td class="gray-text">With us from</td>
-                    <td class="white-text">{{ user.withUsFrom }}</td>
-                </tr>
-                <tr>
-                    <td class="gray-text">Sex / Age</td>
-                    <td class="white-text">
-                        {{ user.sex + ' / ' + user.age }}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="gray-text">Nationality</td>
-                    <td class="white-text">{{ user.nationality }}</td>
-                </tr>
-                <tr>
-                    <td class="gray-text">Country</td>
-                    <td class="white-text">{{ user.country }}</td>
-                </tr>
-                <tr>
-                    <td class="gray-text">Web-site</td>
-                    <td class="white-text">
-                        <a class="white-text" :href="user.webSite">{{
-                            user.webSite
-                        }}</a>
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td class="gray-text">ID</td>
+                        <td class="white-text">{{ user.id }}</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-text">Name</td>
+                        <td class="white-text">{{ user.name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-text">Nickname</td>
+                        <td class="white-text">{{ user.nickName }}</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-text">With us from</td>
+                        <td class="white-text">{{ user.withUsFrom }}</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-text">Sex / Age</td>
+                        <td class="white-text">
+                            {{ user.sex + ' / ' + user.age }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="gray-text">Nationality</td>
+                        <td class="white-text">{{ user.nationality }}</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-text">Country</td>
+                        <td class="white-text">{{ user.country }}</td>
+                    </tr>
+                    <tr>
+                        <td class="gray-text">Web-site</td>
+                        <td class="white-text">
+                            <a class="white-text" :href="user.webSite">{{
+                                user.webSite
+                            }}</a>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
 
@@ -97,16 +105,12 @@ export default {
 
 <style lang="scss" scoped>
 .page-content {
-    width: 100%;
-    padding: 1rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 16px;
-    gap: 40px;
-    & .info {
-        // width: 100%;
-    }
+    gap: 2.5rem;
     & .user-info {
         display: flex;
         flex-direction: row;
@@ -128,14 +132,13 @@ export default {
             width: 100%;
             height: 32px;
             & td {
-                width: 175px;
+                width: 172px;
             }
         }
     }
     & .user-awards {
-        margin: 0 auto;
-        width: 90%;
-        min-width: 270px;
+        width: 100%;
+        min-width: 160px;
     }
 }
 
@@ -157,10 +160,10 @@ export default {
             width: 100%;
         }
         & .profile-table {
-            max-width: 365px;
+            // max-width: 365px;
         }
         & .user-awards {
-            max-width: 408px;
+            // max-width: 408px;
         }
     }
 }
