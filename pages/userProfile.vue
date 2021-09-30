@@ -23,11 +23,16 @@
                     </p>
                 </div>
             </div>
+
             <div class="profile-menu">
                 <ul>
-                    <li>one</li>
-                    <li>two</li>
-                    <li>three</li>
+                    <li
+                        v-for="(menuItem, i) in menuItems"
+                        :key="i"
+                        class="white-text"
+                    >
+                        {{ menuItem }}
+                    </li>
                 </ul>
             </div>
         </div>
@@ -69,9 +74,12 @@
                     <tr>
                         <td class="gray-text">Web-site</td>
                         <td class="white-text">
-                            <a class="white-text" :href="user.webSite">{{
-                                user.webSite
-                            }}</a>
+                            <a
+                                target="_blank"
+                                class="white-text"
+                                :href="user.webSite"
+                                >{{ user.webSite }}</a
+                            >
                         </td>
                     </tr>
                 </tbody>
@@ -98,6 +106,17 @@ export default {
     data() {
         return {
             user: User,
+            menuItems: [
+                'Profile',
+                'Number two',
+                'About me',
+                'Number four',
+                'Awards and medals',
+                'Number six',
+                'Number seven',
+                'Number eight',
+                'Number nine',
+            ],
         }
     },
 }
@@ -109,36 +128,52 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
     font-size: 16px;
-    gap: 2.5rem;
-    & .user-info {
+    gap: 2rem;
+    .user-info {
+        flex: 2 1 200px;
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
-        & .user-data {
+        .user-data {
             padding: 0 1rem;
-            & img {
+            img {
                 width: 40px;
                 height: 40px;
             }
         }
     }
-    & .profile-menu {
+    .profile-menu {
+        flex: 2 1 200px;
         display: none;
-    }
-
-    & .profile-table {
-        & tr {
-            width: 100%;
-            height: 32px;
-            & td {
-                width: 172px;
+        li {
+            list-style-type: circle;
+            line-height: 150%;
+            &::marker {
+                font-size: 1.5rem;
+                font-weight: bolder;
+            }
+            &:hover {
+                color: #37b7fa;
+                list-style-type: disc;
+                cursor: pointer;
             }
         }
     }
-    & .user-awards {
+
+    .profile-table {
+        flex: 3;
+        tr {
+            height: 32px;
+            td {
+                width: 160px;
+            }
+        }
+    }
+    .user-awards {
+        flex: 4;
         width: 100%;
-        min-width: 160px;
+        // min-width: 200px;
     }
 }
 
@@ -146,24 +181,15 @@ export default {
     .page-content {
         flex-direction: row;
         align-items: flex-start;
-        & .info {
-            min-width: 250px;
+        .info {
+            min-width: 200px;
             border-right: 1px solid #1a1f24;
         }
-        & .user-info {
-            max-width: 400px;
+        .user-info {
             flex-direction: column;
         }
-        & .profile-menu {
-            background: tomato;
+        .profile-menu {
             display: block;
-            width: 100%;
-        }
-        & .profile-table {
-            // max-width: 365px;
-        }
-        & .user-awards {
-            // max-width: 408px;
         }
     }
 }
