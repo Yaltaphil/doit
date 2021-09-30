@@ -50,13 +50,13 @@ export default {
     position: relative;
     height: 30px;
     margin-top: 2rem;
-    & p {
-        & span {
+    p {
+        span {
             float: right;
         }
     }
-    & .game-bar {
-        & .scale {
+    .game-bar {
+        .scale {
             position: absolute;
             bottom: 1px;
             left: 0;
@@ -64,7 +64,7 @@ export default {
             width: 100%;
             background: #2b353f;
         }
-        & .rate {
+        .rate {
             position: absolute;
             bottom: 0;
             left: 0;
