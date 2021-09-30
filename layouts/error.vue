@@ -5,7 +5,7 @@
                 <span v-if="error.statusCode === 404" class="error_code"
                     >404</span
                 >
-                <span v-else>An error occurred</span>
+                <span v-else style="font-size: 48px">An error occurred</span>
             </div>
             <div class="error__text">
                 <span>
@@ -30,7 +30,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .container {
     width: 100%;
     height: 100vh;
