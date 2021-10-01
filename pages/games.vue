@@ -1,9 +1,15 @@
 <template>
     <section>
-        <h1>Games</h1>
-        <p>search</p>
+        <div class="search">
+            <h1>Games</h1>
+            <BaseInput
+                v-model="searchPattern"
+                placeholder="Search the game"
+            ></BaseInput>
+        </div>
+
         <div class="sheet">
-            <GamesCard v-for="(item, i) in games" :key="i">
+            <GamesCard v-for="(item, i) in foundItems" :key="i">
                 <div class="game-card" @click="alert(i)">
                     <img class="pic" :src="item.src" alt="game image" />
                     <h2 class="caption white-text">{{ item.title }}</h2>
@@ -20,7 +26,16 @@ export default {
     data() {
         return {
             games: Games,
+            searchPattern: '',
         }
+    },
+
+    computed: {
+        foundItems() {
+            return this.games.filter((item) =>
+                item.title.toString().includes(this.searchPattern)
+            )
+        },
     },
 }
 </script>
@@ -28,6 +43,11 @@ export default {
 <style lang="scss" scoped>
 section {
     padding: 1rem;
+    .search {
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+    }
 }
 .sheet {
     display: flex;
