@@ -53,7 +53,6 @@ export default {
         border: 1px solid #1c2f4d;
         height: 40px;
     }
-
     & .vs__dropdown-menu {
         font: 'Rubik';
         font-size: 16px;
@@ -77,36 +76,19 @@ export default {
             background: rgb(82, 116, 209);
         }
     }
-
-    & li {
-        color: #627ca3;
-        background: #0f1215;
-        height: 33px;
-        padding-left: 16px;
-        &:hover {
-            color: #fff;
-            background: #1472ff;
-        }
-    }
-
     & .vs__selected {
         color: #627ca3;
-        background: #1472ff;
     }
-
     & .vs__search {
         color: #627ca3;
     }
-
     & .vs__clear {
         fill: #627ca3;
         display: none;
     }
-
     & .vs__open-indicator {
         fill: #627ca3;
     }
-
     & .vs--open {
         & .vs__selected {
             color: #e6e6e6;
