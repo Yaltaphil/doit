@@ -58,7 +58,7 @@ export default {
 
     methods: {
         submit() {
-            this.$router.push('/userProfile')
+            this.$router.push('/player')
         },
     },
 }

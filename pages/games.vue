@@ -29,7 +29,7 @@ export default {
             searchPattern: '',
         }
     },
-
+    
     computed: {
         foundItems() {
             return this.games.filter((item) =>
