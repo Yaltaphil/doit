@@ -10,10 +10,9 @@
     top: 0;
     left: 0;
     z-index: 499;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 1);
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(#000000, #052a61ee);
 }
 .loader {
     width: 80px;
@@ -22,7 +21,7 @@
     animation: spin 1.25s ease-in-out infinite;
     z-index: 500;
     position: absolute;
-    top: 40%;
+    top: 45%;
     left: 47%;
     transform: translate(-50%, -50%);
 }

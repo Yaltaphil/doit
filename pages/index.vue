@@ -55,12 +55,22 @@
         <div style="display: flex; gap: 100px; margin-top: 5em">
             <nuxt-link to="/contactus">contactUs</nuxt-link>
         </div>
+        <p v-for="item in comments" :key="item.id">{{ item.name }} - {{ item.body }}</p>
+
+        <BasePreloader />
     </div>
 </template>
 
 <script>
 export default {
     layout: 'default',
+
+    async asyncData({ $axios }) {
+        const comments = await $axios.$get(
+            'https://jsonplaceholder.typicode.com/comments?postId=1'
+        )
+        return { comments }
+    },
 
     data() {
         return {
