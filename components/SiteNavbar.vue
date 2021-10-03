@@ -1,6 +1,6 @@
 <template>
     <header class="navbar">
-        <ul class="menu" :class="{ 'burger-menu': showBurgerMenu }">
+        <div class="menu" :class="{ 'burger-menu': showBurgerMenu }">
             <div class="burger" @click="showBurgerMenu = !showBurgerMenu">
                 <img
                     v-if="!showBurgerMenu"
@@ -39,7 +39,7 @@
                     >Sign up</BaseButton
                 >
             </div>
-        </ul>
+        </div>
     </header>
 </template>
 

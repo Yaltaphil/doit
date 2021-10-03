@@ -1,26 +1,33 @@
 ,<template>
     <section>
+        <BasePreloader v-if="isBusy" />
         <BaseLogo class="logo" />
         <h1>Login</h1>
-        <BaseInput
-            v-model.trim="$v.login.$model"
-            type="text"
-            :invalid="$v.login.$dirty && $v.login.$error"
-            :success="$v.login.$dirty && !$v.login.$error"
-            @input="$delayTouch($v.login)"
-            >Username or Email</BaseInput
-        >
-        <BaseInput
-            v-model="$v.password.$model"
-            type="password"
-            :invalid="$v.password.$dirty && $v.password.$error"
-            :success="$v.password.$dirty && !$v.password.$error"
-            @input="$delayTouch($v.password)"
-            >Password</BaseInput
-        >
-        <BaseButton class="white block" :disabled="$v.$invalid" @click="submit"
-            >Login</BaseButton
-        >
+        <form @submit.prevent="submit">
+            <BaseInput
+                v-model.trim="$v.login.$model"
+                type="text"
+                :invalid="$v.login.$dirty && $v.login.$error"
+                :success="$v.login.$dirty && !$v.login.$error"
+                @input="$delayTouch($v.login)"
+                >Username or Email</BaseInput
+            >
+            <BaseInput
+                v-model="$v.password.$model"
+                type="password"
+                :invalid="$v.password.$dirty && $v.password.$error"
+                :success="$v.password.$dirty && !$v.password.$error"
+                @input="$delayTouch($v.password)"
+                >Password</BaseInput
+            >
+            <BaseButton
+                class="white block"
+                :disabled="$v.$invalid || isBusy"
+                type="submit"
+                >Login</BaseButton
+            >
+        </form>
+
         <p class="base-text">or login with</p>
         <div class="social-links">
             <BaseSocialNetworks />
@@ -42,6 +49,7 @@ export default {
         return {
             login: '',
             password: '',
+            isBusy: false,
         }
     },
 
@@ -58,7 +66,11 @@ export default {
 
     methods: {
         submit() {
-            this.$router.push('/player')
+            // disable buttons and try to auth user
+            this.isBusy = true
+            setTimeout(() => {
+                this.$router.push('/player')
+            }, 3000)
         },
     },
 }
@@ -73,7 +85,13 @@ section {
     gap: 2rem;
     width: 241px;
     min-height: 572px;
-    & .logo {
+    form {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    .logo {
         width: 88px;
         height: 80px;
     }

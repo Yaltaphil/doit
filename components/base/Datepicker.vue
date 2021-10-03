@@ -62,6 +62,8 @@
 <script>
 export default {
     name: 'Datepicker',
+
+    inheritAttrs: false,
 }
 </script>
 

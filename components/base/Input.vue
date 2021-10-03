@@ -21,6 +21,8 @@
 export default {
     name: 'BaseInput',
 
+    inheritAttrs: false,
+
     props: {
         value: { type: String, default: null },
         invalid: { type: Boolean, default: false },

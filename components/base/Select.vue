@@ -14,6 +14,8 @@
 export default {
     name: 'BaseSelect',
 
+    inheritAttrs: false,
+
     props: {
         options: {
             type: Array,
@@ -45,7 +47,7 @@ export default {
     & .vs__dropdown-toggle {
         margin-top: 6px;
         padding-left: 8px;
-        font: 'Rubik';
+        font-family: 'Rubik';
         font-size: 16px;
         color: #627ca3;
         background: #0f1215;
@@ -54,7 +56,7 @@ export default {
         height: 40px;
     }
     & .vs__dropdown-menu {
-        font: 'Rubik';
+        font-family: 'Rubik';
         font-size: 16px;
         background: #0f1215;
         height: 224px;

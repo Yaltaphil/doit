@@ -7,5 +7,5 @@ Vue.prototype.$delayTouch = function ($v) {
     if (touchMap.has($v)) {
         clearTimeout(touchMap.get($v))
     }
-    touchMap.set($v, setTimeout($v.$touch, 1000))
+    touchMap.set($v, setTimeout($v.$touch, 600))
 }

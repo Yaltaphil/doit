@@ -1,0 +1,37 @@
+<template>
+    <div class="dimmer">
+        <div class="loader"></div>
+    </div>
+</template>
+
+<style lang="scss" scoped>
+.dimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 499;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 1);
+    overflow: hidden;
+}
+.loader {
+    width: 80px;
+    height: 80px;
+    background-image: url('~/assets/img/doit_triangle.svg');
+    animation: spin 1.25s ease-in-out infinite;
+    z-index: 500;
+    position: absolute;
+    top: 40%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+}
+@keyframes spin {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+</style>
