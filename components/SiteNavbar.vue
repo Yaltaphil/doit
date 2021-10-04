@@ -63,27 +63,30 @@ export default {
 .navbar {
     height: 106px;
     margin-left: 0;
-    & .burger {
+    .burger {
         width: 24px;
         height: 24px;
         z-index: 100;
         cursor: pointer;
+        margin-top: 1rem;
+        margin-left: 1rem;
         &:hover {
             transform: scale(1.05);
             filter: drop-shadow(2px 5px 10px rgb(247, 243, 3));
         }
     }
-    & .logo {
+    .logo {
         width: 56px;
         height: 48px;
-        padding-right: 1rem;
+        margin-right: 1rem;
+        margin-top: 1rem;
         cursor: pointer;
         &:hover {
             transform: scale(1.05);
             filter: drop-shadow(2px 4px 8px rgb(247, 243, 3));
         }
     }
-    & .menu {
+    .menu {
         z-index: 100;
         overflow: hidden;
         display: flex;
@@ -91,26 +94,26 @@ export default {
         justify-content: space-between;
         align-items: center;
         padding-right: 0.5rem;
-        & .menu__item {
+        .menu__item {
             display: none;
         }
-        & .menu__extras {
+        .menu__extras {
             display: none;
         }
     }
-    & .menu.burger-menu {
+    .burger-menu {
         position: absolute;
         overflow: hidden;
         padding-top: 80px;
         margin: 0;
-        width: 99%;
+        width: 100%;
         height: 100%;
         display: flex;
         flex-direction: column;
         gap: 30px;
         justify-content: flex-start;
         background: #0f1215;
-        & .menu__item {
+        .menu__item {
             display: block;
             font-family: 'Rubik';
             font-style: normal;
@@ -125,7 +128,7 @@ export default {
                 filter: drop-shadow(2px 2px 5px rgb(247, 243, 3));
             }
         }
-        & .menu__extras {
+        .menu__extras {
             width: 80%;
             padding-top: 80px;
             display: flex;
@@ -134,15 +137,15 @@ export default {
             transform: translateX(0);
             animation: all 1s;
         }
-        & .logo {
+        .logo {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
+            top: 0;
+            right: 0;
         }
-        & .burger {
+        .burger {
             position: absolute;
-            top: 2rem;
-            left: 3rem;
+            top: 0;
+            left: 0;
         }
     }
 }
@@ -150,19 +153,19 @@ export default {
 @media only screen and (min-width: 769px) {
     .navbar {
         margin-left: 112px;
-        & .logo {
+        .logo {
             width: 88px;
             height: 80px;
         }
-        & .burger {
+        .burger {
             display: none;
         }
-        & .menu {
+        .menu {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            & .menu__item {
+            .menu__item {
                 font-family: 'Rubik';
                 font-style: normal;
                 font-weight: bold;
@@ -176,7 +179,7 @@ export default {
                     filter: drop-shadow(2px 5px 10px rgb(247, 243, 3));
                 }
             }
-            & .menu__extras {
+            .menu__extras {
                 display: flex;
                 flex-direction: row;
                 gap: 10px;

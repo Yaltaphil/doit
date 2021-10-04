@@ -1,5 +1,6 @@
 ,<template>
     <section>
+        <BasePreloader v-show="isBusy" />
         <BaseLogo class="logo" />
         <p class="white-text">
             You registered on
@@ -7,7 +8,7 @@
 
             to continue verify your email
         </p>
-        <BaseButton class="white block" @click="verify"
+        <BaseButton class="white block" :disabled="isBusy" @click="submit"
             >Verify email</BaseButton
         >
         <p class="base-text">
@@ -21,8 +22,18 @@
 export default {
     layout: 'empty',
 
+    data() {
+        return {
+            isBusy: false,
+        }
+    },
     methods: {
-        verify() {},
+        submit() {
+            this.isBusy = true
+            setTimeout(() => {
+                this.$router.push('/login')
+            }, 500)
+        },
     },
 }
 </script>

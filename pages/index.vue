@@ -55,9 +55,9 @@
         <div style="display: flex; gap: 100px; margin-top: 5em">
             <nuxt-link to="/contactus">contactUs</nuxt-link>
         </div>
-        <p v-for="item in comments" :key="item.id">{{ item.name }} - {{ item.body }}</p>
-
-        <BasePreloader />
+        <p v-for="item in comments" :key="item.id">
+            {{ item.name }} - {{ item.body }}
+        </p>
     </div>
 </template>
 

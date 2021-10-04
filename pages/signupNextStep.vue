@@ -1,35 +1,38 @@
 ,<template>
     <section>
+        <BasePreloader v-show="isBusy" />
         <BaseLogo class="logo" />
         <h1>Sign up 2/2</h1>
-        <BaseInput
-            v-model.trim="$v.username.$model"
-            type="text"
-            :invalid="$v.username.$dirty && $v.username.$error"
-            :success="$v.username.$dirty && !$v.username.$error"
-            @input="$delayTouch($v.username)"
-            >Username</BaseInput
-        >
-        <BaseSelect v-model="$v.country.$model" :options="countries"
-            >Country</BaseSelect
-        >
-        <span></span>
-        <BaseDatepicker v-model="$v.date.$model">
-            Date of birth
-        </BaseDatepicker>
-        <BaseCheckbox v-model="$v.isAged.$model">
-            <span class="label"
-                >I have at least 13 years of age and agree to the
-                <nuxt-link to="/termsofuse">terms of service</nuxt-link>
-            </span>
-        </BaseCheckbox>
+        <form @submit.prevent="submit">
+            <BaseInput
+                v-model.trim="$v.username.$model"
+                type="text"
+                :invalid="$v.username.$dirty && $v.username.$error"
+                :success="$v.username.$dirty && !$v.username.$error"
+                @input="$delayTouch($v.username)"
+                >Username</BaseInput
+            >
+            <BaseSelect v-model="$v.country.$model" :options="countries"
+                >Country</BaseSelect
+            >
+            <span></span>
+            <BaseDatepicker v-model="$v.date.$model">
+                Date of birth
+            </BaseDatepicker>
+            <BaseCheckbox v-model="$v.isAged.$model">
+                <span class="label"
+                    >I have at least 13 years of age and agree to the
+                    <nuxt-link to="/termsofuse">terms of service</nuxt-link>
+                </span>
+            </BaseCheckbox>
 
-        <BaseButton
-            class="white block"
-            :disabled="$v.$invalid"
-            @click="verifyEmail"
-            >Create an account</BaseButton
-        >
+            <BaseButton
+                class="white block"
+                :disabled="$v.$invalid || isBusy"
+                type="submit"
+                >Create an account</BaseButton
+            >
+        </form>
 
         <p>
             <nuxt-link to="/signup">Back to first step</nuxt-link>
@@ -59,6 +62,7 @@ export default {
             country: '',
             date: null,
             isAged: false,
+            isBusy: false,
         }
     },
 
@@ -80,8 +84,11 @@ export default {
     },
 
     methods: {
-        verifyEmail() {
-            this.$router.push('/verifyEmail')
+        submit() {
+            this.isBusy = true
+            setTimeout(() => {
+                this.$router.push('/verifyEmail')
+            }, 500)
         },
     },
 }
@@ -96,11 +103,17 @@ section {
     gap: 2rem;
     width: 241px;
     min-height: 572px;
-    & .logo {
+    form {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    .logo {
         width: 88px;
         height: 80px;
     }
-    & .label {
+    .label {
         font-size: 12px;
         line-height: 16px;
         color: #627ca3;
