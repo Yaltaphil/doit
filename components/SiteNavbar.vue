@@ -15,7 +15,7 @@
                 :key="item"
                 class="menu__item"
                 :to="item.toLowerCase()"
-                @click="showBurgerMenu = false"
+                @click.native="showBurgerMenu = false"
             >
                 {{ item }}
             </nuxt-link>

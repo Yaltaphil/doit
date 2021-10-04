@@ -1,5 +1,6 @@
 <template>
     <section>
+        <BasePreloader v-show="isBusy" />
         <div class="search">
             <h1>Games</h1>
             <BaseInput
@@ -27,15 +28,25 @@ export default {
         return {
             games: Games,
             searchPattern: '',
+            isBusy: true,
         }
     },
-    
+
     computed: {
         foundItems() {
             return this.games.filter((item) =>
-                item.title.toString().includes(this.searchPattern)
+                item.title
+                    .toString()
+                    .toLowerCase()
+                    .includes(this.searchPattern.toLowerCase())
             )
         },
+    },
+
+    mounted() {
+        setTimeout(() => {
+            this.isBusy = false
+        }, 1000)
     },
 }
 </script>

@@ -65,7 +65,7 @@ export default {
 }
 
 .error__text {
-    font-weight: normal; // nah 500 in mobile version?
+    font-weight: normal;
     font-size: 30px;
     line-height: 130%;
     text-align: center;

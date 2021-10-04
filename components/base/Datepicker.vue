@@ -1,7 +1,7 @@
 <template>
     <div>
         <slot></slot>
-        <no-ssr>
+        <client-only>
             <v-date-picker
                 title-position="left"
                 show-caps
@@ -55,7 +55,7 @@
                     </div>
                 </template>
             </v-date-picker>
-        </no-ssr>
+        </client-only>
     </div>
 </template>
 
