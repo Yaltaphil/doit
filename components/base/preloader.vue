@@ -12,7 +12,7 @@
     z-index: 499;
     width: 100%;
     height: 100%;
-    background: radial-gradient(#000000, #000000e8);
+    background: radial-gradient(#000000, #000000ee);
 }
 .loader {
     width: 80px;
