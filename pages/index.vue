@@ -42,7 +42,7 @@
             <BaseButton class="primary" @click="foo = ''"
                 >Input reset</BaseButton
             >
-            <BaseButton class="secondary block" @click="foo = foo + 1"
+            <BaseButton class="secondary" @click="foo = foo + 1"
                 >Input char</BaseButton
             >
         </div>
@@ -52,9 +52,8 @@
             {{ date }}
         </div>
 
-        <div style="display: flex; gap: 100px; margin-top: 5em">
-            <nuxt-link to="/contactus">contactUs</nuxt-link>
-        </div>
+        <div style="display: flex; gap: 100px; margin-top: 5em"></div>
+
         <p v-for="item in comments" :key="item.id">
             {{ item.name }} - {{ item.body }}
         </p>

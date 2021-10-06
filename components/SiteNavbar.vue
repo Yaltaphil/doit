@@ -21,6 +21,7 @@
             </nuxt-link>
             <div class="menu__extras">
                 <BaseButton
+                    v-if="!auth"
                     class="secondary"
                     :class="{ block: showBurgerMenu }"
                     @click="
@@ -30,6 +31,7 @@
                     >Login</BaseButton
                 >
                 <BaseButton
+                    v-if="!auth"
                     class="primary"
                     :class="{ block: showBurgerMenu }"
                     @click="
@@ -38,6 +40,7 @@
                     "
                     >Sign up</BaseButton
                 >
+                <ProfileBadgeMenu v-if="auth && !showBurgerMenu" />
             </div>
         </div>
     </header>
@@ -51,7 +54,7 @@ export default {
         return {
             items: ['Play', 'News', 'Games', 'Shop', 'Sponsorship'],
             showBurgerMenu: false,
-            auth: false,
+            auth: true,
         }
     },
 
@@ -129,13 +132,12 @@ export default {
             }
         }
         .menu__extras {
+            position: relative; // for userbadge
             width: 80%;
             padding-top: 80px;
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            transform: translateX(0);
-            animation: all 1s;
         }
         .logo {
             position: absolute;
@@ -183,6 +185,7 @@ export default {
                 display: flex;
                 flex-direction: row;
                 gap: 10px;
+                min-width: 210px;
             }
         }
     }
