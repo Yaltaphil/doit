@@ -3,7 +3,7 @@
         <BasePreloader v-show="isBusy" />
         <BaseLogo class="logo" />
         <h1>Login</h1>
-        <form @submit.prevent="submit">
+        <form autocomplete="off" @submit.prevent="submit">
             <BaseInput
                 v-model.trim="$v.login.$model"
                 type="text"
@@ -65,12 +65,21 @@ export default {
     },
 
     methods: {
-        submit() {
-            // disable buttons and try to auth user
+        async submit() {
             this.isBusy = true
-            setTimeout(() => {
-                this.$router.push('/player')
-            }, 3000)
+            try {
+                await this.$fire.auth.signInWithEmailAndPassword(
+                    this.login,
+                    this.password
+                )
+                const user = this.$fire.auth.currentUser
+                console.log('Logged to firebase as...', user)
+                setTimeout(() => {
+                    this.$router.push('/player')
+                }, 3000)
+            } catch (e) {
+                console.warn(e)
+            }
         },
     },
 }

@@ -52,11 +52,14 @@
             {{ date }}
         </div>
 
-        <div style="display: flex; gap: 100px; margin-top: 5em"></div>
-
         <p v-for="item in comments" :key="item.id">
             {{ item.name }} - {{ item.body }}
         </p>
+
+        <div style="display: flex; gap: 100px; margin-top: 5em">
+            <BaseButton @click="authUser">Login to firebase</BaseButton>
+            <BaseButton @click="createUser">Create user firebase</BaseButton>
+        </div>
     </div>
 </template>
 
@@ -95,6 +98,20 @@ export default {
     computed: {
         ok() {
             return this.foo.length > 6
+        },
+    },
+
+    methods: {
+        authUser() {},
+        async createUser() {
+            try {
+                await this.$fire.auth.createUserWithEmailAndPassword(
+                    'foo@foo.foo',
+                    'tes111'
+                )
+            } catch (e) {
+                console.warn(e)
+            }
         },
     },
 }

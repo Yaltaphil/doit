@@ -88,6 +88,9 @@ export default {
             background: #121f33;
             border-radius: 2px;
         }
+        &:-webkit-autofill {
+            background-color: transparent;
+        }
     }
     & .input__message {
         display: none;
@@ -186,5 +189,14 @@ export default {
     100% {
         transform: scale(1);
     }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #16263d inset !important;
+    -webkit-text-fill-color: #627ca3 !important;
+    // transition: background-color 5000000s ease-in-out 0s;
 }
 </style>

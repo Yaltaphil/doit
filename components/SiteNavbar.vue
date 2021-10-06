@@ -57,8 +57,12 @@ export default {
         return {
             items: ['Play', 'News', 'Games', 'Shop', 'Sponsorship'],
             showBurgerMenu: false,
-            auth: true,
+            auth: false,
         }
+    },
+
+    mounted() {
+        this.auth = this.$fire.auth.currentUser
     },
 
     methods: {},

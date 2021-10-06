@@ -71,6 +71,7 @@ export default {
         // https://go.nuxtjs.dev/pwa
         '@nuxtjs/pwa',
         '@nuxtjs/axios',
+        '@nuxtjs/firebase',
     ],
 
     // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -82,4 +83,23 @@ export default {
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {},
+
+    // google firebase config
+    firebase: {
+        config: {
+            apiKey: 'AIzaSyCDiarUnVKswqqt5wpIpdnMJhi6UAv9APE',
+            authDomain: 'doit-bb77e.firebaseapp.com',
+            databaseURL: 'https://doit-bb77e-default-rtdb.firebaseio.com',
+            projectId: 'doit-bb77e',
+            storageBucket: 'doit-bb77e.appspot.com',
+            messagingSenderId: '837242298469',
+            appId: '1:837242298469:web:f001bc2a84ac16925f268c',
+            measurementId: 'G-T50TQTFTWP',
+        },
+        services: {
+            auth: true,
+            storage: true,
+            database: true,
+        },
+    },
 }
