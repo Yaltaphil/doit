@@ -30,7 +30,7 @@
                         :key="i"
                         :to="item.to"
                         class="link"
-                        @click.native="$router.push(item.to)"
+                        @click.native="item.callback"
                     >
                         <span>
                             {{ item.title }}
@@ -91,6 +91,7 @@ export default {
                 {
                     title: 'Logout',
                     to: '/',
+                    callback: this.logout,
                 },
             ],
         }
@@ -103,6 +104,12 @@ export default {
                     this.$refs.levelRate.style.width = `${this.level}%`
                 }, 0)
             }
+        },
+    },
+
+    methods: {
+        logout() {
+            this.$emit('logout-call')
         },
     },
 }

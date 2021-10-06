@@ -40,7 +40,10 @@
                     "
                     >Sign up</BaseButton
                 >
-                <ProfileBadgeMenu v-if="auth && !showBurgerMenu" />
+                <ProfileBadgeMenu
+                    v-if="auth && !showBurgerMenu"
+                    @logout-call="auth = false"
+                />
             </div>
         </div>
     </header>
