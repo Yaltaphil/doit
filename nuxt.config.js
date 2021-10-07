@@ -72,6 +72,7 @@ export default {
         '@nuxtjs/pwa',
         '@nuxtjs/axios',
         '@nuxtjs/firebase',
+        '@nuxtjs/toast',
     ],
 
     // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -101,5 +102,14 @@ export default {
             storage: true,
             database: true,
         },
+    },
+
+    // toasts setup
+    toast: {
+        position: 'bottom-center',
+        duration: 4000,
+        // theme: 'bubble',
+        // icon: '!',
+        // type: "info"
     },
 }

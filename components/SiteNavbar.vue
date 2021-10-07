@@ -21,7 +21,7 @@
             </nuxt-link>
             <div class="menu__extras">
                 <BaseButton
-                    v-if="!auth"
+                    v-if="!isAuth"
                     class="secondary"
                     :class="{ block: showBurgerMenu }"
                     @click="
@@ -31,7 +31,7 @@
                     >Login</BaseButton
                 >
                 <BaseButton
-                    v-if="!auth"
+                    v-if="!isAuth"
                     class="primary"
                     :class="{ block: showBurgerMenu }"
                     @click="
@@ -41,8 +41,8 @@
                     >Sign up</BaseButton
                 >
                 <ProfileBadgeMenu
-                    v-if="auth && !showBurgerMenu"
-                    @logout-call="auth = false"
+                    v-if="isAuth && !showBurgerMenu"
+                    @logout-call="logout"
                 />
             </div>
         </div>
@@ -57,15 +57,25 @@ export default {
         return {
             items: ['Play', 'News', 'Games', 'Shop', 'Sponsorship'],
             showBurgerMenu: false,
-            auth: false,
+            isAuth: null,
         }
     },
 
     mounted() {
-        this.auth = this.$fire.auth.currentUser
+        this.isAuth = this.$fire.auth.currentUser
     },
 
-    methods: {},
+    methods: {
+        async logout() {
+            try {
+                await this.$fire.auth.signOut()
+                this.isAuth = this.$fire.auth.currentUser
+                this.$toast.show('Signed out...')
+            } catch (e) {
+                this.$toast.show('Problem to sign out!')
+            }
+        },
+    },
 }
 </script>
 

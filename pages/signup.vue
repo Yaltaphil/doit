@@ -3,7 +3,7 @@
         <BasePreloader v-show="isBusy" />
         <BaseLogo class="logo" />
         <h1>Sign up 1/2</h1>
-        <form @submit.prevent="submit">
+        <form autocomplete="off" @submit.prevent="submit">
             <BaseInput
                 v-model.trim="$v.email.$model"
                 type="email"
@@ -64,11 +64,21 @@ export default {
     },
 
     methods: {
-        submit() {
+        async submit() {
             this.isBusy = true
-            setTimeout(() => {
-                this.$router.push('/signupNextStep')
-            }, 500)
+            try {
+                await this.$fire.auth.createUserWithEmailAndPassword(
+                    this.email,
+                    this.password
+                )
+                this.$toast.show('Sign up successful!')
+                setTimeout(() => {
+                    this.$router.push('/signupNextStep')
+                }, 1000)
+            } catch (e) {
+                this.$toast.show('Sign up problem, please, retry!')
+            }
+            this.isBusy = false
         },
     },
 }

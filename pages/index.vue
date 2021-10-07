@@ -21,6 +21,15 @@
         </div>
 
         <div style="display: flex; gap: 100px; margin-top: 5em">
+            <BaseButton class="primary" @click="foo = ''"
+                >Input reset</BaseButton
+            >
+            <BaseButton class="secondary" @click="foo = foo + 1"
+                >Input char</BaseButton
+            >
+        </div>
+
+        <div style="display: flex; gap: 100px; margin-top: 5em">
             <BaseCheckbox v-model="c1" />
             <BaseCheckbox v-model="c2" checked />
             <BaseCheckbox disabled />
@@ -39,15 +48,6 @@
         </div>
 
         <div style="display: flex; gap: 100px; margin-top: 5em">
-            <BaseButton class="primary" @click="foo = ''"
-                >Input reset</BaseButton
-            >
-            <BaseButton class="secondary" @click="foo = foo + 1"
-                >Input char</BaseButton
-            >
-        </div>
-
-        <div style="display: flex; gap: 100px; margin-top: 5em">
             <BaseDatepicker v-model="date" />
             {{ date }}
         </div>
@@ -57,8 +57,7 @@
         </p>
 
         <div style="display: flex; gap: 100px; margin-top: 5em">
-            <BaseButton @click="authUser">Login to firebase</BaseButton>
-            <BaseButton @click="createUser">Create user firebase</BaseButton>
+            <BaseButton @click="authUser">toasts</BaseButton>
         </div>
     </div>
 </template>
@@ -97,21 +96,15 @@ export default {
 
     computed: {
         ok() {
-            return this.foo.length > 6
+            return this.foo.length > 3
         },
     },
 
     methods: {
-        authUser() {},
-        async createUser() {
-            try {
-                await this.$fire.auth.createUserWithEmailAndPassword(
-                    'foo@foo.foo',
-                    'tes111'
-                )
-            } catch (e) {
-                console.warn(e)
-            }
+        authUser() {
+            this.$toast.show('User is here!')
+            this.$toast.error('User is not here!')
+            this.$toast.success('User !!!s')
         },
     },
 }
