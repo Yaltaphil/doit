@@ -58,6 +58,8 @@
 
         <div style="display: flex; gap: 100px; margin-top: 5em">
             <BaseButton @click="authUser">toasts</BaseButton>
+            <BaseButton @click="write">BD write test</BaseButton>
+            <BaseButton @click="read">BD read test</BaseButton>
         </div>
     </div>
 </template>
@@ -105,6 +107,25 @@ export default {
             this.$toast.show('User is here!')
             this.$toast.error('User is not here!')
             this.$toast.success('User !!!s')
+        },
+        async write() {
+            try {
+                await this.$fire.database.ref('/test').set({ name: 'test ok' })
+                this.$toast.success(`Writing to database`)
+            } catch (e) {
+                this.$toast.error(`Error writing to database: ${e.message}`)
+                throw e
+            }
+        },
+
+        async read() {
+            try {
+                let r = await this.$fire.database.ref('/test').once('value')
+                r = r.val()
+                this.$toast.success(`Reading ... ${r.name}`)
+            } catch (e) {
+                this.$toast.error(`Error reading from database: ${e.message}`)
+            }
         },
     },
 }

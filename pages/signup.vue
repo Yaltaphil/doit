@@ -76,7 +76,9 @@ export default {
                     this.$router.push('/signupNextStep')
                 }, 1000)
             } catch (e) {
-                this.$toast.show('Sign up problem, please, retry!')
+                this.$toast.error(
+                    `Sign up problem, please, retry!   ${e.message}`
+                )
             }
             this.isBusy = false
         },

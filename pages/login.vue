@@ -72,17 +72,14 @@ export default {
                     this.login,
                     this.password
                 )
-                const user = this.$fire.auth.currentUser
-                console.log('Logged to firebase as...', user)
                 this.$toast.show('Successfully logged in')
                 setTimeout(() => {
                     this.$router.push('/player')
                 }, 2000)
             } catch (e) {
-                console.warn(e)
-                this.$toast.error('Opps... Login error!')
-                this.isBusy = false
+                this.$toast.error(`Opps... Login error!    ${e.message}`)
             }
+            this.isBusy = false
         },
     },
 }

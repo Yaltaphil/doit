@@ -72,7 +72,7 @@ export default {
                 this.isAuth = this.$fire.auth.currentUser
                 this.$toast.show('Signed out...')
             } catch (e) {
-                this.$toast.show('Problem to sign out!')
+                this.$toast.error(`Problem to sign out!   ${e.message}`)
             }
         },
     },
