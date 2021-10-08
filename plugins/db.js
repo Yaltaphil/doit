@@ -56,7 +56,7 @@ class DBServices {
         try {
             return await this.$fire.storage().refFromURL(url).delete()
         } catch (e) {
-            this.$toast.error(`Error Upload error: ${e.message}`)
+            this.$toast.error(`Error removing file: ${e.message}`)
             // throw e
         }
     }

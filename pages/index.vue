@@ -110,11 +110,12 @@ export default {
         },
 
         async write() {
-            await this.$db.write('/test', { name: this.foo })
+            await this.$db.write('/test', this.foo)
+            this.$toast.success(`Writing ... `)
         },
 
         async read() {
-            this.$toast.success(`Reading ... ${await this.$db.read('/test1')}`)
+            this.$toast.success(`Reading ... ${await this.$db.read('/test')}`)
         },
     },
 }
