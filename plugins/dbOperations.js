@@ -1,28 +1,15 @@
-import Vue from 'vue'
-
 export default ({ app }, inject) => {
-  // Inject $hello(msg) in Vue, context and store.
-  inject('hello', msg => console.log(`Hello ${msg}!`))
+    inject('dbWrite', async function (path, payload) {
+        try {
+            return await this.$fire.database.ref(path).set(payload)
+        } catch (e) {
+            this.$toast.error(`Error writing to database: ${e.message}`)
+            throw e
+        }
+    }
+    );
 }
 
-Vue.prototype.$writeDB = async function (path, payload) {
-    try {
-        return await this.$fire.database.ref(path).set(payload)
-    } catch (e) {
-        this.$toast.error(`Error writing to database: ${e.message}`)
-        throw e
-    }
-}
-
-Vue.prototype.$readDB = async function (path) {
-    try {
-        const result = await this.$fire.database.ref(path).once('value')
-        return result.val()
-    } catch (e) {
-        this.$toast.error(`Error reading from database: ${e.message}`)
-        throw e
-    }
-}
 
 Vue.prototype.$uploadFile = async function (path, file) {
     try {

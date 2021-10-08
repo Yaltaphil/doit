@@ -9,3 +9,4 @@ Vue.prototype.$delayTouch = function ($v) {
     }
     touchMap.set($v, setTimeout($v.$touch, 450))
 }
+

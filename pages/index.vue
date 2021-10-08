@@ -108,24 +108,16 @@ export default {
             this.$toast.error('User is not here!')
             this.$toast.success('User !!!s')
         },
-        async write() {
-            try {
-                await this.$fire.database.ref('/test').set({ name: 'test ok' })
-                this.$toast.success(`Writing to database`)
-            } catch (e) {
-                this.$toast.error(`Error writing to database: ${e.message}`)
-                throw e
-            }
+
+        write() {
+            console.log(this.$db.write())
+            // this.$db.write('/test', { name: this.foo })
         },
 
         async read() {
-            try {
-                let r = await this.$fire.database.ref('/test').once('value')
-                r = r.val()
-                this.$toast.success(`Reading ... ${r.name}`)
-            } catch (e) {
-                this.$toast.error(`Error reading from database: ${e.message}`)
-            }
+            this.$toast.success(
+                `Reading ... ${(await this.$db.read('/testasd')).name}`
+            )
         },
     },
 }

@@ -50,11 +50,11 @@ export default {
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
-        '~plugins/globals.js',
         '~plugins/vuelidate.js',
         '~plugins/validationDelay.js',
         '~plugins/v-select.js',
         { src: '~plugins/v-calendar.js', ssr: false },
+        '~plugins/db.js',
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components

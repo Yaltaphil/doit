@@ -5,7 +5,10 @@
                 <span v-if="error.statusCode === 404" class="error_code"
                     >404</span
                 >
-                <span v-else style="font-size: 48px">An error occurred</span>
+                <span v-else style="font-size: 24px; line-height: 150%"
+                    >An error occurred: {{ error.statusCode }} -
+                    {{ error.message }}</span
+                >
             </div>
             <div class="error__text">
                 <span>
