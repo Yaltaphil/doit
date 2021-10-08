@@ -12,7 +12,10 @@
                 @input="$delayTouch($v.username)"
                 >Username</BaseInput
             >
-            <BaseSelect v-model="$v.country.$model" :options="countries"
+            <BaseSelect
+                v-model="$v.country.$model"
+                label="name"
+                :options="countries"
                 >Country</BaseSelect
             >
             <span></span>
@@ -48,17 +51,14 @@ const ageVerified = (value) => value === true
 export default {
     layout: 'empty',
 
+    async asyncData({ $db }) {
+        const countries = await $db.read('/countries')
+        return { countries }
+    },
+
     data() {
         return {
             username: '',
-            countries: [
-                'Ukraine',
-                'Russia',
-                'United States',
-                'Germany',
-                'Canada',
-                'Great Britain',
-            ],
             country: '',
             date: null,
             isAged: false,

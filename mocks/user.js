@@ -1,8 +1,9 @@
 export default {
-    id: 12121212,
+    id: 'XMAuZmnoUPRoVLSOwjidZo2CuRw2',
     avatarUrl: '~/assets/img/photo-player.png',
     name: 'Messi Ronaldo',
     nickName: 'Pele',
+    email: 'admin@admin.admin',
     team: 'Blazer team',
     withUsFrom: Date.now(),
     sex: 'male',

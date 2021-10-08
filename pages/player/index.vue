@@ -103,6 +103,14 @@
 import User from '~/mocks/user.js'
 
 export default {
+    name: 'PlayerProfile',
+
+    asyncData() {
+        return {
+            // load user details
+        }
+    },
+
     data() {
         return {
             user: User,

@@ -1,7 +1,5 @@
 export const state = () => ({
     currentUser: null,
-    users: [],
-    countries: [],
 })
 
 export const getters = {

@@ -40,6 +40,8 @@
 </template>
 
 <script>
+// TODO login with nickName not only email
+
 import { required, minLength } from 'vuelidate/lib/validators'
 
 export default {
@@ -74,7 +76,7 @@ export default {
                 )
                 this.$toast.show('Successfully logged in')
                 setTimeout(() => {
-                    this.$router.push('/player')
+                    this.$router.push('/player') // + firebase id
                 }, 2000)
             } catch (e) {
                 this.$toast.error(`Opps... Login error!    ${e.message}`)

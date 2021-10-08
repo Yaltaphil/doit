@@ -51,20 +51,31 @@
             <BaseDatepicker v-model="date" />
             {{ date }}
         </div>
-
+        <!--
         <p v-for="item in comments" :key="item.id">
             {{ item.name }} - {{ item.body }}
-        </p>
+        </p> -->
 
-        <div style="display: flex; gap: 100px; margin-top: 5em">
-            <BaseButton @click="authUser">toasts</BaseButton>
-            <BaseButton @click="write">BD write test</BaseButton>
-            <BaseButton @click="read">BD read test</BaseButton>
+        <div
+            style="
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+                margin-top: 5em;
+            "
+        >
+            <BaseButton @click="authUser">authUser</BaseButton>
+            {{ user }}
+            <BaseButton @click="write">BD write all mocks</BaseButton>
+            <BaseButton @click="read">BD read all mocks</BaseButton>
         </div>
     </div>
 </template>
 
 <script>
+import userData from '~/mocks/user.js'
+// import countryData from '~/mocks/countries.js'
+
 export default {
     layout: 'default',
 
@@ -93,6 +104,8 @@ export default {
             ],
             selected: 'foo',
             date: Date.now(),
+            user: userData,
+            // countries: countryData,
         }
     },
 
@@ -103,19 +116,19 @@ export default {
     },
 
     methods: {
-        authUser() {
-            this.$toast.show('User is here!')
-            this.$toast.error('User is not here!')
-            this.$toast.success('User !!!s')
-        },
+        authUser() {},
 
         async write() {
-            await this.$db.write('/test', this.foo)
+            await this.$db.write('/user/' + this.user.id, this.user)
+            // await this.$db.write('/countries', this.countries)
             this.$toast.success(`Writing ... `)
         },
 
         async read() {
-            this.$toast.success(`Reading ... ${await this.$db.read('/test')}`)
+            this.$toast.success(`Reading ... `)
+            // const r = await this.$db.read('/user/' + this.user.id)
+            const r = await this.$db.read('/user')
+            console.log(r)
         },
     },
 }
