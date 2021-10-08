@@ -109,15 +109,12 @@ export default {
             this.$toast.success('User !!!s')
         },
 
-        write() {
-            console.log(this.$db.write())
-            // this.$db.write('/test', { name: this.foo })
+        async write() {
+            await this.$db.write('/test', { name: this.foo })
         },
 
         async read() {
-            this.$toast.success(
-                `Reading ... ${(await this.$db.read('/testasd')).name}`
-            )
+            this.$toast.success(`Reading ... ${await this.$db.read('/test1')}`)
         },
     },
 }
