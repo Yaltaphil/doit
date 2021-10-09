@@ -61,7 +61,8 @@ export default {
         font-family: 'Rubik';
         font-size: 16px;
         background: #0f1215;
-        height: 224px;
+        max-height: 224px;
+        overflow-x: hidden;
 
         &::-webkit-scrollbar {
             width: 4px;
