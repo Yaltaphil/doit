@@ -65,7 +65,6 @@
             "
         >
             <BaseButton @click="authUser">authUser</BaseButton>
-            {{ user }}
             <BaseButton @click="write">BD write all mocks</BaseButton>
             <BaseButton @click="read">BD read all mocks</BaseButton>
         </div>
@@ -74,17 +73,18 @@
 
 <script>
 import userData from '~/mocks/user.js'
-// import countryData from '~/mocks/countries.js'
+import gameData from '~/mocks/games.js'
+import countryData from '~/mocks/countries.js'
 
 export default {
     layout: 'default',
 
-    async asyncData({ $axios }) {
-        const comments = await $axios.$get(
-            'https://jsonplaceholder.typicode.com/comments?postId=1'
-        )
-        return { comments }
-    },
+    // async asyncData({ $axios }) {
+    //     const comments = await $axios.$get(
+    //         'https://jsonplaceholder.typicode.com/comments?postId=1'
+    //     )
+    //     return { comments }
+    // },
 
     data() {
         return {
@@ -105,7 +105,8 @@ export default {
             selected: 'foo',
             date: Date.now(),
             user: userData,
-            // countries: countryData,
+            games: gameData,
+            countries: countryData,
         }
     },
 
@@ -119,8 +120,9 @@ export default {
         authUser() {},
 
         async write() {
-            await this.$db.write('/user/' + this.user.id, this.user)
+            // await this.$db.write('/users/' + this.user.id, this.user)
             // await this.$db.write('/countries', this.countries)
+            await this.$db.write('/games', this.games)
             this.$toast.success(`Writing ... `)
         },
 

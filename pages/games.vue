@@ -21,12 +21,16 @@
 </template>
 
 <script>
-import Games from '~/mocks/games.js'
-
 export default {
+    name: 'Games',
+
+    async asyncData({ $db }) {
+        const games = await $db.read('/games')
+        return { games }
+    },
+
     data() {
         return {
-            games: Games,
             searchPattern: '',
             isBusy: true,
         }
@@ -44,9 +48,7 @@ export default {
     },
 
     mounted() {
-        setTimeout(() => {
-            this.isBusy = false
-        }, 1000)
+        this.isBusy = false
     },
 }
 </script>
