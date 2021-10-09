@@ -10,12 +10,13 @@
         </div>
 
         <div class="sheet">
-            <GamesCard v-for="(item, i) in foundItems" :key="i">
+            <GamesCard v-for="(item, i) in showItems" :key="i">
                 <div class="game-card" @click="alert(i)">
                     <img class="pic" :src="item.src" alt="game image" />
                     <h2 class="caption white-text">{{ item.title }}</h2>
                 </div>
             </GamesCard>
+            <Observer @intersect="intersected" />
         </div>
     </section>
 </template>
@@ -33,6 +34,8 @@ export default {
         return {
             searchPattern: '',
             isBusy: true,
+            pageSize: 9,
+            numberOfGamesToShow: 9,
         }
     },
 
@@ -45,10 +48,20 @@ export default {
                     .includes(this.searchPattern.toLowerCase())
             )
         },
+
+        showItems() {
+            return this.foundItems.slice(0, this.numberOfGamesToShow)
+        },
     },
 
     mounted() {
         this.isBusy = false
+    },
+
+    methods: {
+        intersected() {
+            this.numberOfGamesToShow += this.pageSize
+        },
     },
 }
 </script>
