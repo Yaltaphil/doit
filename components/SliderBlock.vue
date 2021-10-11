@@ -14,6 +14,11 @@
     </section>
 </template>
 
+
+<script>
+export default {}
+</script>
+
 <style lang="scss" scoped>
 .block {
     width: 100%;
@@ -26,9 +31,6 @@
     }
     .slider {
         width: 100%;
-        display: flex;
-        flex-flow: row nowrap;
-        overflow-x: scroll;
     }
 }
 </style>

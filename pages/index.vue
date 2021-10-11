@@ -1,22 +1,30 @@
 <template>
     <div>
         <section>triangles</section>
+
         <SliderBlock>
-            <template #header> <h1>Tournaments</h1></template>
+            <template #header> <h1>Games</h1></template>
             <template #selector>
                 <div class="tabs">
-                    <div class="tabs__item" v-for="tab in tabs" :key="tab.name">
+                    <div v-for="tab in tabs" :key="tab.name" class="tabs__item">
                         {{ tab.name }}
                     </div>
                 </div>
             </template>
             <template #slider>
-                <GamesCard v-for="(item, i) in games" :key="i">
-                    <div class="game-card">
-                        <img class="pic" :src="item.src" alt="game image" />
-                        <h2 class="caption white-text">{{ item.title }}</h2>
-                    </div>
-                </GamesCard>
+                <swiper ref="mySwiper" :options="swiperOptions">
+                    <swiper-slide v-for="(item, i) in games" :key="i">
+                        <GamesCard>
+                            <div class="game-card">
+                                <img
+                                    class="pic"
+                                    alt="game image"
+                                    :src="item.src"
+                                />
+                                <h2 class="caption white-text"></h2>
+                            </div> </GamesCard
+                    ></swiper-slide>
+                </swiper>
             </template>
         </SliderBlock>
 
@@ -56,15 +64,48 @@ export default {
                 { name: 'LOL', pattern: 'LOL' },
                 { name: 'Fortnite', pattern: 'Fortnite' },
             ],
+
+            swiperOptions: {
+                slidesPerView: 1,
+                spaceBetween: 28,
+                // loop: true,
+                autoplay: {
+                    delay: 15000,
+                },
+                // pagination: {
+                //     el: '.swiper-pagination',
+                //     clickable: true,
+                // },
+                centeredSlides: true,
+                centeredSlidesBounds: true,
+                breakpoints: {
+                    // when window width is >= 640px
+                    320: {
+                        slidesPerView: 1,
+                    },
+                    // when window width is >= 640px
+                    768: {
+                        slidesPerView: 4,
+                    },
+                },
+            },
         }
     },
 
-    methods: {},
+    computed: {
+        swiper() {
+            return this.$refs.mySwiper.$swiper
+        },
+    },
 }
 </script>
 
 
 <style lang="scss" scoped>
+.swiper-slide {
+    max-width: 300px;
+}
+
 .tabs {
     display: none;
 }

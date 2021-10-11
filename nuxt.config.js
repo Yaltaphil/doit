@@ -1,4 +1,6 @@
 export default {
+    // target: 'static',
+
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
         title: 'Doit',
@@ -43,18 +45,19 @@ export default {
 
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
-        '~assets/styles/normalize.css',
-        '~assets/styles/global.scss',
-        '~assets/styles/datepicker.scss',
+        '~assets/styles/normalize',
+        '~assets/styles/global',
+        '~assets/styles/datepicker',
     ],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
-        '~plugins/vuelidate.js',
-        '~plugins/validationDelay.js',
-        '~plugins/v-select.js',
-        { src: '~plugins/v-calendar.js', ssr: false },
-        '~plugins/db.js',
+        '~plugins/vuelidate',
+        '~plugins/validationDelay',
+        '~plugins/v-select',
+        '~plugins/v-calendar.client',
+        '~plugins/db',
+        '~plugins/vue-awesome-swiper.client',
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components

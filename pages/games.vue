@@ -34,8 +34,8 @@ export default {
         return {
             searchPattern: '',
             isBusy: true,
-            pageSize: 9,
-            numberOfGamesToShow: 9,
+            pageSize: 6,
+            numberOfGamesToShow: 12,
         }
     },
 
