@@ -75,9 +75,7 @@ export default {
                     this.password
                 )
                 this.$toast.show('Successfully logged in')
-                setTimeout(() => {
-                    this.$router.push('/player') // + firebase id
-                }, 2000)
+                this.$router.push('/player') // + firebase id
             } catch (e) {
                 this.$toast.error(`Opps... Login error!    ${e.message}`)
             }

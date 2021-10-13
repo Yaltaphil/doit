@@ -86,9 +86,7 @@ export default {
     methods: {
         submit() {
             this.isBusy = true
-            setTimeout(() => {
-                this.$router.push('/verifyEmail')
-            }, 500)
+            this.$router.push('/verifyEmail')
         },
     },
 }

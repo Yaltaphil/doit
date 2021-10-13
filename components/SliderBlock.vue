@@ -23,6 +23,7 @@ export default {}
 .block {
     width: 100%;
     height: 500px;
+    margin: 3rem 0;
     .header {
         height: 90px;
         width: 100%;

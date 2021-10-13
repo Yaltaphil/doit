@@ -48,9 +48,7 @@ export default {
     methods: {
         submit() {
             this.isBusy = true
-            setTimeout(() => {
-                this.$router.push('/login')
-            }, 500)
+            this.$router.push('/login')
         },
     },
 }
