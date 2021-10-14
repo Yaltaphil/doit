@@ -1,6 +1,22 @@
 <template>
-    <div>
-        <section>triangles</section>
+    <div class="main">
+        <section class="offer">
+            <img src="~/assets/img/offer.png" alt="offer" />
+            <div class="offer__extras">
+                <BaseButton
+                    v-if="!isAuth"
+                    class="secondary white"
+                    @click="$router.push('/login')"
+                    >Login</BaseButton
+                >
+                <BaseButton
+                    v-if="!isAuth"
+                    class="primary"
+                    @click="$router.push('/signup')"
+                    >Sign up</BaseButton
+                >
+            </div>
+        </section>
         <SliderBlock>
             <template #header> <h1>Tournaments</h1></template>
             <template #selector>
@@ -10,21 +26,21 @@
                 />
             </template>
             <template #slider>
-                <swiper ref="tournamentsSwiper" :options="swiperOptions">
+                <swiper
+                    ref="tournamentsSwiper"
+                    :options="swiperOptions"
+                    :gap="10"
+                >
                     <swiper-slide
                         v-for="(item, i) in filteredTournaments"
                         :key="i"
                     >
-                        <GamesCard>
-                            <div class="game-card">
-                                <img
-                                    class="pic"
-                                    alt="game-image"
-                                    :src="item.src"
-                                />
-                                <h2 class="caption white-text"></h2>
-                            </div> </GamesCard
-                    ></swiper-slide>
+                        <TournamentCard
+                            :tournament="item"
+                            @selected="console.log()"
+                        />
+                    </swiper-slide>
+                    <div slot="pagination" class="swiper-pagination"></div>
                 </swiper>
             </template>
         </SliderBlock>
@@ -37,16 +53,9 @@
             <template #slider>
                 <swiper ref="newsSwiper" :options="swiperOptions">
                     <swiper-slide v-for="(item, i) in filteredNews" :key="i">
-                        <GamesCard>
-                            <div class="game-card">
-                                <img
-                                    class="pic"
-                                    alt="game-image"
-                                    :src="item.src"
-                                />
-                                <h2 class="caption white-text"></h2>
-                            </div> </GamesCard
-                    ></swiper-slide>
+                        <NewsCard :news="item"
+                    /></swiper-slide>
+                    <div slot="pagination" class="swiper-pagination"></div>
                 </swiper>
             </template>
         </SliderBlock>
@@ -57,7 +66,11 @@
                 <MainTabs :tabs="tabs" @selected="streamsPattern = $event" />
             </template>
             <template #slider>
-                <swiper ref="streamsSwiper" :options="swiperOptions">
+                <swiper
+                    ref="streamsSwiper"
+                    :options="swiperOptions"
+                    class="swiper"
+                >
                     <swiper-slide v-for="(item, i) in filteredStreams" :key="i">
                         <GamesCard>
                             <div class="game-card">
@@ -69,6 +82,7 @@
                                 <h2 class="caption white-text"></h2>
                             </div> </GamesCard
                     ></swiper-slide>
+                    <div slot="pagination" class="swiper-pagination"></div>
                 </swiper>
             </template>
         </SliderBlock>
@@ -92,7 +106,11 @@
                 <MainTabs :tabs="tabs" @selected="gamesPattern = $event" />
             </template>
             <template #slider>
-                <swiper ref="gamesSwiper" :options="swiperOptions">
+                <swiper
+                    ref="gamesSwiper"
+                    :options="swiperOptions"
+                    class="swiper"
+                >
                     <swiper-slide v-for="(item, i) in filteredGames" :key="i">
                         <GamesCard>
                             <div class="game-card">
@@ -101,9 +119,13 @@
                                     alt="game-image"
                                     :src="item.src"
                                 />
-                                <h2 class="caption white-text"></h2>
-                            </div> </GamesCard
-                    ></swiper-slide>
+                                <h2 class="caption white-text">
+                                    {{ item.title }}
+                                </h2>
+                            </div>
+                        </GamesCard></swiper-slide
+                    >
+                    <div slot="pagination" class="swiper-pagination"></div>
                 </swiper>
             </template>
         </SliderBlock>
@@ -120,7 +142,8 @@ export default {
         const tournaments = (await $db.read('/tournaments')) || []
         const games = (await $db.read('/games')) || []
         const partners = (await $db.read('/partners')) || []
-        return { games, partners, tournaments }
+        const news = (await $db.read('/news')) || []
+        return { games, partners, tournaments, news }
     },
 
     data() {
@@ -140,22 +163,30 @@ export default {
 
             swiperOptions: {
                 slidesPerView: 1,
-                spaceBetween: 14,
+                slidesPerGroup: 1,
+                spaceBetween: 7,
+                loop: false,
                 autoplay: {
-                    delay: 1000,
+                    delay: 7500,
                 },
-                // pagination: {
-                //     el: '.swiper-pagination',
-                //     clickable: true,
+                freeMode: {
+                    enabled: true,
+                    sticky: true,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                // navigation: {
+                //     nextEl: '.swiper-button-next',
+                //     prevEl: '.swiper-button-prev',
                 // },
-                centeredSlides: true,
-                centeredSlidesBounds: true,
+                // centeredSlides: true,
+                // centeredSlidesBounds: true,
                 breakpoints: {
-                    320: {
-                        slidesPerView: 1,
-                    },
                     768: {
-                        slidesPerView: 4,
+                        slidesPerView: 3,
+                        slidesPerGroup: 3,
                     },
                 },
             },
@@ -207,8 +238,30 @@ export default {
 
 
 <style lang="scss" scoped>
+.main {
+    padding: 1rem;
+}
+.offer {
+    position: relative;
+    img {
+        padding: 1rem;
+        width: 100%;
+        object-fit: contain;
+    }
+    .offer__extras {
+        display: none;
+    }
+}
+
+.swiper,
+.swiper-wrapper {
+    min-width: 100%;
+}
 .swiper-slide {
-    max-width: 300px;
+    width: 300px;
+}
+.swiper-pagination {
+    margin-top: 5rem;
 }
 
 .partners {
@@ -228,10 +281,8 @@ export default {
 }
 
 .game-card {
-    width: 100%;
-    height: 128px;
-    width: 300px;
-    height: 400px;
+    min-width: 300px;
+    min-height: 400px;
     position: relative;
     &:hover {
         cursor: pointer;
@@ -253,5 +304,16 @@ export default {
 }
 
 @media only screen and (min-width: 769px) {
+    .offer {
+        .offer__extras {
+            display: flex;
+            position: absolute;
+            justify-content: space-between;
+            width: 180px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
 }
 </style>
