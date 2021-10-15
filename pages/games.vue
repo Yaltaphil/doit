@@ -10,12 +10,12 @@
         </div>
 
         <div class="sheet">
-            <GamesCard v-for="(item, i) in showItems" :key="i">
-                <div class="game-card" @click="alert(i)">
-                    <img class="pic" :src="item.src" alt="game image" />
-                    <h2 class="caption white-text">{{ item.title }}</h2>
-                </div>
-            </GamesCard>
+            <GamesCard
+                v-for="(item, i) in showItems"
+                :key="i"
+                :game="item"
+                @selected="selected(item)"
+            />
             <Observer @intersect="intersected" />
         </div>
     </section>
@@ -62,6 +62,10 @@ export default {
         intersected() {
             this.numberOfGamesToShow += this.pageSize
         },
+
+        selected(target) {
+            this.$toast.success(`Game ${target.title}`)
+        },
     },
 }
 </script>
@@ -79,41 +83,10 @@ section {
     display: flex;
     flex-flow: column nowrap;
     gap: 1rem;
-    .game-card {
-        width: 100%;
-        height: 128px;
-        position: relative;
-        &:hover {
-            cursor: pointer;
-            transform: scale(1.025);
-            filter: drop-shadow(0 0 10px rgb(129, 1, 1));
-        }
-        .pic {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .caption {
-            position: absolute;
-            bottom: 2rem;
-            text-align: center;
-            width: 100%;
-            z-index: 1;
-        }
-    }
 }
 @media only screen and (min-width: 769px) {
     .sheet {
         flex-flow: row wrap;
-        .game-card {
-            // width: 387px;
-            width: 300px;
-            // height: 500px;
-            height: 400px;
-            .caption {
-                bottom: 3rem;
-            }
-        }
     }
 }
 </style>

@@ -112,19 +112,8 @@
                     class="swiper"
                 >
                     <swiper-slide v-for="(item, i) in filteredGames" :key="i">
-                        <GamesCard>
-                            <div class="game-card">
-                                <img
-                                    class="pic"
-                                    alt="game-image"
-                                    :src="item.src"
-                                />
-                                <h2 class="caption white-text">
-                                    {{ item.title }}
-                                </h2>
-                            </div>
-                        </GamesCard></swiper-slide
-                    >
+                        <GamesCard :game="item" />
+                    </swiper-slide>
                     <div slot="pagination" class="swiper-pagination"></div>
                 </swiper>
             </template>
@@ -277,29 +266,6 @@ export default {
         &:hover {
             cursor: pointer;
         }
-    }
-}
-
-.game-card {
-    min-width: 300px;
-    min-height: 400px;
-    position: relative;
-    &:hover {
-        cursor: pointer;
-        transform: scale(1.025);
-        filter: drop-shadow(0 0 10px rgb(129, 1, 1));
-    }
-    .pic {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .caption {
-        position: absolute;
-        text-align: center;
-        width: 100%;
-        z-index: 1;
-        bottom: 3rem;
     }
 }
 

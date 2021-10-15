@@ -1,7 +1,7 @@
 <template>
     <div class="frame" @click="$emit('selected', tournament)">
         <div class="image">
-            <img :src="tournament.src" atl="" />
+            <img :src="tournament.src" alt="" />
         </div>
         <div class="title">{{ tournament.title }}</div>
         <div class="info">
