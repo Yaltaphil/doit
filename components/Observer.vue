@@ -4,19 +4,20 @@
 
 <script>
 export default {
-    props: ['options'],
+    props: { options: { type: Object, default: () => {} } },
 
-    data: () => ({
-        observer: null,
-    }),
+    data() {
+        return {
+            observer: null,
+        }
+    },
 
     mounted() {
-        const options = this.options || {}
         this.observer = new IntersectionObserver(([entry]) => {
-            if (entry && entry.isIntersecting) {
+            if (entry?.isIntersecting) {
                 this.$emit('intersect')
             }
-        }, options)
+        }, this.options)
 
         this.observer.observe(this.$el)
     },
