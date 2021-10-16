@@ -36,9 +36,7 @@ export default {
 }
 @media only screen and (min-width: 769px) {
     .game-card {
-        // width: 387px;
         width: 300px;
-        // height: 500px;
         height: 400px;
         .caption {
             bottom: 3rem;

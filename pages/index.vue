@@ -35,10 +35,7 @@
                         v-for="(item, i) in filteredTournaments"
                         :key="i"
                     >
-                        <TournamentCard
-                            :tournament="item"
-                            @selected="console.log()"
-                        />
+                        <TournamentCard :tournament="item" />
                     </swiper-slide>
                     <div slot="pagination" class="swiper-pagination"></div>
                 </swiper>
@@ -72,16 +69,8 @@
                     class="swiper"
                 >
                     <swiper-slide v-for="(item, i) in filteredStreams" :key="i">
-                        <GamesCard>
-                            <div class="game-card">
-                                <img
-                                    class="pic"
-                                    alt="game-image"
-                                    :src="item.src"
-                                />
-                                <h2 class="caption white-text"></h2>
-                            </div> </GamesCard
-                    ></swiper-slide>
+                        <GamesCard :game="item" />
+                    </swiper-slide>
                     <div slot="pagination" class="swiper-pagination"></div>
                 </swiper>
             </template>
@@ -153,7 +142,7 @@ export default {
             swiperOptions: {
                 slidesPerView: 1,
                 slidesPerGroup: 1,
-                spaceBetween: 7,
+
                 loop: false,
                 autoplay: {
                     delay: 7500,
@@ -174,6 +163,7 @@ export default {
                 // centeredSlidesBounds: true,
                 breakpoints: {
                     768: {
+                        spaceBetween: 14,
                         slidesPerView: 3,
                         slidesPerGroup: 3,
                     },
@@ -227,9 +217,6 @@ export default {
 
 
 <style lang="scss" scoped>
-.main {
-    padding: 1rem;
-}
 .offer {
     position: relative;
     img {
@@ -247,7 +234,7 @@ export default {
     min-width: 100%;
 }
 .swiper-slide {
-    width: 300px;
+    max-width: 370px;
 }
 .swiper-pagination {
     margin-top: 5rem;
