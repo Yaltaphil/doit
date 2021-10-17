@@ -67,13 +67,17 @@ export default {
     },
 
     methods: {
-        async submit() {
+        submit() {
             this.isBusy = true
             try {
-                await this.$fire.auth.signInWithEmailAndPassword(
-                    this.login,
-                    this.password
-                )
+                // await this.$fire.auth.signInWithEmailAndPassword(
+                //     this.login,
+                //     this.password)
+
+                this.$auth.loginWith('firebaseStrategy', {
+                    data: { email: this.login, password: this.password },
+                })
+
                 this.$toast.show('Successfully logged in')
                 this.$router.push('/player') // + firebase id
             } catch (e) {

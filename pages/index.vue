@@ -4,13 +4,13 @@
             <img src="~/assets/img/offer.png" alt="offer" />
             <div class="offer__extras">
                 <BaseButton
-                    v-if="!isAuth"
+                    v-if="!$auth.loggedIn"
                     class="secondary white"
                     @click="$router.push('/login')"
                     >Login</BaseButton
                 >
                 <BaseButton
-                    v-if="!isAuth"
+                    v-if="!$auth.loggedIn"
                     class="primary"
                     @click="$router.push('/signup')"
                     >Sign up</BaseButton

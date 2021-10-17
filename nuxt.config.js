@@ -76,6 +76,7 @@ export default {
         '@nuxtjs/axios',
         '@nuxtjs/firebase',
         '@nuxtjs/toast',
+        '@nuxtjs/auth',
     ],
 
     // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -114,5 +115,15 @@ export default {
         // theme: 'bubble',
         // icon: '!',
         // type: "info"
+    },
+
+    // auth
+    auth: {
+        strategies: {
+            firebaseStrategy: {
+                    scheme: '~/schemes/firebaseScheme',
+
+            },
+        },
     },
 }

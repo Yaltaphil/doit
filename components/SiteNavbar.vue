@@ -20,8 +20,9 @@
                 {{ item }}
             </nuxt-link>
             <div class="menu__extras">
+                {{ $auth.loggedIn }}
                 <BaseButton
-                    v-if="!isAuth"
+                    v-if="!$auth.loggedIn"
                     class="secondary"
                     :class="{ block: showBurgerMenu }"
                     @click="
@@ -31,7 +32,7 @@
                     >Login</BaseButton
                 >
                 <BaseButton
-                    v-if="!isAuth"
+                    v-if="!$auth.loggedIn"
                     class="primary"
                     :class="{ block: showBurgerMenu }"
                     @click="
@@ -41,7 +42,7 @@
                     >Sign up</BaseButton
                 >
                 <ProfileBadgeMenu
-                    v-if="isAuth && !showBurgerMenu"
+                    v-if="$auth.loggedIn && !showBurgerMenu"
                     @logout-call="logout"
                 />
             </div>
