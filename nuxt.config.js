@@ -121,9 +121,10 @@ export default {
     auth: {
         strategies: {
             firebaseStrategy: {
-                    scheme: '~/schemes/firebaseScheme',
-
+                scheme: '~/schemes/firebaseScheme',
             },
         },
     },
+
+    loading: '~/components/loading.vue',
 }

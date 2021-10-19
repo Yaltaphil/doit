@@ -18,8 +18,8 @@ export default {
     position: relative;
     &:hover {
         cursor: pointer;
-        transform: scale(1.025);
-        filter: drop-shadow(0 0 10px rgb(129, 1, 1));
+        transform: scale(1.015);
+        filter: drop-shadow(0 0 8px rgb(129, 1, 1));
     }
     .pic {
         width: 100%;
@@ -36,10 +36,10 @@ export default {
 }
 @media only screen and (min-width: 769px) {
     .game-card {
-        width: 300px;
-        height: 400px;
+        width: 387px;
+        height: 500px;
         .caption {
-            bottom: 3rem;
+            bottom: 4rem;
         }
     }
 }

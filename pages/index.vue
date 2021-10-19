@@ -17,6 +17,7 @@
                 >
             </div>
         </section>
+        <div class="spacer"></div>
         <SliderBlock>
             <template #header> <h1>Tournaments</h1></template>
             <template #selector>
@@ -41,7 +42,7 @@
                 </swiper>
             </template>
         </SliderBlock>
-
+        <div class="spacer"></div>
         <SliderBlock>
             <template #header> <h1>News</h1></template>
             <template #selector>
@@ -57,8 +58,14 @@
             </template>
         </SliderBlock>
 
+        <div class="spacer"></div>
+
         <SliderBlock>
-            <template #header> <h1>Streams</h1></template>
+            <template #header>
+                <h1>
+                    Streams <img src="~/assets/img/stream-on-air.png" alt="" />
+                </h1>
+            </template>
             <template #selector>
                 <MainTabs :tabs="tabs" @selected="streamsPattern = $event" />
             </template>
@@ -69,12 +76,14 @@
                     class="swiper"
                 >
                     <swiper-slide v-for="(item, i) in filteredStreams" :key="i">
-                        <GamesCard :game="item" />
+                        <StreamCard :stream="item" />
                     </swiper-slide>
                     <div slot="pagination" class="swiper-pagination"></div>
                 </swiper>
             </template>
         </SliderBlock>
+
+        <div class="spacer"></div>
 
         <section>
             <h1>Partners</h1>
@@ -88,6 +97,8 @@
                 </div>
             </div>
         </section>
+
+        <div class="spacer"></div>
 
         <SliderBlock>
             <template #header> <h1>Games</h1></template>
@@ -120,8 +131,9 @@ export default {
         const tournaments = (await $db.read('/tournaments')) || []
         const games = (await $db.read('/games')) || []
         const partners = (await $db.read('/partners')) || []
+        const streams = (await $db.read('/streams')) || []
         const news = (await $db.read('/news')) || []
-        return { games, partners, tournaments, news }
+        return { games, partners, tournaments, streams, news }
     },
 
     data() {
@@ -140,12 +152,12 @@ export default {
             ],
 
             swiperOptions: {
-                slidesPerView: 1,
+                slidesPerView: 'auto',
                 slidesPerGroup: 1,
-
+                spaceBetween: 30,
                 loop: false,
                 autoplay: {
-                    delay: 7500,
+                    delay: 10500,
                 },
                 freeMode: {
                     enabled: true,
@@ -163,8 +175,8 @@ export default {
                 // centeredSlidesBounds: true,
                 breakpoints: {
                     768: {
-                        spaceBetween: 14,
-                        slidesPerView: 3,
+                        spaceBetween: 30,
+                        slidesPerView: 'auto',
                         slidesPerGroup: 3,
                     },
                 },
@@ -217,6 +229,21 @@ export default {
 
 
 <style lang="scss" scoped>
+.main {
+    background: linear-gradient(
+            180deg,
+            #0f1215 0%,
+            rgba(15, 18, 21, 0) 32.81%,
+            rgba(15, 18, 21, 0) 79.69%,
+            #0f1215 100%
+        ),
+        url('@/assets/img/main_bg.png'), #0f1215;
+}
+
+.spacer {
+    height: 3rem;
+}
+
 .offer {
     position: relative;
     img {
@@ -237,7 +264,7 @@ export default {
     max-width: 370px;
 }
 .swiper-pagination {
-    margin-top: 5rem;
+    z-index: 2;
 }
 
 .partners {

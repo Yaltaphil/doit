@@ -1,6 +1,5 @@
 ,<template>
     <section>
-        <BasePreloader v-show="isBusy" />
         <BaseLogo class="logo" />
         <h1>Sign up 2/2</h1>
         <form @submit.prevent="submit">

@@ -1,6 +1,5 @@
 <template>
     <section>
-        <BasePreloader v-show="isBusy" />
         <div class="search">
             <h1>Games</h1>
             <BaseInput
@@ -72,7 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 section {
-    padding: 1rem;
+    padding: 1rem 0;
     .search {
         padding: 0 2rem;
         display: flex;
@@ -82,7 +81,8 @@ section {
 .sheet {
     display: flex;
     flex-flow: column nowrap;
-    gap: 1rem;
+    justify-content: space-evenly;
+    gap: 7px 3px;
 }
 @media only screen and (min-width: 769px) {
     .sheet {

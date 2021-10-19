@@ -1,6 +1,5 @@
 ,<template>
     <section>
-        <BasePreloader v-show="isBusy" />
         <BaseLogo class="logo" />
         <h1>Sign up 1/2</h1>
         <form autocomplete="off" @submit.prevent="submit">
@@ -72,7 +71,7 @@ export default {
                     this.password
                 )
                 this.$toast.show('Sign up successful!')
-                    this.$router.push('/signupNextStep')
+                this.$router.push('/signupNextStep')
             } catch (e) {
                 this.$toast.error(
                     `Sign up problem, please, retry!   ${e.message}`

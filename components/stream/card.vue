@@ -1,18 +1,16 @@
 <template>
-    <div class="frame" @click="$emit('selected', news)">
+    <div class="frame" @click="$emit('selected', stream)">
         <div class="image">
-            <img :src="news.src" atl="" />
+            <img :src="stream.src" atl="" />
         </div>
-        <div class="title">{{ news.title }}</div>
-        <div class="info">
-            {{ news.description }}
-        </div>
+        <div class="title">{{ stream.title }}</div>
+
     </div>
 </template>
 
 <script>
 export default {
-    props: { news: { type: Object, default: () => {} } },
+    props: { stream: { type: Object, default: () => {} } },
 }
 </script>
 
@@ -46,12 +44,6 @@ export default {
         font-style: normal;
         color: #0f1215;
     }
-    .info {
-        height: 154px;
-        padding: 1rem;
-        font-size: 16px;
-        line-height: 150%;
-        color: #5e656b;
-    }
+
 }
 </style>
