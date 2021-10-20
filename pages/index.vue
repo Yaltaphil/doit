@@ -17,7 +17,9 @@
                 >
             </div>
         </section>
+
         <div class="spacer"></div>
+
         <SliderBlock>
             <template #header> <h1>Tournaments</h1></template>
             <template #selector>
@@ -42,7 +44,9 @@
                 </swiper>
             </template>
         </SliderBlock>
+
         <div class="spacer"></div>
+
         <SliderBlock>
             <template #header> <h1>News</h1></template>
             <template #selector>
@@ -63,7 +67,12 @@
         <SliderBlock>
             <template #header>
                 <h1>
-                    Streams <img src="~/assets/img/stream-on-air.png" alt="" />
+                    Streams
+                    <img
+                        class="blink"
+                        src="~/assets/img/stream-on-air.png"
+                        alt=""
+                    />
                 </h1>
             </template>
             <template #selector>
@@ -75,8 +84,11 @@
                     :options="swiperOptions"
                     class="swiper"
                 >
-                    <swiper-slide v-for="(item, i) in filteredStreams" :key="i">
-                        <StreamCard :stream="item" />
+                    <swiper-slide v-for="i in numberOfStreamsSlides" :key="i">
+                        <StreamCard
+                            :streams="streamsGroup(i)"
+                            @selected="$toast.success($event)"
+                        />
                     </swiper-slide>
                     <div slot="pagination" class="swiper-pagination"></div>
                 </swiper>
@@ -138,7 +150,6 @@ export default {
 
     data() {
         return {
-            isBusy: true,
             gamesPattern: '',
             tournamentsPattern: '',
             newsPattern: '',
@@ -156,6 +167,8 @@ export default {
                 slidesPerGroup: 1,
                 spaceBetween: 30,
                 loop: false,
+                centeredSlides: true,
+                centeredSlidesBounds: true,
                 autoplay: {
                     delay: 10500,
                 },
@@ -166,15 +179,12 @@ export default {
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
+                    dynamicBullets: true,
                 },
-                // navigation: {
-                //     nextEl: '.swiper-button-next',
-                //     prevEl: '.swiper-button-prev',
-                // },
-                // centeredSlides: true,
-                // centeredSlidesBounds: true,
                 breakpoints: {
                     768: {
+                        centeredSlides: false,
+                        centeredSlidesBounds: false,
                         spaceBetween: 30,
                         slidesPerView: 'auto',
                         slidesPerGroup: 3,
@@ -207,13 +217,17 @@ export default {
         filteredStreams() {
             return this.filterArray(this.streams, this.streamsPattern)
         },
+        numberOfStreamsSlides() {
+            return Math.ceil(this.filteredStreams.length / 3)
+        },
+
         filteredGames() {
             return this.filterArray(this.games, this.gamesPattern)
         },
     },
 
     mounted() {
-        this.isBusy = false
+        this.tournamentsSwiper.slideTo(10)
     },
 
     methods: {
@@ -222,6 +236,12 @@ export default {
             return arr.filter((item) =>
                 item.title?.toLowerCase().includes(pattern.toLowerCase())
             )
+        },
+
+        streamsGroup(groupIndex) {
+            const first = (groupIndex - 1) * 3
+            const last = (groupIndex - 1) * 3 + 3
+            return this.filteredStreams.slice(first, last) || []
         },
     },
 }
@@ -242,6 +262,15 @@ export default {
 
 .spacer {
     height: 3rem;
+}
+
+.blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+    to {
+        opacity: 0.6;
+    }
 }
 
 .offer {

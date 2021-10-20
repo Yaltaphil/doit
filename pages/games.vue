@@ -81,7 +81,7 @@ section {
 .sheet {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-evenly;
+    justify-content: center;
     gap: 7px 3px;
 }
 @media only screen and (min-width: 769px) {

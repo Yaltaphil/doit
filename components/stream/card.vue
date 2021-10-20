@@ -1,16 +1,28 @@
 <template>
-    <div class="frame" @click="$emit('selected', stream)">
+    <div class="frame">
         <div class="image">
-            <img :src="stream.src" atl="" />
+            <div class="image1" @click="$emit('selected')">
+                <img :src="source(streams[0])" alt="" />
+            </div>
+            <div class="image2" @click="$emit('selected')">
+                <img :src="source(streams[1])" alt="" />
+            </div>
+            <div class="image3" @click="$emit('selected')">
+                <img :src="source(streams[2])" alt="" />
+            </div>
         </div>
-        <div class="title">{{ stream.title }}</div>
-
     </div>
 </template>
 
 <script>
 export default {
-    props: { stream: { type: Object, default: () => {} } },
+    props: { streams: { type: Array, default: () => [] } },
+
+    methods: {
+        source(x) {
+            return x?.src || this.stream[0].src
+        },
+    },
 }
 </script>
 
@@ -22,19 +34,42 @@ export default {
     border: 2px solid #e1e6eb;
     border-radius: 2px;
     filter: drop-shadow(0px 16px 44px rgba(0, 0, 0, 0.12));
+    border-radius: 2px 2px 0px 0px;
     &:hover {
         cursor: pointer;
     }
     .image {
-        width: 370px;
-        height: 200px;
-        img {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        .image1 {
+            position: absolute;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 2px 2px 0px 0px;
+            height: 50%;
+            top: 0;
+            left: 0;
+        }
+        .image2 {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            top: 50%;
+            left: 0;
+        }
+        .image3 {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            top: 50%;
+            right: 0;
         }
     }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
     .title {
         font-weight: bold;
         font-size: 22px;
@@ -44,6 +79,5 @@ export default {
         font-style: normal;
         color: #0f1215;
     }
-
 }
 </style>
