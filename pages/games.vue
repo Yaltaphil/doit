@@ -32,7 +32,6 @@ export default {
     data() {
         return {
             searchPattern: '',
-            isBusy: true,
             pageSize: 6,
             numberOfGamesToShow: 12,
         }

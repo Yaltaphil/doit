@@ -55,7 +55,7 @@
             <template #slider>
                 <swiper ref="newsSwiper" :options="swiperOptions">
                     <swiper-slide v-for="(item, i) in filteredNews" :key="i">
-                        <NewsCard :news="item"
+                        <NewsSliderCard :news="item"
                     /></swiper-slide>
                     <div slot="pagination" class="swiper-pagination"></div>
                 </swiper>

@@ -27,6 +27,7 @@ export default {
 @media only screen and (min-width: 769px) {
     .tabs {
         height: 56px;
+        max-height: 56px;
         text-decoration: none;
         display: flex;
         justify-content: space-evenly;

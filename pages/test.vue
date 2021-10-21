@@ -77,14 +77,6 @@ import newsData from '~/mocks/news.js'
 import streamsData from '~/mocks/streams.js'
 
 export default {
-    layout: 'default',
-
-    // async asyncData({ $axios }) {
-    //     const comments = await $axios.$get(
-    //         'https://jsonplaceholder.typicode.com/comments?postId=1'
-    //     )
-    //     return { comments }
-    // },
 
     data() {
         return {
