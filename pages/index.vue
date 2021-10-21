@@ -226,10 +226,6 @@ export default {
         },
     },
 
-    mounted() {
-        this.tournamentsSwiper.slideTo(10)
-    },
-
     methods: {
         filterArray(arr, pattern) {
             if (!Array.isArray(arr)) return arr

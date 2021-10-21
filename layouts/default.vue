@@ -2,7 +2,9 @@
     <div class="wrapper">
         <SiteNavbar />
         <SiteSidebar />
-        <Nuxt class="content" />
+        <transition name="home">
+            <Nuxt class="content" />
+        </transition>
     </div>
 </template>
 
@@ -18,6 +20,15 @@ export default {
 
 <style lang="scss">
 //wrapper in globals
+
+.home-enter-active,
+.home-leave-active {
+    transition: opacity 1s;
+}
+.home-enter,
+.home-leave-active {
+    opacity: 0;
+}
 
 @media only screen and (min-width: 769px) {
     .content {
