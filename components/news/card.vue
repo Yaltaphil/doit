@@ -28,6 +28,7 @@ export default {
     width: 100%;
     height: 358px;
     overflow: hidden;
+    background: #10171f;
     &:hover {
         cursor: pointer;
     }
@@ -37,30 +38,32 @@ export default {
         img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: fill;
         }
     }
     .title {
-        font-weight: bold;
-        font-size: 22px;
-        line-height: 130%;
         height: 70px;
         padding: 1rem;
+        font-weight: bold;
         font-style: normal;
+        font-size: 18px;
+        line-height: 27px;
+        color: #f5f5f5;
+        opacity: 0.88;
     }
     .info {
-        margin-top: 1rem;
         height: 154px;
+        margin-top: 1rem;
         padding: 1rem;
         font-size: 16px;
         line-height: 150%;
-        color: #5e656b;
+        color: #67707a;
     }
 }
 
 @media only screen and (min-width: 769px) {
     .frame {
-        width: min(288px, 23%);
+        width: min(288px, 22%);
         height: 490px;
         .image {
             width: 100%;
@@ -69,7 +72,7 @@ export default {
     }
 
     .bigCard {
-        width: min(600px, 48%);
+        width: min(600px, 47%);
         height: 328px;
         .image {
             width: 208px;

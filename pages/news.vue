@@ -15,7 +15,7 @@
                     v-for="(item, i) in showItems()"
                     :key="i"
                     :news="item"
-                    :big="i < 2"
+                    :big="i < 2 || i % 6 === 0 || i % 6 === 1"
                     @selected="$toast.success($event.title)"
                 />
                 <Observer @intersect="intersected" />
@@ -80,9 +80,9 @@ export default {
 .spacer {
     height: 3rem;
 }
-
 .block {
     width: 100%;
+    padding: 0 2rem;
     .header {
         margin-bottom: 1rem;
         width: 100%;
@@ -103,12 +103,12 @@ export default {
         width: 100%;
         height: 500px;
         margin: 3rem 0;
+        padding: 0;
         .header {
             height: 90px;
             width: 100%;
             flex-direction: row;
         }
-
         .feed {
             flex-flow: row wrap;
             justify-content: flex-start;
