@@ -15,7 +15,7 @@
                     v-for="(item, i) in showItems()"
                     :key="i"
                     :news="item"
-                    :big="i < 2 || i % 6 === 0 || i % 6 === 1"
+                    :big="i % 6 === 0 || i % 6 === 1"
                     @selected="$toast.success($event.title)"
                 />
                 <Observer @intersect="intersected" />
