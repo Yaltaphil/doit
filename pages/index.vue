@@ -246,6 +246,7 @@ export default {
 
 <style lang="scss" scoped>
 .main {
+    padding: 0 2rem;
     background: linear-gradient(
             180deg,
             #0f1215 0%,
@@ -309,6 +310,9 @@ export default {
 }
 
 @media only screen and (min-width: 769px) {
+    .main {
+        padding: 0;
+    }
     .offer {
         .offer__extras {
             display: flex;
