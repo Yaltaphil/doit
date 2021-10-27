@@ -69,6 +69,8 @@
 
 <script>
 export default {
+    name: 'Premium',
+
     data() {
         return {
             swiperOptions: {
@@ -122,8 +124,8 @@ export default {
     flex-flow: column nowrap;
     align-items: flex-start;
     justify-content: space-evenly;
-    gap: 3rem;
-    padding: 2rem;
+    gap: 2.5rem;
+    padding: 1.75rem;
 
     .card__title {
         font-style: normal;
@@ -206,7 +208,8 @@ export default {
         min-width: calc(100% / 3);
         height: 540px;
         .card__button {
-            width: fit-content;
+            align-self: center;
+            width: 50%;
         }
     }
 }

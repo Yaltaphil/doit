@@ -23,7 +23,7 @@ export default {
 
 .home-enter-active,
 .home-leave-active {
-    transition: opacity 1s;
+    transition: opacity 0.75s;
 }
 .home-enter,
 .home-leave-active {

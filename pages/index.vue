@@ -126,10 +126,14 @@
                     <swiper-slide v-for="(item, i) in filteredGames" :key="i">
                         <GamesCard :game="item" />
                     </swiper-slide>
+
                     <div slot="pagination" class="swiper-pagination"></div>
                 </swiper>
             </template>
         </SliderBlock>
+
+        <div class="spacer"></div>
+        <div class="spacer"></div>
     </div>
 </template>
 
@@ -163,19 +167,16 @@ export default {
             ],
 
             swiperOptions: {
-                slidesPerView: 'auto',
-                slidesPerGroup: 1,
+                slidesPerView: "auto",
+                // slidesPerGroup: 1,
                 spaceBetween: 30,
-                loop: false,
-                centeredSlides: true,
-                centeredSlidesBounds: true,
-                autoplay: {
-                    delay: 10500,
-                },
-                freeMode: {
-                    enabled: true,
-                    sticky: true,
-                },
+                // autoplay: {
+                //     delay: 7777,
+                // },
+                // freeMode: {
+                //     enabled: true,
+                //     sticky: true,
+                // },
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
@@ -183,8 +184,6 @@ export default {
                 },
                 breakpoints: {
                     768: {
-                        centeredSlides: false,
-                        centeredSlidesBounds: false,
                         spaceBetween: 30,
                         slidesPerView: 'auto',
                         slidesPerGroup: 3,
@@ -285,9 +284,11 @@ export default {
 .swiper,
 .swiper-wrapper {
     min-width: 100%;
+    height: 500px;
 }
 .swiper-slide {
     max-width: 370px;
+    height: 472px;
 }
 .swiper-pagination {
     z-index: 2;

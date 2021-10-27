@@ -30,6 +30,7 @@
                         v-for="(menuItem, i) in menuItems"
                         :key="i"
                         class="white-text"
+                        @click="menuHandler(menuItem)"
                     >
                         {{ menuItem }}
                     </li>
@@ -120,12 +121,19 @@ export default {
                 'About me',
                 'Number four',
                 'Awards and medals',
-                'Number six',
+                'Premium',
                 'Number seven',
                 'Number eight',
                 'Number nine',
             ],
         }
+    },
+
+    methods: {
+        menuHandler(item) {
+            console.log(item)
+            this.$router.push(`/${item}`)
+        },
     },
 }
 </script>

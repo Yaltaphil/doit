@@ -14,7 +14,6 @@ export default {
 <style lang="scss">
 // classes: primary secondary block white
 .button {
-    // width: 160px;
     padding: 0.75rem 1rem;
     display: flex;
     flex-direction: row;
@@ -32,7 +31,7 @@ export default {
     color: #f5f5f5;
     &:hover {
         cursor: pointer;
-        transform: scale(1.03);
+        // transform: scale(1.005);
         filter: drop-shadow(0px 0px 1px rgba(247, 243, 3, 0.815));
     }
     &:active {
