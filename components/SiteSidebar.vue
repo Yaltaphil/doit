@@ -21,7 +21,7 @@ export default {
                 {
                     title: 'knight',
                     src: require('@/assets/img/001-knight.svg'),
-                    to: '/',
+                    to: '/player',
                 },
                 {
                     title: 'trophy',

@@ -20,7 +20,6 @@
                 {{ item }}
             </nuxt-link>
             <div class="menu__extras">
-                {{ $auth.loggedIn }}
                 <BaseButton
                     v-if="!$auth.loggedIn"
                     class="secondary"

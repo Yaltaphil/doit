@@ -119,6 +119,7 @@ export default {
 
 .card {
     width: calc(100% - 4rem);
+
     height: auto;
     display: flex;
     flex-flow: column nowrap;
@@ -206,6 +207,7 @@ export default {
     .card {
         margin: 0 1rem;
         min-width: calc(100% / 3);
+        max-width: 400px;
         height: 540px;
         .card__button {
             align-self: center;

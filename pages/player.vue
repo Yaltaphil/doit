@@ -37,65 +37,8 @@
                 </ul>
             </div>
         </div>
-
-        <div class="profile-table">
-            <p class="section-header">Profile</p>
-            <table>
-                <tbody>
-                    <tr>
-                        <td class="gray-text">ID</td>
-                        <td class="white-text">{{ user.id }}</td>
-                    </tr>
-                    <tr>
-                        <td class="gray-text">Name</td>
-                        <td class="white-text">{{ user.name }}</td>
-                    </tr>
-                    <tr>
-                        <td class="gray-text">Nickname</td>
-                        <td class="white-text">{{ user.nickName }}</td>
-                    </tr>
-                    <tr>
-                        <td class="gray-text">With us from</td>
-                        <td class="white-text">{{ user.withUsFrom }}</td>
-                    </tr>
-                    <tr>
-                        <td class="gray-text">Sex / Age</td>
-                        <td class="white-text">
-                            {{ user.sex + ' / ' + user.age }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="gray-text">Nationality</td>
-                        <td class="white-text">{{ user.nationality }}</td>
-                    </tr>
-                    <tr>
-                        <td class="gray-text">Country</td>
-                        <td class="white-text">{{ user.country }}</td>
-                    </tr>
-                    <tr>
-                        <td class="gray-text">Web-site</td>
-                        <td class="white-text">
-                            <a
-                                target="_blank"
-                                class="white-text"
-                                :href="user.webSite"
-                                >{{ user.webSite }}</a
-                            >
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="user-awards">
-            <p class="section-header">Level and awards</p>
-            <ProfileGameProgress
-                v-for="item in user.games"
-                :key="item.title"
-                :value="item.value"
-                :color="item.color"
-                >{{ item.title }}</ProfileGameProgress
-            >
+        <div>
+            <NuxtChild keep-alive :key="$route.name" />
         </div>
     </div>
 </template>
@@ -117,22 +60,22 @@ export default {
             user: User,
             menuItems: [
                 'Profile',
-                'Number two',
+                'Panel',
+                'Settings',
                 'About me',
-                'Number four',
+                'Preferences',
                 'Awards and medals',
                 'Premium',
-                'Number seven',
-                'Number eight',
-                'Number nine',
+                'Support',
+                'Team',
+                'Statistics',
             ],
         }
     },
 
     methods: {
         menuHandler(item) {
-            console.log(item)
-            this.$router.push(`/${item}`)
+            this.$router.push(`/player/${item.toLowerCase()}`)
         },
     },
 }
@@ -176,27 +119,13 @@ export default {
             }
         }
     }
-
-    .profile-table {
-        flex: 3;
-        tr {
-            height: 32px;
-            td {
-                width: 160px;
-            }
-        }
-    }
-    .user-awards {
-        flex: 4;
-        width: 100%;
-        // min-width: 200px;
-    }
 }
 
 @media only screen and (min-width: 769px) {
     .page-content {
         flex-direction: row;
         align-items: flex-start;
+        justify-content: flex-start;
         .info {
             min-width: 200px;
             border-right: 1px solid #1a1f24;
@@ -208,5 +137,15 @@ export default {
             display: block;
         }
     }
+}
+
+.slide-enter-active,
+.slide-leave-active {
+    transition: opacity 1.75s;
+}
+.slide-enter,
+.slide-leave-active {
+    opacity: 0;
+    transform: translateX(-20px);
 }
 </style>
