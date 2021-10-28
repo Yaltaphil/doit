@@ -21,7 +21,7 @@
             >
             <BaseButton
                 class="white block"
-                :disabled="$v.$invalid || isBusy"
+                :disabled="$v.$invalid"
                 type="submit"
                 >Login</BaseButton
             >

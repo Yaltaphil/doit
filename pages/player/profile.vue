@@ -65,6 +65,10 @@
 <script>
 import User from '~/mocks/user.js'
 export default {
+    transition: {
+        name: 'slide',
+    },
+
     data() {
         return {
             user: User,
@@ -91,6 +95,16 @@ export default {
 }
 .user-awards {
     width: 100%;
-   min-width: 320px;
+    min-width: 320px;
 }
+
+// .slide-enter-active,
+// .slide-leave-active {
+//     transition: opacity 1.75s;
+// }
+// .slide-enter,
+// .slide-leave-active {
+//     opacity: 0;
+//     transform: translateX(-20px);
+// }
 </style>

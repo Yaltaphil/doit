@@ -37,8 +37,8 @@
                 </ul>
             </div>
         </div>
-        <div>
-            <NuxtChild keep-alive :key="$route.name" />
+        <div class="child">
+            <NuxtChild :key="$route.name" keep-alive />
         </div>
     </div>
 </template>
@@ -62,8 +62,8 @@ export default {
                 'Profile',
                 'Panel',
                 'Settings',
-                'About me',
-                'Preferences',
+                'Deposit',
+                'Withdraw',
                 'Awards and medals',
                 'Premium',
                 'Support',
@@ -139,13 +139,17 @@ export default {
     }
 }
 
+.child {
+    width: 100%;
+}
+
 .slide-enter-active,
 .slide-leave-active {
-    transition: opacity 1.75s;
+    transition: all 0.2s;
 }
 .slide-enter,
 .slide-leave-active {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateY(-40px);
 }
 </style>

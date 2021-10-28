@@ -49,7 +49,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+    transition: {
+        name: 'slide',
+    },
+}
 </script>
 
 <style lang="scss" scoped>

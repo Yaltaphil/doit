@@ -52,7 +52,8 @@ export default {
 
     async asyncData({ $db }) {
         const countries = await $db.read('/countries')
-        return { countries }
+        const games = await $db.read('/countriegames')
+        return { countries, games }
     },
 
     data() {

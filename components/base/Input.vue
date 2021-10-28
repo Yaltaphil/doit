@@ -34,7 +34,8 @@ export default {
 <style lang="scss" scoped>
 .input {
     position: relative;
-    width: 240px;
+    width: 100%;
+    min-width: 240px;
     height: 60px;
 
     & input {

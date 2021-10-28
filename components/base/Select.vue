@@ -3,6 +3,7 @@
         <label :for="_uid"> <slot></slot> </label>
         <v-select
             :id="_uid"
+            :class="{ input__invalid: invalid, input__success: success }"
             :options="options"
             v-bind="$attrs"
             v-on="$listeners"
@@ -23,6 +24,8 @@ export default {
             type: Array,
             default: () => [],
         },
+        invalid: { type: Boolean, default: false },
+        success: { type: Boolean, default: false },
     },
 }
 </script>
@@ -53,9 +56,9 @@ export default {
         font-size: 16px;
         color: #627ca3;
         background: #0f1215;
-        border-radius: 2px;
-        border: 1px solid #1c2f4d;
-        height: 40px;
+        // border-radius: 2px;
+        // border: 1px solid #1c2f4d;
+        // height: 38px;
     }
     & .vs__dropdown-menu {
         font-family: 'Rubik';
@@ -109,6 +112,15 @@ export default {
             border: 1px solid #1472ff;
             border-radius: 2px;
         }
+    }
+    .input__invalid {
+        border: 1px solid #b83333;
+        border-radius: 2px;
+    }
+
+    .input__success {
+        border: 1px solid #4cb725;
+        border-radius: 2px;
     }
 }
 </style>

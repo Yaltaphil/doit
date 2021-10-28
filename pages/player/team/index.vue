@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>User Panel</h1>
+        <h1>My Team</h1>
         <div class="panel">
             <div
                 v-for="(item, i) in panelItems"
@@ -25,16 +25,11 @@ export default {
     data() {
         return {
             panelItems: [
-                { title: 'My Profile', to: '/player/profile' },
-                { title: 'Game profile', to: '/player/settingsprofile' },
-                { title: 'Statistics', to: '/player/statistics' },
-                { title: 'My Team', to: '/player/team' },
-                { title: 'Deposit', to: '/player/deposit' },
-                { title: 'Withdraw', to: '/player/withdraw' },
-                { title: 'Premium account', to: '/player/premium' },
-                { title: 'Settings', to: '/player/settings' },
-                { title: 'Support', to: '/player/support' },
-                { title: 'Logout', to: '/logout' },
+                { title: 'Team Blacer', to: '/player/team/' },
+                { title: 'Team Blacer', to: '/player/team/' },
+                { title: 'Team Blacer', to: '/player/team/' },
+                { title: '+', to: '/player/team/create' },
+
             ],
         }
     },
