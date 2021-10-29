@@ -3,7 +3,7 @@
         <h1>My Team</h1>
         <div class="panel">
             <div
-                v-for="(item, i) in panelItems"
+                v-for="(item, i) in teams"
                 :key="i"
                 class="panel__item"
                 @click="handler(item)"
@@ -11,6 +11,9 @@
                 <span>
                     {{ item.title }}
                 </span>
+            </div>
+            <div class="panel__item" @click="addTeam">
+                <span> + </span>
             </div>
         </div>
     </div>
@@ -22,21 +25,22 @@ export default {
         name: 'slide',
     },
 
-    data() {
-        return {
-            panelItems: [
-                { title: 'Team Blacer', to: '/player/team/' },
-                { title: 'Team Blacer', to: '/player/team/' },
-                { title: 'Team Blacer', to: '/player/team/' },
-                { title: '+', to: '/player/team/create' },
+    async asyncData({ $db }) {
+        const teams = (await $db.read('/teams')) || []
+        return { teams }
+    },
 
-            ],
-        }
+    data() {
+        return {}
     },
 
     methods: {
         handler(target) {
             this.$router.push(target.to)
+        },
+
+        addTeam() {
+            this.$router.push('/player/team/create')
         },
     },
 }

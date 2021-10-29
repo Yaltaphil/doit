@@ -18,6 +18,8 @@
 
 <script>
 export default {
+    name: "Panel",
+    
     transition: {
         name: 'slide',
     },

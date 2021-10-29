@@ -38,7 +38,11 @@
             </div>
         </div>
         <div class="child">
-            <NuxtChild :key="$route.name" keep-alive />
+            <NuxtChild
+                :key="$route.name"
+                keep-alive
+                :include="['Profile', 'Panel', 'Settings']"
+            />
         </div>
     </div>
 </template>

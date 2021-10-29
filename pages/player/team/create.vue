@@ -6,7 +6,6 @@
                 <h3>Basic Info</h3>
                 <BaseInput
                     v-model.trim="$v.form.title.$model"
-                    class="input"
                     placeholder="team name"
                     type="text"
                     :invalid="$v.form.title.$dirty && $v.form.title.$error"
@@ -72,13 +71,15 @@
 
             <div class="form__group">
                 <h3>Advanced</h3>
-                <BaseInput v-model="form.logoUrl" type="file">Team Logo</BaseInput>
+                <BaseFileInput @logoSelected="logoSelected = $event"
+                    >Logo 128 x 128</BaseFileInput
+                >
             </div>
 
             <BaseButton
                 type="submit"
                 class="form__button primary white block"
-                :disabled="$v.form.$invalid"
+                :disabled="$v.form.$invalid || isBusy"
                 >Save</BaseButton
             >
         </form>
@@ -89,6 +90,8 @@
 import { required, minLength, url } from 'vuelidate/lib/validators'
 
 export default {
+    name: 'TeamCreate',
+
     transition: {
         name: 'slide',
     },
@@ -96,7 +99,7 @@ export default {
     async asyncData({ $db }) {
         const countries = await $db.read('/countries')
         const games = await $db.read('/games')
-        const teams = await $db.read('/teams') || []
+        const teams = (await $db.read('/teams')) || []
         return { countries, games, teams }
     },
 
@@ -110,8 +113,10 @@ export default {
                 password: '',
                 country: '',
                 webSite: 'http://mail.ru',
-                logoUrl: '',
+                logoUrl: '123',
             },
+            logoSelected: null,
+            isBusy: false,
         }
     },
 
@@ -145,13 +150,23 @@ export default {
     mounted() {},
 
     methods: {
-        submit() {
-            // const index = this.teams.length
+        async submit() {
+            this.isBusy = true
+            await this.upload()
             this.team = this.form
-            console.log(this.team)
             this.teams.push(this.team)
-            this.$db.write('/teams', this.teams)
+            await this.$db.write('/teams', this.teams)
+            this.isBusy = false
             this.$toast.success('Team created!')
+            this.$router.push('/player/team')
+        },
+
+        async upload() {
+            if (!this.logoSelected) return
+            this.form.logoUrl = await this.$db.uploadFile(
+                'logos/',
+                this.logoSelected
+            )
         },
     },
 }
@@ -171,13 +186,9 @@ export default {
         justify-content: flex-start;
         align-items: center;
         gap: 2rem;
-        .input {
-            width: 360px;
-        }
+
         .form__group {
-            h3 {
-                align-self: start;
-            }
+            width: 100%;
             padding: 3rem 2rem;
             background: #0f1215;
             border: 1px solid #20252b;
@@ -187,6 +198,9 @@ export default {
             justify-content: flex-start;
             align-items: center;
             gap: 30px;
+            h3 {
+                align-self: start;
+            }
         }
         .form__button {
             width: 160px;

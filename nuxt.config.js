@@ -111,7 +111,7 @@ export default {
 
     // toasts setup
     toast: {
-        position: 'bottom-center',
+        position: 'bottom-right',
         duration: 4000,
         // theme: 'bubble',
         // icon: '!',

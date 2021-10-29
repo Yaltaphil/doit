@@ -37,7 +37,7 @@ class DBServices {
     async uploadFile(path, file) {
         try {
             const snapshot = await this.$fire
-                .storage()
+                .storage
                 .ref()
                 .child(path + file.name)
                 .put(file)
@@ -54,7 +54,7 @@ class DBServices {
      */
     async removeFile(url) {
         try {
-            return await this.$fire.storage().refFromURL(url).delete()
+            return await this.$fire.storage.refFromURL(url).delete()
         } catch (e) {
             this.$toast.error(`Error removing file: ${e.message}`)
             // throw e
