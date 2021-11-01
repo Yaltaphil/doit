@@ -38,7 +38,9 @@ export default {
         img {
             width: 100%;
             height: 100%;
-            object-fit: fill;
+            top: 0;
+            left: 0;
+            object-fit: cover;
         }
     }
     .title {
@@ -72,7 +74,7 @@ export default {
     }
 
     .bigCard {
-        width: min(600px, 47%);
+        width: min(600px, 46%);
         height: 328px;
         .image {
             width: 208px;
