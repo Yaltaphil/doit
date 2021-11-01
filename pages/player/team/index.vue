@@ -21,6 +21,9 @@
 
 <script>
 export default {
+
+    name: 'Profile',
+
     transition: {
         name: 'slide',
     },
@@ -48,16 +51,12 @@ export default {
 
 <style lang="scss" scoped>
 .panel {
-    margin: 3rem 0;
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: center;
+    margin: 5rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 236px);
+    place-content: center;
     gap: 80px;
-
     .panel__item {
-        width: 236px;
         height: 82px;
         background: #0f1215;
         border: 2px solid #20252b;
