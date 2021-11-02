@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>User Panel</h1>
+        <h1>Manage - {{ $route.params.id }} team</h1>
         <div class="panel">
             <div
                 v-for="(item, i) in panelItems"
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-    name: "Panel",
+    name: 'TeamManage',
 
     transition: {
         name: 'slide',
@@ -27,16 +27,11 @@ export default {
     data() {
         return {
             panelItems: [
-                { title: 'My Profile', to: '/player' },
-                { title: 'Game profile', to: 'game' },
+                { title: 'Edit info', to: 'edit' },
+                { title: 'Add players', to: 'add' },
+                { title: 'Players', to: 'players' },
+                { title: 'Tournaments', to: 'tournaments' },
                 { title: 'Statistics', to: 'statistics' },
-                { title: 'My Team', to: 'team' },
-                { title: 'Deposit', to: 'deposit' },
-                { title: 'Withdraw', to: 'withdraw' },
-                { title: 'Premium account', to: 'premium' },
-                { title: 'Settings', to: 'settings' },
-                { title: 'Support', to: 'support' },
-                { title: 'Logout', to: 'logout' },
             ],
         }
     },
@@ -51,14 +46,11 @@ export default {
 
 <style lang="scss" scoped>
 .panel {
-    margin: 3rem 0;
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: center;
+    margin: 5rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 236px);
+    place-content: center;
     gap: 80px;
-
     .panel__item {
         width: 236px;
         height: 82px;

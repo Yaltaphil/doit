@@ -1,3 +1,3 @@
 <template>
-    <h3>Hey, no information yet here...</h3>
+    <h3>Hey, no such team here...</h3>
 </template>

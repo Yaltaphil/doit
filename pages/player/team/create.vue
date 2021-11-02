@@ -154,11 +154,12 @@ export default {
             this.isBusy = true
             await this.upload()
             this.team = this.form
+            this.team.id = `${Date.now()}`
             this.teams.push(this.team)
             await this.$db.write('/teams', this.teams)
-            this.isBusy = false
             this.$toast.success('Team created!')
             this.$router.push('/player/team')
+            this.isBusy = false
         },
 
         async upload() {

@@ -1,19 +1,9 @@
 <template>
     <div>
-        <h1>My Team</h1>
+        <h1>Logout</h1>
         <div class="panel">
-            <div
-                v-for="(item, i) in teams"
-                :key="i"
-                class="panel__item"
-                @click="handler(item)"
-            >
-                <span>
-                    {{ item.title }}
-                </span>
-            </div>
-            <div class="panel__item" @click="addTeam">
-                <span> + </span>
+            <div class="panel__item" @click="handler(item)">
+                <span> Click to logout </span>
             </div>
         </div>
     </div>
@@ -21,29 +11,26 @@
 
 <script>
 export default {
-
-    name: 'Profile',
+    name: 'Logout',
 
     transition: {
         name: 'slide',
     },
 
-    async asyncData({ $db }) {
-        const teams = (await $db.read('/teams')) || []
-        return { teams }
-    },
-
-    data() {
-        return {}
-    },
-
     methods: {
-        handler(target) {
-            this.$router.push(`/player/team/${target.title}`)
+        handler() {
+            this.logout()
+            this.$router.push(`/`)
         },
 
-        addTeam() {
-            this.$router.push('/player/team/create')
+        async logout() {
+            try {
+                await this.$fire.auth.signOut()
+                this.isAuth = this.$fire.auth.currentUser
+                this.$toast.show('Signed out...')
+            } catch (e) {
+                this.$toast.error(`Problem to sign out!   ${e.message}`)
+            }
         },
     },
 }

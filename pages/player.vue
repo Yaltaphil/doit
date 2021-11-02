@@ -32,17 +32,13 @@
                         class="white-text"
                         @click="menuHandler(menuItem)"
                     >
-                        {{ menuItem }}
+                        {{ menuItem.title }}
                     </li>
                 </ul>
             </div>
         </div>
         <div class="child">
-            <NuxtChild
-                :key="$route.name"
-                keep-alive
-                :include="['Profile', 'Panel', 'Settings']"
-            />
+            <NuxtChild :key="$route.name" />
         </div>
     </div>
 </template>
@@ -63,23 +59,22 @@ export default {
         return {
             user: User,
             menuItems: [
-                'Profile',
-                'Panel',
-                'Settings',
-                'Deposit',
-                'Withdraw',
-                'Awards and medals',
-                'Premium',
-                'Support',
-                'Team',
-                'Statistics',
+                { title: 'Profile', to: '' },
+                { title: 'Panel', to: 'panel' },
+                { title: 'Deposit', to: 'deposit' },
+                { title: 'Withdraw', to: 'withdraw' },
+                { title: 'Settings', to: 'settings' },
+                { title: 'Teams', to: 'team' },
+                { title: 'Premium', to: 'premium' },
+                { title: 'Support', to: 'support' },
+                { title: 'Statistics', to: 'statistics' },
             ],
         }
     },
 
     methods: {
         menuHandler(item) {
-            this.$router.push(`/player/${item.toLowerCase()}`)
+            this.$router.push(`/player/${item.to.toLowerCase()}`)
         },
     },
 }
@@ -154,6 +149,6 @@ export default {
 .slide-enter,
 .slide-leave-active {
     opacity: 0;
-    transform: translateY(-40px);
+    transform: translateY(-20px);
 }
 </style>

@@ -14,7 +14,7 @@
                 v-for="item in items"
                 :key="item"
                 class="menu__item"
-                :to="item.toLowerCase()"
+                :to="`/${item.toLowerCase()}`"
                 @click.native="showBurgerMenu = false"
             >
                 {{ item }}

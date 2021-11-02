@@ -64,6 +64,7 @@
 
 <script>
 import User from '~/mocks/user.js'
+
 export default {
     name: 'Profile',
 
