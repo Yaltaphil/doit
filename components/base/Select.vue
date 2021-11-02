@@ -12,8 +12,6 @@
 </template>
 
 <script>
-// TODO horizontal scroll and empty list dropdown size
-
 export default {
     name: 'BaseSelect',
 
