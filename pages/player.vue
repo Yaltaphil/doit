@@ -30,7 +30,8 @@
                         v-for="(menuItem, i) in menuItems"
                         :key="i"
                         class="white-text"
-                        @click="menuHandler(menuItem)"
+                        :class="{ activeBullet: activeItem === i }"
+                        @click="menuHandler(i)"
                     >
                         {{ menuItem.title }}
                     </li>
@@ -38,7 +39,7 @@
             </div>
         </div>
         <div class="child">
-            <NuxtChild :key="$route.name" />
+            <NuxtChild :key="$route.name" @item-changed="activeItem = $event" />
         </div>
     </div>
 </template>
@@ -69,12 +70,16 @@ export default {
                 { title: 'Support', to: 'support' },
                 { title: 'Statistics', to: 'statistics' },
             ],
+            activeItem: 0,
         }
     },
 
     methods: {
-        menuHandler(item) {
-            this.$router.push(`/player/${item.to.toLowerCase()}`)
+        menuHandler(index) {
+            this.activeItem = index
+            this.$router.push(
+                `/player/${this.menuItems[index].to}`
+            )
         },
     },
 }
@@ -107,6 +112,7 @@ export default {
         li {
             list-style-type: circle;
             line-height: 150%;
+            transition: all 50ms;
             &::marker {
                 font-size: 1.5rem;
                 font-weight: bolder;
@@ -115,6 +121,14 @@ export default {
                 color: #37b7fa;
                 list-style-type: disc;
                 cursor: pointer;
+            }
+            &.activeBullet {
+                &::marker {
+                    font-size: 1.75rem;
+                }
+                list-style-type: disc;
+                color: #37acfa;
+                font-size: 1.35rem;
             }
         }
     }
@@ -144,11 +158,11 @@ export default {
 
 .slide-enter-active,
 .slide-leave-active {
-    transition: all 0.2s;
+    transition: all 200ms;
 }
 .slide-enter,
 .slide-leave-active {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-0.5rem);
 }
 </style>

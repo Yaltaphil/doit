@@ -6,7 +6,7 @@
                 v-for="(item, i) in panelItems"
                 :key="i"
                 class="panel__item"
-                @click="handler(item)"
+                @click="handler(i)"
             >
                 <span>
                     {{ item.title }}
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-    name: "Panel",
+    name: 'Panel',
 
     transition: {
         name: 'slide',
@@ -42,21 +42,23 @@ export default {
     },
 
     methods: {
-        handler(target) {
-            this.$router.push(target.to)
+        handler(index) {
+            this.$emit('item-changed', index)
+            this.$router.push(this.panelItems[index].to)
         },
     },
 }
 </script>
 
 <style lang="scss" scoped>
+h1 {
+    text-align: center;
+}
 .panel {
     margin: 3rem 0;
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 236px);
+    place-content: center;
     gap: 80px;
 
     .panel__item {
