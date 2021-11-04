@@ -59,7 +59,7 @@ table {
         line-height: 100%;
         color: #e6e6e6;
         opacity: 0.88;
-        height: 3rem;
+        height: 4rem;
         text-align: left;
     }
     td {

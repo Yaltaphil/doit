@@ -52,12 +52,25 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: all 100ms;
+        user-select: none;
         &:hover {
             cursor: pointer;
+            color: black;
             background: radial-gradient(
                     250.9% 252.09% at 142.43% 152.09%,
-                    rgba(22, 6, 247, 0.87) 35%,
-                    rgba(20, 114, 255, 0) 95.84%
+                    rgba(253, 13, 25, 0.904) 35%,
+                    rgba(29, 3, 3, 0) 95.84%
+                ),
+                #181b1f;
+        }
+        &:active {
+            cursor: pointer;
+            color: black;
+            background: radial-gradient(
+                    250.9% 252.09% at 142.43% 152.09%,
+                    rgba(134, 3, 12, 0.904) 35%,
+                    rgba(226, 15, 15, 0.979) 95.84%
                 ),
                 #181b1f;
         }

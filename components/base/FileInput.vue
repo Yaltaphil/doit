@@ -35,7 +35,7 @@ export default {
             const reader = new FileReader()
             reader.onload = (e) => {
                 this.logoUrl = e.target.result
-                this.$emit('logoSelected', file)
+                this.$emit('logo-selected', file)
             }
             reader.readAsDataURL(file)
         },

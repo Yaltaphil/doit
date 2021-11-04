@@ -71,7 +71,7 @@
 
             <div class="form__group">
                 <h3>Advanced</h3>
-                <BaseFileInput @logoSelected="logoSelected = $event"
+                <BaseFileInput @logo-selected="logoSelected = $event"
                     >Logo 128 x 128</BaseFileInput
                 >
             </div>
