@@ -38,7 +38,7 @@ export default {
 
     methods: {
         handler(target) {
-            this.$router.push(target.to)
+            this.$router.push(this.$nuxt.$route.path + '/' + target.to)
         },
     },
 }

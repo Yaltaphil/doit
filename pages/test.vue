@@ -109,13 +109,13 @@ export default {
         authUser() {},
 
         async write() {
-            await this.$db.write('/users/' + this.user.id, this.user)
-            await this.$db.write('/countries', this.countries)
+            // await this.$db.write('/users/' + this.user.id, this.user)
+            // await this.$db.write('/countries', this.countries)
             await this.$db.write('/games', this.games)
-            await this.$db.write('/partners', this.partners)
-            await this.$db.write('/tournaments', this.tournaments)
-            await this.$db.write('/news', this.news)
-            await this.$db.write('/streams', this.streams)
+            // await this.$db.write('/partners', this.partners)
+            // await this.$db.write('/tournaments', this.tournaments)
+            // await this.$db.write('/news', this.news)
+            // await this.$db.write('/streams', this.streams)
             this.$toast.success(`Writing ... `)
         },
 

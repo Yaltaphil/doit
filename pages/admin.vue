@@ -75,12 +75,22 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        user-select: none;
         &:hover {
             cursor: pointer;
             background: radial-gradient(
                     250.9% 252.09% at 142.43% 152.09%,
                     rgba(22, 6, 247, 0.87) 35%,
                     rgba(20, 114, 255, 0) 95.84%
+                ),
+                #181b1f;
+        }
+        &:active {
+            cursor: pointer;
+            background: radial-gradient(
+                    250.9% 252.09% at 142.43% 152.09%,
+                    rgba(8, 3, 71, 0.404) 35%,
+                    rgba(4, 99, 241, 0.911) 95.84%
                 ),
                 #181b1f;
         }

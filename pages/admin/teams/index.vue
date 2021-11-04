@@ -50,7 +50,7 @@ export default {
     gap: 1rem;
     height: 3rem;
     margin: 3rem auto;
-    user-select: none;
+
 }
 
 table {

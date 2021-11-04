@@ -39,7 +39,7 @@ export default {
 
     methods: {
         handler(target) {
-            this.$router.push(`/player/team/${target.title}`)
+            this.$router.push(`/player/team/${target.id}`)
         },
 
         addTeam() {

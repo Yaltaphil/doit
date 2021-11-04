@@ -22,10 +22,22 @@ export default {
 
     inheritAttrs: false,
 
+    props: {
+        url: 
+        {
+            type: String,
+            default: null,
+        },
+    },
+
     data() {
         return {
             logoUrl: require('@/assets/img/doit.svg'),
         }
+    },
+
+    mounted() {
+        if (this.url) this.logoUrl = this.url
     },
 
     methods: {
@@ -35,7 +47,7 @@ export default {
             const reader = new FileReader()
             reader.onload = (e) => {
                 this.logoUrl = e.target.result
-                this.$emit('logo-selected', file)
+                this.$emit('logo-choosen', file)
             }
             reader.readAsDataURL(file)
         },
