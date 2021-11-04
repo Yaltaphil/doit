@@ -73,7 +73,7 @@ export default {
             background: white;
             border-radius: 2px;
             z-index: 1;
-            transition: width 1.5s ease-out 1s;
+            transition: width 1s ease-out 1s;
             box-shadow: 1px 1px 8px;
         }
     }
