@@ -16,10 +16,11 @@ export default {
     width: 100%;
     height: 128px;
     position: relative;
+    transition: all 50ms;
     &:hover {
         cursor: pointer;
-        transform: scale(1.015);
-        filter: drop-shadow(0 0 8px rgb(129, 1, 1));
+        transform: scale(1.005);
+        filter: drop-shadow(0 0 5px rgb(129, 1, 1));
     }
     .pic {
         width: 100%;

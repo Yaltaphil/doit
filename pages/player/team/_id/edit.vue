@@ -221,6 +221,8 @@ export default {
                 await this.remove()
                 this.teams = this.teams.filter((item) => item.id !== this.id)
                 await this.$db.write('/teams', this.teams)
+                this.$toast.success('Team fully destroyed!')
+                this.$router.push('/player/team')
             }
         },
 

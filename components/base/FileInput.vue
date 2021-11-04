@@ -12,7 +12,7 @@
             />
         </label>
 
-        <img ref="logoPreview" :src="logoUrl" alt="logo" />
+        <img :src="logoUrl" alt="logo" />
     </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
     inheritAttrs: false,
 
     props: {
-        url: 
+        url:
         {
             type: String,
             default: null,
@@ -59,9 +59,9 @@ export default {
 <style lang="scss" scoped>
 img {
     margin: 1rem;
-    width: 64px;
-    height: 64px;
-    object-fit: cover;
+    width: 128px;
+    height: 128px;
+    object-fit: contain;
 }
 .custom-file-input {
     width: 100%;
