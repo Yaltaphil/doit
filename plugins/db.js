@@ -11,8 +11,9 @@ class DBServices {
         try {
             return await this.$fire.database.ref(path).set(payload)
         } catch (e) {
-            this.$toast.error(`Error writing to database: ${e.message}`)
-            // throw e
+            // this.$toast.error(`Error writing to database: ${e.message}`)
+            console.log(`Error writing to database: ${e.message}`)
+            throw e
         }
     }
 
@@ -24,8 +25,9 @@ class DBServices {
             const result = await this.$fire.database.ref(path).once('value')
             return result.val()
         } catch (e) {
-            this.$toast.error(`Error reading from database: ${e.message}`)
-            // throw e
+            // this.$toast.error(`Error reading from database: ${e.message}`)
+            console.log(`Error reading from database: ${e.message}`)
+            throw e
         }
     }
 
@@ -36,15 +38,14 @@ class DBServices {
      */
     async uploadFile(path, file) {
         try {
-            const snapshot = await this.$fire
-                .storage
+            const snapshot = await this.$fire.storage
                 .ref()
                 .child(path + file.name)
                 .put(file)
             // console.log('Uploaded', snapshot')
             return await snapshot.ref.getDownloadURL()
         } catch (e) {
-            this.$toast.error(`Upload error: ${e.message}`)
+            // this.$toast.error(`Upload error: ${e.message}`)
             // throw e
         }
     }
@@ -56,7 +57,7 @@ class DBServices {
         try {
             return await this.$fire.storage.refFromURL(url).delete()
         } catch (e) {
-            this.$toast.error(`Error removing file: ${e.message}`)
+            // this.$toast.error(`Error removing file: ${e.message}`)
             // throw e
         }
     }

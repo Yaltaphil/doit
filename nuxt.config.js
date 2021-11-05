@@ -77,7 +77,7 @@ export default {
         '@nuxtjs/axios',
         '@nuxtjs/firebase',
         '@nuxtjs/toast',
-        '@nuxtjs/auth',
+        '@nuxtjs/auth-next',
     ],
 
     // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -102,10 +102,18 @@ export default {
             appId: '1:837242298469:web:f001bc2a84ac16925f268c',
             measurementId: 'G-T50TQTFTWP',
         },
+
         services: {
-            auth: true,
-            storage: true,
+            auth: {
+                initialize: {
+                    onAuthStateChangedMutation:
+                        'ON_AUTH_STATE_CHANGED_MUTATION',
+                },
+                ssr: true,
+            },
             database: true,
+            storage: true,
+          
         },
     },
 
@@ -121,11 +129,43 @@ export default {
     // auth
     auth: {
         strategies: {
-            firebaseStrategy: {
-                scheme: '~/schemes/firebaseScheme',
+            local: {
+                token: {
+                    property: 'idToken',
+                    type: '',
+                },
+                user: {
+                    property: 'users',
+                },
+                endpoints: {
+                    login: {
+                        url: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCDiarUnVKswqqt5wpIpdnMJhi6UAv9APE',
+                        method: 'post',
+                        propertyName: 'idToken',
+                    },
+                    user: {
+                        url: 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCDiarUnVKswqqt5wpIpdnMJhi6UAv9APE',
+                        method: 'post',
+                        propertyName: 'users',
+                    },
+                    logout: {
+                        url: 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCDiarUnVKswqqt5wpIpdnMJhi6UAv9APE',
+                        method: 'post',
+                    },
+                },
             },
+        },
+        redirect: {
+            login: '/',
+            logout: '/login',
         },
     },
 
     loading: '~/components/loading.vue',
+
+    // Axios module configuration: https://go.nuxtjs.dev/config-axios
+    axios: {
+        credentials: true,
+        https: true,
+    },
 }

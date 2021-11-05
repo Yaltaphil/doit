@@ -118,8 +118,8 @@ export default {
 <style lang="scss" scoped>
 .profile-bar {
     position: absolute;
-    width: auto;
-    height: auto;
+    width: 226px;
+    height: 60px;
     top: 1.5rem;
     background: #161a1f;
     display: flex;
@@ -159,9 +159,10 @@ export default {
     .badge-drawer {
         padding: 0.5rem;
         position: absolute;
-        top: 52px;
+        top: 61px;
         width: 226px;
         background: inherit;
+        overflow: hidden;
 
         .badge-drawer__level {
             height: 1rem;
@@ -173,7 +174,7 @@ export default {
                 padding: 0.2rem;
             }
             .line {
-                flex: 0 0 170px;
+                flex: 0 0 160px;
                 position: relative;
                 height: 100%;
                 .scale {

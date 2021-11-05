@@ -66,22 +66,27 @@ export default {
     },
 
     methods: {
-        submit() {
+        async submit() {
             this.isBusy = true
+            // try {
+            // await this.$fire.auth.signInWithEmailAndPassword(
+            //     this.login,
+            //     this.password)
+
             try {
-                // await this.$fire.auth.signInWithEmailAndPassword(
-                //     this.login,
-                //     this.password)
-
-                this.$auth.loginWith('firebaseStrategy', {
-                    data: { email: this.login, password: this.password },
+                const response = await this.$auth.loginWith('local', {
+                    data: {
+                        email: this.login,
+                        password: this.password,
+                    },
                 })
-
+                console.log(response)
                 this.$toast.show('Successfully logged in')
                 this.$router.push('/player') // + firebase id
-            } catch (e) {
-                this.$toast.error(`Opps... Login error!    ${e.message}`)
+            } catch (err) {
+                console.log(err.message)
             }
+
             this.isBusy = false
         },
     },

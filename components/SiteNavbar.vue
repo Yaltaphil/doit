@@ -57,20 +57,16 @@ export default {
         return {
             items: ['Play', 'News', 'Games', 'Shop', 'Sponsorship'],
             showBurgerMenu: false,
-            isAuth: null,
         }
-    },
-
-    mounted() {
-        this.isAuth = this.$fire.auth.currentUser
     },
 
     methods: {
         async logout() {
             try {
-                await this.$fire.auth.signOut()
-                this.isAuth = this.$fire.auth.currentUser
-                this.$toast.show('Signed out...')
+                // await this.$fire.auth.signOut()
+                // this.isAuth = this.$fire.auth.currentUser
+                // this.$toast.show('Signed out...')
+                await this.$auth.logout();
             } catch (e) {
                 this.$toast.error(`Problem to sign out!   ${e.message}`)
             }
