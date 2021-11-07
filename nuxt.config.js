@@ -104,16 +104,9 @@ export default {
         },
 
         services: {
-            auth: {
-                initialize: {
-                    onAuthStateChangedMutation:
-                        'ON_AUTH_STATE_CHANGED_MUTATION',
-                },
-                ssr: true,
-            },
+            auth: true,
             database: true,
             storage: true,
-          
         },
     },
 
