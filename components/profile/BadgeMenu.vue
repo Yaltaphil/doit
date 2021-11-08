@@ -30,7 +30,7 @@
                         :key="i"
                         :to="item.to"
                         class="link"
-                        @click.native="item.callback"
+                        @click.native="isOpen=false"
                     >
                         <span>
                             {{ item.title }}
@@ -58,11 +58,11 @@ export default {
             items: [
                 {
                     title: 'MY PROFILE',
-                    to: '/',
+                    to: '/player',
                 },
                 {
                     title: 'MY TEAM',
-                    to: '/',
+                    to: '/player/teams',
                 },
                 {
                     title: 'WITHDRAW',
@@ -74,7 +74,7 @@ export default {
                 },
                 {
                     title: 'PREMIUM',
-                    to: '/',
+                    to: '/player/premium',
                 },
                 {
                     title: 'STATISTICS',
@@ -90,8 +90,7 @@ export default {
                 },
                 {
                     title: 'Logout',
-                    to: '/',
-                    callback: this.logout,
+                    to: '/player/logout',
                 },
             ],
         }
@@ -104,12 +103,6 @@ export default {
                     this.$refs.levelRate.style.width = `${this.level}%`
                 }, 0)
             }
-        },
-    },
-
-    methods: {
-        logout() {
-            this.$emit('logout-call')
         },
     },
 }
@@ -194,7 +187,7 @@ export default {
                     background: white;
                     border-radius: 2px;
                     z-index: 1;
-                    transition: width 1s ease-out 1.5s;
+                    transition: width 0.75s ease-out 1s;
                     box-shadow: 0 0 3px;
                 }
             }
@@ -223,7 +216,7 @@ export default {
                 &:hover {
                     font-size: 13px;
                     span {
-                        filter: drop-shadow(0 0 1px rgb(247, 243, 3));
+                        filter: drop-shadow(0 0 1px rgb(0, 60, 255));
                     }
                 }
                 &:first-child {
@@ -256,7 +249,7 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.75s;
+    transition: opacity 0.5s;
 }
 .fade-enter,
 .fade-leave-to {

@@ -68,23 +68,18 @@ export default {
     methods: {
         async submit() {
             this.isBusy = true
-            // try {
-            // await this.$fire.auth.signInWithEmailAndPassword(
-            //     this.login,
-            //     this.password)
 
             try {
-                const response = await this.$auth.loginWith('local', {
+                await this.$auth.loginWith('local', {
                     data: {
                         email: this.login,
                         password: this.password,
                     },
                 })
-                console.log(response)
                 this.$toast.show('Successfully logged in')
-                this.$router.push('/player') // + firebase id
+                this.$router.push('/player')
             } catch (err) {
-                console.log(err.message)
+                this.$toast.error(`Problem to login: ${err.message}`)
             }
 
             this.isBusy = false

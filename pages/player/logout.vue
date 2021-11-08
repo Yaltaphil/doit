@@ -2,7 +2,7 @@
     <div>
         <h1>Logout</h1>
         <div class="panel">
-            <div class="panel__item" @click="handler(item)">
+            <div class="panel__item" @click="handler()">
                 <span> Click to logout </span>
             </div>
         </div>
@@ -25,9 +25,8 @@ export default {
 
         async logout() {
             try {
-                await this.$fire.auth.signOut()
-                this.isAuth = this.$fire.auth.currentUser
-                this.$toast.show('Signed out...')
+                await this.$auth.logout()
+                this.$toast.show('Logged out...')
             } catch (e) {
                 this.$toast.error(`Problem to sign out!   ${e.message}`)
             }
@@ -56,21 +55,19 @@ export default {
         user-select: none;
         &:hover {
             cursor: pointer;
-            color: black;
-            background: radial-gradient(
-                    250.9% 252.09% at 142.43% 152.09%,
+            color: rgb(230, 247, 3);
+            background: linear-gradient(
                     rgba(253, 13, 25, 0.904) 35%,
-                    rgba(29, 3, 3, 0) 95.84%
+                    rgba(126, 3, 3, 0) 95.84%
                 ),
                 #181b1f;
         }
         &:active {
             cursor: pointer;
             color: black;
-            background: radial-gradient(
-                    250.9% 252.09% at 142.43% 152.09%,
-                    rgba(134, 3, 12, 0.904) 35%,
-                    rgba(226, 15, 15, 0.979) 95.84%
+            background: linear-gradient(
+                    rgba(90, 2, 8, 0.904) 35%,
+                    rgba(252, 4, 4, 0.979) 95.84%
                 ),
                 #181b1f;
         }

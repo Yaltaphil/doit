@@ -9,15 +9,14 @@
                     placeholder="team name"
                     type="text"
                     :invalid="$v.form.title.$error"
-                    :success="!$v.form.title.$error"
+                    :success="!$v.form.title.$error && $v.form.title.$dirty"
                     >Team name</BaseInput
                 >
                 <BaseInput
                     v-model.trim="$v.form.id.$model"
+                    disabled="true"
                     placeholder="ID"
                     type="text"
-                    :invalid="$v.form.id.$error"
-                    :success="!$v.form.id.$error"
                     >ID</BaseInput
                 >
                 <BaseSelect
@@ -27,7 +26,9 @@
                     :reduce="(game) => game.title"
                     placeholder="select your game"
                     :invalid="$v.form.mainGame.$error"
-                    :success="!$v.form.mainGame.$error"
+                    :success="
+                        !$v.form.mainGame.$error && $v.form.mainGame.$dirty
+                    "
                     >Main Game</BaseSelect
                 >
 
@@ -35,14 +36,16 @@
                     v-model.trim="$v.form.leader.$model"
                     placeholder="team leader"
                     :invalid="$v.form.leader.$error"
-                    :success="!$v.form.leader.$error"
+                    :success="!$v.form.leader.$error && $v.form.leader.$dirty"
                     >Team Leader</BaseInput
                 >
                 <BaseInput
                     v-model="$v.form.password.$model"
                     placeholder="type password here"
                     :invalid="$v.form.password.$error"
-                    :success="!$v.form.password.$error"
+                    :success="
+                        !$v.form.password.$error && $v.form.password.$dirty
+                    "
                     >Join password</BaseInput
                 >
                 <BaseSelect
@@ -52,22 +55,18 @@
                     :reduce="(country) => country.code"
                     placeholder="choose your country"
                     :invalid="$v.form.country.$error"
-                    :success="!$v.form.country.$error"
+                    :success="!$v.form.country.$error && $v.form.country.$dirty"
                     >Country</BaseSelect
                 >
 
                 <BaseInput
                     v-model.trim="$v.form.webSite.$model"
                     :invalid="$v.form.webSite.$error"
-                    :success="!$v.form.webSite.$error"
+                    :success="!$v.form.webSite.$error && $v.form.webSite.$dirty"
                     >Web-site</BaseInput
                 >
 
-                <BaseInput
-                    v-model.trim="$v.form.url.$model"
-                    disabled="true"
-                    :invalid="$v.form.url.$error"
-                    :success="!$v.form.url.$error"
+                <BaseInput v-model.trim="$v.form.url.$model" disabled="true"
                     >URL</BaseInput
                 >
             </div>
@@ -250,7 +249,7 @@ export default {
 
         .form__group {
             width: 100%;
-            padding: 3rem 2rem;
+            padding: 3rem 1.5rem;
             background: #0f1215;
             border: 1px solid #20252b;
             box-sizing: border-box;
