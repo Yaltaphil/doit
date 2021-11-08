@@ -1,6 +1,5 @@
 ,<template>
     <section>
-        <BasePreloader v-show="isBusy" />
         <BaseLogo class="logo" />
         <p class="white-text">
             You registered on
@@ -23,13 +22,10 @@ export default {
     layout: 'empty',
 
     data() {
-        return {
-            isBusy: false,
-        }
+        return {}
     },
     methods: {
         submit() {
-            this.isBusy = true
             this.$router.push('/login')
         },
     },
