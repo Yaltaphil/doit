@@ -29,6 +29,7 @@ export default {
     line-height: 100%;
     text-align: center;
     color: #f5f5f5;
+    position: relative;
 
     &:hover {
         cursor: pointer;
@@ -44,19 +45,19 @@ export default {
     }
 }
 
-// .button::before {
-//         content: '';
-//         background: rgb(237, 253, 8);
-//         position: absolute;
-//         top: 120%;
-//         left: 0;
-//         width: 100%;
-//         height: 100%;
-
-//         transform: perspective(1rem ) rotateX(40deg) scale(1, 0.3);
-//         filter: blur(1rem);
-//         opacity: 0.6;
-//     }
+// .button::after {
+//     pointer-events: none;
+//     content: '';
+//     background: rgb(237, 253, 8);
+//     position: absolute;
+//     top: 90%;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     transform: perspective(1rem) rotateX(33deg) scale(1, 0.3);
+//     filter: blur(1.5rem);
+//     opacity: 0.6;
+// }
 
 .primary {
     background: linear-gradient(180deg, #2788f6 0%, #0960e0 100%);

@@ -54,10 +54,10 @@
 
         <div
             style="
-                display: flex;
-                flex-direction: column;
-                gap: 50px;
+                display: grid;
+                gap: 100px;
                 margin-top: 5em;
+                width: 200px;
             "
         >
             <BaseButton @click="authUser">authUser</BaseButton>
@@ -77,7 +77,6 @@ import newsData from '~/mocks/news.js'
 import streamsData from '~/mocks/streams.js'
 
 export default {
-
     data() {
         return {
             foo: 'test',
