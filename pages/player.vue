@@ -81,7 +81,6 @@ export default {
         },
 
         isRouteActive(route) {
-            console.log(this.$route)
             return this.$route.path === `/player/${route.to}`
         },
     },
