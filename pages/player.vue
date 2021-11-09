@@ -30,7 +30,7 @@
                         v-for="(menuItem, i) in menuItems"
                         :key="i"
                         class="white-text"
-                        :class="{ activeBullet: activeItem === i }"
+                        :class="{ activeBullet: isRouteActive(menuItem) }"
                         @click="menuHandler(i)"
                     >
                         {{ menuItem.title }}
@@ -77,9 +77,12 @@ export default {
     methods: {
         menuHandler(index) {
             this.activeItem = index
-            this.$router.push(
-                `/player/${this.menuItems[index].to}`
-            )
+            this.$router.push(`/player/${this.menuItems[index].to}`)
+        },
+
+        isRouteActive(route) {
+            console.log(this.$route)
+            return this.$route.path === `/player/${route.to}`
         },
     },
 }
