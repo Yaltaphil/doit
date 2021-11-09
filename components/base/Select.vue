@@ -54,9 +54,9 @@ export default {
         font-size: 16px;
         color: #627ca3;
         background: #0f1215;
-        // border-radius: 2px;
-        // border: 1px solid #1c2f4d;
-        // height: 38px;
+        border-radius: 2px;
+        border: 1px solid #1c2f4d;
+        height: 38px;
     }
     & .vs__dropdown-menu {
         font-family: 'Rubik';
@@ -112,13 +112,16 @@ export default {
         }
     }
     .input__invalid {
-        border: 1px solid #b83333;
-        border-radius: 2px;
+        & .vs__dropdown-toggle {
+            border: 1px solid #b83333;
+            border-radius: 2px;
+        }
     }
-
     .input__success {
-        border: 1px solid #4cb725;
-        border-radius: 2px;
+        & .vs__dropdown-toggle {
+            border: 1px solid #4cb725;
+            border-radius: 2px;
+        }
     }
 }
 </style>
