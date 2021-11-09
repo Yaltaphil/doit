@@ -1,16 +1,28 @@
 <template>
     <div>
-        <label id="_uid">
-            <slot></slot>
+        <div id="_uid" class="input-wrapper">
             <input
                 id="_uid"
+                ref="file"
                 v-bind="$attrs"
                 type="file"
                 class="custom-file-input"
                 accept="image/*"
                 @change="preview"
             />
-        </label>
+            <BaseInput
+                disabled="true"
+                :value="file ? file.name : `No file choosen`"
+                ><slot></slot
+            ></BaseInput>
+
+            <BaseButton
+                class="secondary white"
+                style="height:40px;"
+                @click.prevent="$refs.file.click()"
+                >Choose</BaseButton
+            >
+        </div>
 
         <img :src="logoUrl" alt="logo" />
     </div>
@@ -23,8 +35,7 @@ export default {
     inheritAttrs: false,
 
     props: {
-        url:
-        {
+        url: {
             type: String,
             default: null,
         },
@@ -33,6 +44,7 @@ export default {
     data() {
         return {
             logoUrl: require('@/assets/img/doit.svg'),
+            file: null,
         }
     },
 
@@ -47,6 +59,7 @@ export default {
             const reader = new FileReader()
             reader.onload = (e) => {
                 this.logoUrl = e.target.result
+                this.file = file
                 this.$emit('logo-choosen', file)
             }
             reader.readAsDataURL(file)
@@ -66,36 +79,21 @@ img {
 .custom-file-input {
     width: 100%;
     color: #627ca3;
-    height: 40px;
     border: 1px solid #16263d;
     border-radius: 2px;
     outline: none;
     line-height: 175%;
 }
 
-.custom-file-input::-webkit-file-upload-button {
+input[type='file'] {
     visibility: hidden;
     width: 0;
 }
-.custom-file-input::before {
-    content: 'CHOOSE';
-    padding: 0.5rem 2.5rem;
-    background: #1a222d;
-    font-weight: bold;
-    font-size: 10px;
-    text-align: center;
-    color: #f5f5f5;
-    outline: none;
-    white-space: nowrap;
-    user-select: none;
-    cursor: pointer;
-    margin-left: 0.5rem;
-    float: right;
-}
-.custom-file-input:hover::before {
-    background: -webkit-linear-gradient(top, #252424, #022185);
-}
-.custom-file-input:active::before {
-    background: -webkit-linear-gradient(top, #252424, #053bec);
+
+.input-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 1rem;
 }
 </style>
