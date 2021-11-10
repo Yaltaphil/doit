@@ -1,6 +1,6 @@
 <template>
     <div class="profile">
-        <div class="profile-table">
+        <div v-if="user" class="profile-table">
             <p class="section-header">Profile</p>
             <table>
                 <tbody>
@@ -49,22 +49,20 @@
             </table>
         </div>
 
-        <div class="user-awards">
+        <div v-if="games" class="user-awards">
             <p class="section-header">Level and awards</p>
             <ProfileGameProgress
-                v-for="item in user.games"
-                :key="item.title"
+                v-for="item in user.results"
+                :key="item.gameId"
                 :value="item.value"
-                :color="item.color"
-                >{{ item.title }}</ProfileGameProgress
+                :color="getRandomColor()"
+                >{{ getGameTitle(item.gameId) }}</ProfileGameProgress
             >
         </div>
     </div>
 </template>
 
 <script>
-import User from '~/mocks/user.js'
-
 export default {
     name: 'Profile',
 
@@ -74,8 +72,24 @@ export default {
 
     data() {
         return {
-            user: User,
+            user: null,
+            games: null,
         }
+    },
+
+    async fetch() {
+        this.user = await this.$db.read('/users/' + this.$auth.user.localId)
+        this.games = await this.$db.read('/games')
+    },
+
+    methods: {
+        getRandomColor() {
+            return `hsl(${Math.floor(255 * Math.random())},100%,70%)`
+        },
+
+        getGameTitle(id) {
+            return this.games.filter((item) => item.id === id)[0].title
+        },
     },
 }
 </script>

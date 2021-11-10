@@ -64,9 +64,9 @@ export default {
         }
         &:active {
             cursor: pointer;
-            color: black;
+
             background: linear-gradient(
-                    rgba(90, 2, 8, 0.904) 35%,
+                    rgba(151, 3, 13, 0.753) 35%,
                     rgba(252, 4, 4, 0.979) 95.84%
                 ),
                 #181b1f;

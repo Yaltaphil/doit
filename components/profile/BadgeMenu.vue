@@ -1,9 +1,9 @@
 <template>
-    <div class="profile-bar">
+    <div v-if="user" class="profile-bar">
         <div class="badge" @click="isOpen = !isOpen">
-            <img src="~/assets/img/photo-player.png" alt="ava" />
+            <img :src="user.avatarUrl" alt="ava" />
             <div class="short-info">
-                <div class="nick">{{ nickName }}</div>
+                <div class="nick">{{ user.nickName }}</div>
                 <div class="balance">{{ balance }}</div>
             </div>
             <div class="control">
@@ -18,7 +18,7 @@
         <transition name="fade">
             <div v-show="isOpen" class="badge-drawer">
                 <div class="badge-drawer__level">
-                    <span class="lvl">LVL {{ level }} </span>
+                    <span class="lvl">LVL {{ user.level }} </span>
                     <div class="line">
                         <div class="scale"></div>
                         <div ref="levelRate" class="rate"></div>
@@ -30,7 +30,7 @@
                         :key="i"
                         :to="item.to"
                         class="link"
-                        @click.native="isOpen=false"
+                        @click.native="isOpen = false"
                     >
                         <span>
                             {{ item.title }}
@@ -51,10 +51,9 @@
 export default {
     data() {
         return {
+            user: null,
             isOpen: false,
-            nickName: 'Neymar Jr.',
             balance: '40BTC / 16DTC',
-            level: 77,
             items: [
                 {
                     title: 'MY PROFILE',
@@ -96,11 +95,15 @@ export default {
         }
     },
 
+    async fetch() {
+        this.user = await this.$db.read('/users/' + this.$auth.user.localId)
+    },
+
     watch: {
         isOpen(newValue) {
             if (newValue) {
                 setTimeout(() => {
-                    this.$refs.levelRate.style.width = `${this.level}%`
+                    this.$refs.levelRate.style.width = `${this.user.level}%`
                 }, 0)
             }
         },

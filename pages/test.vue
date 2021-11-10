@@ -69,6 +69,7 @@
 
 <script>
 import userData from '~/mocks/user.js'
+import usersData from '~/mocks/users.js'
 import gameData from '~/mocks/games.js'
 import countryData from '~/mocks/countries.js'
 import partnersData from '~/mocks/partners.js'
@@ -89,6 +90,7 @@ export default {
             selected: 'foo',
             date: Date.now(),
             user: userData,
+            users: usersData,
             games: gameData,
             countries: countryData,
             partners: partnersData,
@@ -108,9 +110,11 @@ export default {
         authUser() {},
 
         async write() {
-            // await this.$db.write('/users/' + this.user.id, this.user)
+            await this.users.map( item => this.$db.write('/users/' + item.id, item))
+
+            // await this.$db.write('/users', this.users)
             // await this.$db.write('/countries', this.countries)
-            await this.$db.write('/games', this.games)
+            // await this.$db.write('/games', this.games)
             // await this.$db.write('/partners', this.partners)
             // await this.$db.write('/tournaments', this.tournaments)
             // await this.$db.write('/news', this.news)
@@ -121,7 +125,7 @@ export default {
         async read() {
             this.$toast.success(`Reading ... `)
             // const r = await this.$db.read('/user/' + this.user.id)
-            const r = await this.$db.read('/user')
+            const r = await this.$db.read('/users')
             console.log(r)
         },
     },

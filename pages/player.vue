@@ -2,9 +2,7 @@
     <div class="page-content">
         <div class="info">
             <div class="user-info">
-                <ProfileAvatar>
-                    <img src="~/assets/img/photo-player.png" alt="photo" />
-                </ProfileAvatar>
+                <ProfileAvatar :src="user.avatarUrl" />
                 <div class="user-data">
                     <p class="gray-text">{{ user.name }}</p>
                     <h3 class="white-text">{{ user.nickName }}</h3>
@@ -38,27 +36,24 @@
                 </ul>
             </div>
         </div>
+
         <div class="child">
-            <NuxtChild :key="$route.name" @item-changed="activeItem = $event" />
+            <NuxtChild :key="$route.name" />
         </div>
     </div>
 </template>
 
 <script>
-import User from '~/mocks/user.js'
-
 export default {
     name: 'PlayerProfile',
 
-    asyncData() {
-        return {
-            // load user details
-        }
+    async asyncData({ app, $db }) {
+        const user = (await $db.read('/users/' + app.$auth.user.localId)) || {}
+        return { user }
     },
 
     data() {
         return {
-            user: User,
             menuItems: [
                 { title: 'Profile', to: '' },
                 { title: 'Panel', to: 'panel' },
@@ -70,13 +65,16 @@ export default {
                 { title: 'Support', to: 'support' },
                 { title: 'Statistics', to: 'statistics' },
             ],
-            activeItem: 0,
         }
+    },
+
+    mounted() {
+        // console.log(this.$auth.user)
+        // console.log(this.user)
     },
 
     methods: {
         menuHandler(index) {
-            this.activeItem = index
             this.$router.push(`/player/${this.menuItems[index].to}`)
         },
 
