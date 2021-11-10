@@ -19,6 +19,7 @@ export default [
             { gameId: 1, value: 14, level: 55 },
             { gameId: 2, value: 3, level: 55 },
             { gameId: 3, value: 5, level: 55 },
+            { gameId: 10, value: 19, level: 25 },
         ],
     },
     {
@@ -31,7 +32,7 @@ export default [
         email: 'user@user.user',
         team: 'user team',
         withUsFrom: Date.now(),
-        sex: 'female',
+        sex: 'male',
         age: 18,
         nationality: 'Russian',
         country: 'RU',

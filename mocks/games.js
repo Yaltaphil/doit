@@ -46,7 +46,7 @@ export default [
     },
     {
         id: 10,
-        title: 'More game',
+        title: 'Brawl stars',
         src: 'https://firebasestorage.googleapis.com/v0/b/doit-bb77e.appspot.com/o/games%2Fvalorant.png?alt=media&token=427628ea-ff08-491c-b484-b4a3dfb91496',
     },
 ]

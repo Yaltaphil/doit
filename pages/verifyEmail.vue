@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         submit() {
-            this.$router.push('/login')
+            this.$router.push('/player')
         },
     },
 }

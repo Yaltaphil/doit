@@ -114,7 +114,7 @@ export default {
 
             // await this.$db.write('/users', this.users)
             // await this.$db.write('/countries', this.countries)
-            // await this.$db.write('/games', this.games)
+            await this.$db.write('/games', this.games)
             // await this.$db.write('/partners', this.partners)
             // await this.$db.write('/tournaments', this.tournaments)
             // await this.$db.write('/news', this.news)

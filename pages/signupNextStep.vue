@@ -34,6 +34,8 @@
                 type="submit"
                 >Create an account</BaseButton
             >
+
+            {{ $auth.user }}
         </form>
 
         <p>
@@ -50,10 +52,11 @@ const ageVerified = (value) => value === true
 export default {
     layout: 'empty',
 
-    async asyncData({ $db }) {
+    async asyncData({ app, $db }) {
         const countries = await $db.read('/countries')
-        const games = await $db.read('/countriegames')
-        return { countries, games }
+        const games = await $db.read('/games')
+        const user = (await $db.read('/users/' + app.$auth.user.localId)) || {}
+        return { countries, games, user }
     },
 
     data() {
@@ -86,7 +89,27 @@ export default {
     methods: {
         submit() {
             this.isBusy = true
+            const user = {
+                id: this.$auth.user.localId,
+                rights: 'user',
+                name: this.username,
+                nickName: '',
+                country: this.country.code,
+                avatarUrl: '',
+                email: this.$auth.user.email,
+                birthday: this.date,
+                team: '',
+                withUsFrom: Date.now(),
+                sex: '',
+                age: 0,
+                nationality: '',
+                webSite: 'https://doit.gg',
+                level: 0,
+                results: [],
+            }
+            this.$db.write(`/users/${this.$auth.user.localId}`, user)
             this.$router.push('/verifyEmail')
+            this.isBusy = false
         },
     },
 }

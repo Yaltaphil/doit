@@ -70,6 +70,12 @@ export default {
                     this.email,
                     this.password
                 )
+                await this.$auth.loginWith('local', {
+                    data: {
+                        email: this.email,
+                        password: this.password,
+                    },
+                })
                 this.$toast.show('Sign up successful!')
                 this.$router.push('/signupNextStep')
             } catch (e) {

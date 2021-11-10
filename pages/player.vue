@@ -8,7 +8,7 @@
                     <h3 class="white-text">{{ user.nickName }}</h3>
                     <nuxt-link to="/"
                         ><p>
-                            {{ user.team.toUpperCase() }}
+                            {{ user.team }}
                         </p>
                     </nuxt-link>
                     <p>
