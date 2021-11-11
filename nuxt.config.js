@@ -134,12 +134,10 @@ export default {
                     login: {
                         url: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCDiarUnVKswqqt5wpIpdnMJhi6UAv9APE',
                         method: 'post',
-                        propertyName: 'idToken',
                     },
                     user: {
                         url: 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCDiarUnVKswqqt5wpIpdnMJhi6UAv9APE',
                         method: 'post',
-                        propertyName: 'users',
                     },
                     logout: {
                         url: 'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCDiarUnVKswqqt5wpIpdnMJhi6UAv9APE',
@@ -150,7 +148,7 @@ export default {
         },
         redirect: {
             login: '/',
-            logout: '/login',
+            logout: '/',
         },
     },
 

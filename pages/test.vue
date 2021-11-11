@@ -52,15 +52,7 @@
             {{ date }}
         </div>
 
-        <div
-            style="
-                display: grid;
-                gap: 100px;
-                margin-top: 5em;
-                width: 200px;
-            "
-        >
-            <BaseButton @click="authUser">authUser</BaseButton>
+        <div style="display: grid; gap: 100px; margin-top: 5em; width: 200px">
             <BaseButton @click="write">BD write all mocks</BaseButton>
             <BaseButton @click="read">BD read all mocks</BaseButton>
         </div>
@@ -68,7 +60,6 @@
 </template>
 
 <script>
-import userData from '~/mocks/user.js'
 import usersData from '~/mocks/users.js'
 import gameData from '~/mocks/games.js'
 import countryData from '~/mocks/countries.js'
@@ -89,7 +80,6 @@ export default {
             options1: ['foo', 'bar', 'hisdfgsfd', 'byesdfgbye'],
             selected: 'foo',
             date: Date.now(),
-            user: userData,
             users: usersData,
             games: gameData,
             countries: countryData,
@@ -107,11 +97,8 @@ export default {
     },
 
     methods: {
-        authUser() {},
-
         async write() {
-            await this.users.map( item => this.$db.write('/users/' + item.id, item))
-
+            // await this.users.map( item => this.$db.write('/users/' + item.id, item))
             // await this.$db.write('/users', this.users)
             // await this.$db.write('/countries', this.countries)
             await this.$db.write('/games', this.games)

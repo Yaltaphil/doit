@@ -47,7 +47,7 @@
 <script>
 import { required, minLength } from 'vuelidate/lib/validators'
 
-const ageVerified = (value) => value === true
+const ageVerified = (value) => value
 
 export default {
     layout: 'empty',
@@ -55,7 +55,7 @@ export default {
     async asyncData({ app, $db }) {
         const countries = await $db.read('/countries')
         const games = await $db.read('/games')
-        const user = (await $db.read('/users/' + app.$auth.user.localId)) || {}
+        const user = (await $db.read('/users/' + app.$auth.user.localId))
         return { countries, games, user }
     },
 
@@ -107,7 +107,7 @@ export default {
                 level: 0,
                 results: [],
             }
-            this.$db.write(`/users/${this.$auth.user.localId}`, user)
+            if (this.$auth.loggedIn) this.$db.write(`/users/${this.$auth.user.localId}`, user)
             this.$router.push('/verifyEmail')
             this.isBusy = false
         },

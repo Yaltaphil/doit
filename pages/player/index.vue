@@ -78,13 +78,17 @@ export default {
     },
 
     async fetch() {
-        this.user = await this.$db.read('/users/' + this.$auth.user.localId)
-        this.games = await this.$db.read('/games')
+        if (this.$auth.loggedIn) {
+            this.user = await this.$db.read('/users/' + this.$auth.user.localId)
+            this.games = await this.$db.read('/games')
+        }
     },
 
     methods: {
         getRandomColor() {
-            return `hsl(${Math.floor(255 * Math.random())},100%,70%)`
+            return `hsl(${Math.floor(359 * Math.random())},90%, ${Math.floor(
+                50 + 40 * Math.random()
+            )}%)`
         },
 
         getGameTitle(id) {
