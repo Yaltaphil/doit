@@ -35,6 +35,7 @@ export default {
                 { title: 'Withdraw', to: 'withdraw' },
                 { title: 'Premium account', to: 'premium' },
                 { title: 'Settings', to: 'settings' },
+                { title: 'Edit my details', to: 'edit' },
                 { title: 'Support', to: 'support' },
                 { title: 'Logout', to: 'logout' },
             ],
