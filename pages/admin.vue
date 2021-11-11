@@ -1,7 +1,5 @@
 <template>
     <div class="admin-panel">
-        <h1>Admin panel here</h1>
-
         <div class="panel">
             <div
                 v-for="(item, i) in panelItems"
@@ -26,18 +24,13 @@
 export default {
     name: 'Admin',
 
-    // async asyncData({ $db }) {
-    //     const teams = (await $db.read('/teams')) || []
-    //     return { teams }
-    // },
-
     data() {
         return {
             panelItems: [
                 { title: 'Tournaments', to: 'tournaments' },
                 { title: 'Leagues', to: 'leagues' },
                 { title: 'Teams', to: '/admin/teams' },
-                { title: 'Players', to: 'players' },
+                { title: 'Players', to: '/admin/players' },
                 { title: 'Payouts', to: 'payouts' },
                 { title: 'Calendar', to: 'calendar' },
                 { title: 'News', to: 'news' },

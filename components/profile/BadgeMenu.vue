@@ -133,6 +133,7 @@ export default {
             height: 40px;
             flex: 0 0 auto;
             object-fit: cover;
+            padding: 1px;
         }
         .short-info {
             flex: 1 0 auto;

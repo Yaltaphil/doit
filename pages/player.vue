@@ -68,11 +68,6 @@ export default {
         }
     },
 
-    mounted() {
-        // console.log(this.$auth.user)
-        // console.log(this.user)
-    },
-
     methods: {
         menuHandler(index) {
             this.$router.push(`/player/${this.menuItems[index].to}`)

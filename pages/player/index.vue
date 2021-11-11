@@ -18,7 +18,9 @@
                     </tr>
                     <tr>
                         <td class="gray-text">With us from</td>
-                        <td class="white-text">{{ user.withUsFrom }}</td>
+                        <td class="white-text">
+                            {{ Date($auth.user.createdAt) }}
+                        </td>
                     </tr>
                     <tr>
                         <td class="gray-text">Sex / Age</td>
@@ -70,24 +72,16 @@ export default {
         name: 'slide',
     },
 
-    data() {
-        return {
-            user: null,
-            games: null,
-        }
-    },
-
-    async fetch() {
-        if (this.$auth.loggedIn) {
-            this.user = await this.$db.read('/users/' + this.$auth.user.localId)
-            this.games = await this.$db.read('/games')
-        }
+    async asyncData({ app, $db }) {
+        const games = await $db.read('/games')
+        const user = await $db.read('/users/' + app.$auth.user.localId)
+        return { games, user }
     },
 
     methods: {
         getRandomColor() {
-            return `hsl(${Math.floor(359 * Math.random())},90%, ${Math.floor(
-                50 + 40 * Math.random()
+            return `hsl(${Math.floor(359 * Math.random())},99%, ${Math.floor(
+                30 + 40 * Math.random()
             )}%)`
         },
 
