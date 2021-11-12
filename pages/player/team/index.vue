@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>My Team</h1>
+        <h1>My Teams</h1>
         <div class="panel">
             <div
                 v-for="(item, i) in teams"

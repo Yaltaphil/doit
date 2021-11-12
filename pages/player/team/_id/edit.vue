@@ -1,72 +1,72 @@
 <template>
     <div class="panel">
         <h1>Edit Team</h1>
-        <form ref="form" class="form" @submit.prevent="submit">
+        <form class="form" @submit.prevent="submit">
             <div class="form__group">
                 <h3>Basic Info</h3>
                 <BaseInput
-                    v-model.trim="$v.form.title.$model"
+                    v-model.trim="$v.team.title.$model"
                     placeholder="team name"
                     type="text"
-                    :invalid="$v.form.title.$error"
-                    :success="!$v.form.title.$error && $v.form.title.$dirty"
+                    :invalid="$v.team.title.$error"
+                    :success="!$v.team.title.$error && $v.team.title.$dirty"
                     >Team name</BaseInput
                 >
                 <BaseInput
-                    v-model.trim="$v.form.id.$model"
+                    v-model.trim="$v.team.id.$model"
                     disabled="true"
                     placeholder="ID"
                     type="text"
                     >ID</BaseInput
                 >
                 <BaseSelect
-                    v-model="$v.form.mainGame.$model"
+                    v-model="$v.team.mainGame.$model"
                     label="title"
                     :options="games"
                     :reduce="(game) => game.title"
                     placeholder="select your game"
-                    :invalid="$v.form.mainGame.$error"
+                    :invalid="$v.team.mainGame.$error"
                     :success="
-                        !$v.form.mainGame.$error && $v.form.mainGame.$dirty
+                        !$v.team.mainGame.$error && $v.team.mainGame.$dirty
                     "
                     >Main Game</BaseSelect
                 >
 
                 <BaseInput
-                    v-model.trim="$v.form.leader.$model"
+                    v-model.trim="$v.team.leader.$model"
                     placeholder="team leader"
-                    :invalid="$v.form.leader.$error"
-                    :success="!$v.form.leader.$error && $v.form.leader.$dirty"
+                    :invalid="$v.team.leader.$error"
+                    :success="!$v.team.leader.$error && $v.team.leader.$dirty"
                     >Team Leader</BaseInput
                 >
                 <BaseInput
-                    v-model="$v.form.password.$model"
+                    v-model="$v.team.password.$model"
                     placeholder="type password here"
-                    :invalid="$v.form.password.$error"
+                    :invalid="$v.team.password.$error"
                     :success="
-                        !$v.form.password.$error && $v.form.password.$dirty
+                        !$v.team.password.$error && $v.team.password.$dirty
                     "
                     >Join password</BaseInput
                 >
                 <BaseSelect
-                    v-model="$v.form.country.$model"
+                    v-model="$v.team.country.$model"
                     label="name"
                     :options="countries"
                     :reduce="(country) => country.code"
                     placeholder="choose your country"
-                    :invalid="$v.form.country.$error"
-                    :success="!$v.form.country.$error && $v.form.country.$dirty"
+                    :invalid="$v.team.country.$error"
+                    :success="!$v.team.country.$error && $v.team.country.$dirty"
                     >Country</BaseSelect
                 >
 
                 <BaseInput
-                    v-model.trim="$v.form.webSite.$model"
-                    :invalid="$v.form.webSite.$error"
-                    :success="!$v.form.webSite.$error && $v.form.webSite.$dirty"
+                    v-model.trim="$v.team.webSite.$model"
+                    :invalid="$v.team.webSite.$error"
+                    :success="!$v.team.webSite.$error && $v.team.webSite.$dirty"
                     >Web-site</BaseInput
                 >
 
-                <BaseInput v-model.trim="$v.form.url.$model" disabled="true"
+                <BaseInput v-model.trim="$v.team.url.$model" disabled="true"
                     >URL</BaseInput
                 >
             </div>
@@ -74,18 +74,24 @@
             <div class="form__group">
                 <h3>Players</h3>
                 <div class="form__buttons">
-                    <BaseButton class="secondary">List of players</BaseButton>
-                    <BaseButton class="secondary"
-                        >Edit list of players</BaseButton
+                    <BaseButton
+                        class="secondary"
+                        @click.prevent="showPlayers = !showPlayers"
+                        >Show players</BaseButton
                     >
+                </div>
+                <div v-show="showPlayers" class="players">
+                    <div v-for="user in team.players" :key="user">
+                        {{ getPlayerById(user).nickName }}
+                    </div>
                 </div>
             </div>
 
             <div class="form__group">
                 <h3>Advanced</h3>
                 <BaseFileInput
-                    v-if="form.logoUrl"
-                    :url="form.logoUrl"
+                    v-if="team.logoUrl"
+                    :url="team.logoUrl"
                     @logo-choosen="selectedLogo = $event"
                     >Logo 128 x 128</BaseFileInput
                 >
@@ -101,7 +107,7 @@
                 <BaseButton
                     type="submit"
                     class="form__button secondary white"
-                    :disabled="$v.form.$invalid || isBusy"
+                    :disabled="$v.team.$invalid || isBusy"
                     >Save team</BaseButton
                 >
             </div>
@@ -111,6 +117,7 @@
 
 <script>
 import { required, minLength, url } from 'vuelidate/lib/validators'
+import * as _ from 'lodash'
 
 export default {
     name: 'EditTeam',
@@ -120,34 +127,26 @@ export default {
     },
 
     async asyncData({ $db }) {
-        const countries = await $db.read('/countries')
-        const games = await $db.read('/games')
-        const teams = (await $db.read('/teams')) || []
-        return { countries, games, teams }
+        const [countries, games, teams, users] = await Promise.all([
+            $db.read('/countries'),
+            $db.read('/games'),
+            $db.read('/teams'),
+            $db.read('/users'),
+        ])
+        return { countries, games, teams, users }
     },
 
     data() {
         return {
-            teamIndex: null,
-            id: null,
-            form: {
-                id: null,
-                title: '',
-                mainGame: '',
-                leader: '',
-                password: '',
-                country: '',
-                webSite: '',
-                url: '',
-                logoUrl: '',
-            },
+            team: {},
             selectedLogo: null,
+            showPlayers: false,
             isBusy: false,
         }
     },
 
     validations: {
-        form: {
+        team: {
             id: {
                 required,
             },
@@ -180,23 +179,26 @@ export default {
         },
     },
 
+    computed: {
+        teamIndex() {
+            return _.findIndex(this.teams, { id: this.$route.params.id })
+        },
+    },
+
     mounted() {
-        this.id = this.$route.params.id
-        this.teamIndex = this.teamIndexById(this.id)
-        this.form = this.teams[this.teamIndex]
-        this.form.url = `http://doit.gg/${this.id}`
+        this.team = this.teams[this.teamIndex]
+        this.team.url = `http://doit.gg/${this.$route.params.id}`
     },
 
     updated() {
-        this.form.url = `http://doit.gg/${this.form.id}`
+        this.team.url = `http://doit.gg/${this.team.id}`
     },
 
     methods: {
         async submit() {
             this.isBusy = true
             await this.upload()
-            const path = `/teams/${this.teamIndex}`
-            await this.$db.write(path, this.form)
+            await this.$db.write(`/teams/${this.teamIndex}`, this.team)
             this.$toast.success('Changes commited!')
             this.$router.push('/player/team')
             this.isBusy = false
@@ -204,7 +206,7 @@ export default {
 
         async upload() {
             if (this.selectedLogo) {
-                this.form.logoUrl = await this.$db.uploadFile(
+                this.team.logoUrl = await this.$db.uploadFile(
                     'logos/',
                     this.selectedLogo
                 )
@@ -212,13 +214,15 @@ export default {
         },
 
         async remove() {
-            if (this.form.logoUrl) await this.$db.removeFile(this.form.logoUrl)
+            if (this.team.logoUrl) await this.$db.removeFile(this.team.logoUrl)
         },
 
         async deleteTeam() {
             if (confirm('Delete?')) {
                 await this.remove()
-                this.teams = this.teams.filter((item) => item.id !== this.id)
+                this.teams = this.teams.filter(
+                    (item) => item.id !== this.$route.params.id
+                )
                 await this.$db.write('/teams', this.teams)
                 this.$toast.success('Team fully destroyed!')
                 this.$router.push('/player/team')
@@ -227,6 +231,16 @@ export default {
 
         teamIndexById(id) {
             return this.teams.findIndex((element) => element.id === id)
+        },
+
+        getPlayerById(playerId) {
+            return _.find(this.users, { id: playerId })
+        },
+
+        removePlayer(playerId) {
+            this.team.players = this.team.players.filter(
+                (item) => item !== playerId
+            )
         },
     },
 }
@@ -267,6 +281,18 @@ export default {
             justify-content: center;
             gap: 3rem;
             margin-bottom: 5rem;
+        }
+    }
+
+    .players {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 2rem;
+        div {
+            padding: 1rem 2rem;
+            background: rgb(44, 82, 250);
+            border: 2px solid black;
+            border-radius: 2rem;
         }
     }
 }

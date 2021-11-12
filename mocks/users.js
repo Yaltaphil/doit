@@ -21,6 +21,9 @@ export default [
             { gameId: 3, value: 5, level: 55 },
             { gameId: 10, value: 19, level: 25 },
         ],
+        teams: [
+
+        ]
     },
     {
         id: 'cCS3ZmTnMrNbDYvi0RWLcFWJhsB2',

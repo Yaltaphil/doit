@@ -76,7 +76,6 @@
                     @logo-choosen="logoSelected = $event"
                     >Logo 128 x 128</BaseFileInput
                 >
-
             </div>
 
             <BaseButton
@@ -91,6 +90,7 @@
 
 <script>
 import { required, minLength, url } from 'vuelidate/lib/validators'
+import { v4 as uuidv4 } from 'uuid'
 
 export default {
     name: 'TeamCreate',
@@ -117,6 +117,10 @@ export default {
                 country: '',
                 webSite: 'http://mail.ru',
                 logoUrl: null,
+                players: [
+                    'XMAuZmnoUPRoVLSOwjidZo2CuRw2',
+                    'cCS3ZmTnMrNbDYvi0RWLcFWJhsB2',
+                ],
             },
             logoSelected: null,
             isBusy: false,
@@ -157,7 +161,7 @@ export default {
             this.isBusy = true
             await this.upload()
             this.team = this.form
-            this.team.id = `${Date.now()}`
+            this.team.id = uuidv4()
             this.team.created = Date.now()
             this.teams.push(this.team)
             await this.$db.write('/teams', this.teams)
