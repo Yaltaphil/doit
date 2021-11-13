@@ -56,6 +56,9 @@
             <BaseButton @click="write">BD write all mocks</BaseButton>
             <BaseButton @click="read">BD read all mocks</BaseButton>
         </div>
+
+        {{ $auth.strategy.token.get()}}
+        {{ $auth.strategy.token.status()}}
     </div>
 </template>
 
