@@ -44,6 +44,7 @@
         "prettier": "^2.3.2",
         "sass": "^1.41.1",
         "sass-loader": "^10.2.0",
-        "vue-jest": "^3.0.4"
+        "vue-jest": "^3.0.4",
+        "wallaby-vue-compiler": "^1.0.6"
     }
 }

@@ -116,7 +116,7 @@ export default {
             this.$toast.success(`Reading ... `)
             // const r = await this.$db.read('/user/' + this.user.id)
             const r = await this.$db.read('/users')
-            console.log(r)
+            console.log(r) 
         },
     },
 }
